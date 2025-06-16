@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctm51847fmtj0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr2i4"]
+albedo_color = Color(0.552645, 0.814432, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tr2i4"]
+
+[node name="Island" type="Node3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tr2i4")
+mesh = SubResource("BoxMesh_tr2i4")
+skeleton = NodePath("../..")

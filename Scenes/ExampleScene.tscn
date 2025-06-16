@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://puy6ggl1qfn2"]
+
+[ext_resource type="Script" uid="uid://dkmvf6msg1bo3" path="res://client.gd" id="1_0owtf"]
+[ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_04uwt"]
+[ext_resource type="PackedScene" uid="uid://dnkkj2em63kbw" path="res://Scenes/MainMenuUI.tscn" id="3_sydoi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
+sky_top_color = Color(0, 0.447383, 0.823598, 1)
+sky_horizon_color = Color(0.331964, 0.727093, 0.868183, 1)
+ground_bottom_color = Color(0.0156352, 0.24045, 0.49688, 1)
+ground_horizon_color = Color(4.23551e-06, 0.733473, 0.96103, 1)
+energy_multiplier = 2.5
+
+[sub_resource type="Sky" id="Sky_nhkr4"]
+sky_material = SubResource("ProceduralSkyMaterial_tr2i4")
+
+[sub_resource type="Environment" id="Environment_7rqgy"]
+background_mode = 2
+sky = SubResource("Sky_nhkr4")
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 3.0
+fog_light_color = Color(0.325179, 0.761742, 0.994389, 1)
+fog_density = 0.0001
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_emission = Color(0.243925, 0.810519, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
+render_priority = 0
+shader = ExtResource("2_04uwt")
+shader_parameter/WATER_COL = Color(0.000315208, 0.184125, 0.633705, 1)
+shader_parameter/WATER2_COL = Color(0.138439, 0.457015, 1, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(500, 500)
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.5
+shader_parameter/wave_frequency = 1.5
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(128, 128)
+shader_parameter/water_transparency = 0.8
+shader_parameter/water_depth_factor = 0.1
+shader_parameter/foam_width = 0.5
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nhkr4"]
+material = SubResource("ShaderMaterial_tr2i4")
+size = Vector2(1000, 1000)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr2i4"]
+albedo_color = Color(0.552645, 0.814432, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tr2i4"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_0owtf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7rqgy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_nhkr4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tr2i4")
+mesh = SubResource("BoxMesh_tr2i4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.134386, 0.656398, -0.742349, 0.033095, 0.745753, 0.6654, 0.990376, -0.113988, 0.0784953, -26.3101, 8.69719, 0)
+
+[node name="MainMenu" parent="." instance=ExtResource("3_sydoi")]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfysvhl71wb7s"]
+
+[ext_resource type="Script" uid="uid://dkmvf6msg1bo3" path="res://client.gd" id="1_tr2i4"]
+[ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_nhkr4"]
+sky_material = SubResource("ProceduralSkyMaterial_tr2i4")
+
+[sub_resource type="Environment" id="Environment_7rqgy"]
+background_mode = 2
+sky = SubResource("Sky_nhkr4")
+tonemap_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
+render_priority = 0
+shader = ExtResource("2_nhkr4")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(5, 5)
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.5
+shader_parameter/wave_frequency = 1.5
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(128, 128)
+shader_parameter/water_transparency = 0.8
+shader_parameter/water_depth_factor = 0.1
+shader_parameter/foam_width = 0.5
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nhkr4"]
+material = SubResource("ShaderMaterial_tr2i4")
+size = Vector2(128, 128)
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_tr2i4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7rqgy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_nhkr4")

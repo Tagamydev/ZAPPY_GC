@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dnkkj2em63kbw"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -77.5
+offset_bottom = 77.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ErrorHost" type="RichTextLabel" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Error: host: not a valid number"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = true
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextEdit" type="TextEdit" parent="Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+placeholder_text = "   HOST"
+emoji_menu_enabled = false
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+caret_blink = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextEdit" type="TextEdit" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+placeholder_text = "   PORT"
+emoji_menu_enabled = false
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+caret_blink = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button3" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "  BACK  "

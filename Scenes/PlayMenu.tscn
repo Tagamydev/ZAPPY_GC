@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dnkkj2em63kbw"]
+[gd_scene load_steps=2 format=3 uid="uid://dnkkj2em63kbw"]
+
+[ext_resource type="PackedScene" uid="uid://bxf6k3a12g5fy" path="res://Scenes/GUI/title.tscn" id="1_1188h"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Title" parent="." instance=ExtResource("1_1188h")]
+layout_mode = 1
+offset_bottom = 246.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -44,26 +50,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextEdit" type="TextEdit" parent="Control/VBoxContainer/HBoxContainer3"]
+[node name="LineEdit" type="LineEdit" parent="Control/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-placeholder_text = "   HOST"
-emoji_menu_enabled = false
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-caret_blink = true
+placeholder_text = "HOST"
+alignment = 1
+expand_to_text_length = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="TextEdit" type="TextEdit" parent="Control/VBoxContainer/HBoxContainer2"]
+[node name="LineEdit" type="LineEdit" parent="Control/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-placeholder_text = "   PORT"
-emoji_menu_enabled = false
-scroll_fit_content_height = true
-scroll_fit_content_width = true
-caret_blink = true
+text = "localhost"
+placeholder_text = "PORT"
+alignment = 1
+expand_to_text_length = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -74,4 +77,4 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "  BACK  "
+text = "   BACK   "

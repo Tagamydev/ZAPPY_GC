@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=10 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Script" uid="uid://dkmvf6msg1bo3" path="res://client.gd" id="1_tr2i4"]
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+sky_top_color = Color(0, 0.447383, 0.823598, 1)
+sky_horizon_color = Color(0.331964, 0.727093, 0.868183, 1)
+ground_bottom_color = Color(0.0156352, 0.24045, 0.49688, 1)
+ground_horizon_color = Color(4.23551e-06, 0.733473, 0.96103, 1)
+energy_multiplier = 2.5
 
 [sub_resource type="Sky" id="Sky_nhkr4"]
 sky_material = SubResource("ProceduralSkyMaterial_tr2i4")
@@ -14,15 +17,22 @@ sky_material = SubResource("ProceduralSkyMaterial_tr2i4")
 background_mode = 2
 sky = SubResource("Sky_nhkr4")
 tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 3.0
+fog_light_color = Color(0.325179, 0.761742, 0.994389, 1)
+fog_density = 0.0001
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_emission = Color(0.243925, 0.810519, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tr2i4"]
 render_priority = 0
 shader = ExtResource("2_nhkr4")
-shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
-shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/WATER_COL = Color(0.000315208, 0.184125, 0.633705, 1)
+shader_parameter/WATER2_COL = Color(0.138439, 0.457015, 1, 1)
 shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 shader_parameter/distortion_speed = 2.0
-shader_parameter/tile = Vector2(5, 5)
+shader_parameter/tile = Vector2(500, 500)
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_amplitude = 0.5
 shader_parameter/wave_frequency = 1.5
@@ -38,9 +48,14 @@ shader_parameter/foam_distortion_amount = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nhkr4"]
 material = SubResource("ShaderMaterial_tr2i4")
-size = Vector2(128, 128)
+size = Vector2(1000, 1000)
 subdivide_width = 32
 subdivide_depth = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr2i4"]
+albedo_color = Color(0.552645, 0.814432, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tr2i4"]
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_tr2i4")
@@ -54,3 +69,11 @@ environment = SubResource("Environment_7rqgy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_nhkr4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tr2i4")
+mesh = SubResource("BoxMesh_tr2i4")
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D2"]
+transform = Transform3D(0.0671932, 0.328199, -0.371174, 0.0165475, 0.372877, 0.3327, 0.495188, -0.0569944, 0.0392478, -13.1551, 4.3486, 0)

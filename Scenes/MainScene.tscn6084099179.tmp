@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=14 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
 [ext_resource type="Script" uid="uid://bv4bxitjf1n1m" path="res://Scripts/player.gd" id="3_nhkr4"]
-[ext_resource type="Script" uid="uid://dg33r1aaitwb5" path="res://Scripts/game_manager.gd" id="5_q68mp"]
+[ext_resource type="PackedScene" uid="uid://ctm51847fmtj0" path="res://Prefabs/island.tscn" id="4_q68mp"]
 [ext_resource type="PackedScene" uid="uid://o8clx8ssohi8" path="res://Prefabs/player.tscn" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://bd8tkowwdcctb" path="res://Scenes/GUI/player_viewer.tscn" id="5_y4jh7"]
+[ext_resource type="PackedScene" uid="uid://yvf5obhljbwx" path="res://Prefabs/portal.tscn" id="7_q68mp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
 sky_top_color = Color(0, 0.447383, 0.823598, 1)
@@ -80,6 +81,9 @@ transform = Transform3D(1, 5.73695e-07, -2.6077e-07, 7.45058e-09, 1, -1.30385e-0
 [node name="Sea" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_nhkr4")
 
+[node name="Island" parent="." instance=ExtResource("4_q68mp")]
+visible = false
+
 [node name="Player" parent="." instance=ExtResource("5_qxria")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.529828, 0)
 
@@ -132,8 +136,9 @@ grow_horizontal = 1
 grow_vertical = 0
 
 [node name="GameManager" type="Node3D" parent="."]
-script = ExtResource("5_q68mp")
 
 [node name="Islands" type="Node3D" parent="GameManager"]
 
 [node name="Players" type="Node3D" parent="GameManager"]
+
+[node name="Portal" parent="." instance=ExtResource("7_q68mp")]

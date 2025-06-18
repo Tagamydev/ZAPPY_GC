@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bd8tkowwdcctb"]
+[gd_scene load_steps=11 format=3 uid="uid://bd8tkowwdcctb"]
 
-[ext_resource type="Texture2D" uid="uid://7d0h0adpubab" path="res://icon.svg" id="1_uvc5y"]
+[ext_resource type="Texture2D" uid="uid://djgxgav3337hq" path="res://Assets/Textures/character02.png" id="1_07gjh"]
 [ext_resource type="Texture2D" uid="uid://bo4k7imc4rs2x" path="res://Assets/Textures/linemate.png" id="2_07gjh"]
+[ext_resource type="Texture2D" uid="uid://bk667o6alvkwl" path="res://Assets/Textures/frame.png" id="2_atxbm"]
 [ext_resource type="Texture2D" uid="uid://ceyxb04jibwge" path="res://Assets/Textures/mendiane.png" id="3_atxbm"]
 [ext_resource type="Texture2D" uid="uid://oae4k3y8qlx0" path="res://Assets/Textures/phiras.png" id="4_2vgnp"]
 [ext_resource type="Texture2D" uid="uid://bhraql728jy3i" path="res://Assets/Textures/sibur.png" id="5_mqb80"]
@@ -57,26 +58,30 @@ size_flags_vertical = 3
 layout_mode = 2
 alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3"]
-modulate = Color(1, 1, 1, 0)
+[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_styles/fill = SubResource("StyleBoxFlat_qxria")
+value = 40.9
 
 [node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(200, 0)
+clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer"]
 layout_mode = 2
-text = "PLAYER NUMBER 1"
+size_flags_vertical = 4
+text = "Player start"
+fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 4
 text = "X"
 
 [node name="HSeparator" type="HSeparator" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer"]
@@ -84,15 +89,20 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 11.505)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/PanelContainer"]
-custom_minimum_size = Vector2(0, 59.275)
+[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 126)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/PanelContainer/Panel"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,25 +117,16 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/PanelContainer/Panel/HBoxContainer2"]
-custom_minimum_size = Vector2(48.57, 0)
+[node name="VBoxContainer2" type="VBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/Panel/HBoxContainer2"]
 layout_mode = 2
-size_flags_horizontal = 6
-texture = ExtResource("1_uvc5y")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/PanelContainer/Panel/HBoxContainer2"]
-custom_minimum_size = Vector2(174.865, 0)
-layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 3
 size_flags_vertical = 4
+alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/PanelContainer/Panel/HBoxContainer2/VBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/Panel/HBoxContainer2/VBoxContainer2"]
 clip_contents = false
 custom_minimum_size = Vector2(88.6, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "TEAM 1"
 fit_content = true
@@ -133,12 +134,62 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/PanelContainer/Panel/HBoxContainer2/VBoxContainer2"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/Panel/HBoxContainer2/VBoxContainer2"]
+clip_contents = false
+custom_minimum_size = Vector2(88.6, 0)
 layout_mode = 2
-text = "LEVEL 1"
+size_flags_vertical = 4
+text = "TEAM 1"
 fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149
+anchor_right = 0.845
+anchor_bottom = 1.0
+offset_left = 0.0310001
+offset_right = 0.0549927
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.640923, 0.186912, 0.507042, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(48.57, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_07gjh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(49, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -28.0
+offset_right = -27.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_atxbm")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="HSeparator3" type="HSeparator" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -152,166 +203,143 @@ layout_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 146.65)
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 columns = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer"]
+[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 layout_mode = 2
 texture = ExtResource("2_07gjh")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer2"]
+[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer2"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer2"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 layout_mode = 2
 texture = ExtResource("3_atxbm")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer2"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer3" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer3"]
+[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer3"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer3"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer3"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 layout_mode = 2
 texture = ExtResource("4_2vgnp")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer3"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer4" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer"]
+[node name="PanelContainer4" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer4"]
+[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer4"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer4"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer4"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 layout_mode = 2
 texture = ExtResource("5_mqb80")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer4"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer5" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer"]
+[node name="PanelContainer5" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer5"]
+[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer5"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer5"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer5"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 layout_mode = 2
 texture = ExtResource("6_xmh5m")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer5"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer6" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer"]
+[node name="PanelContainer6" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer6"]
+[node name="Panel" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer6"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer6"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer6"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 layout_mode = 2
 texture = ExtResource("7_l5rfd")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/GridContainer/PanelContainer6"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/GridContainer/PanelContainer6"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 
-[node name="Panel5" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/PanelContainer"]
+[node name="Panel5" type="Panel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 layout_mode = 2
 texture = ExtResource("8_03fxt")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
-
-[node name="HSeparator2" type="HSeparator" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/VBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-theme_override_styles/fill = SubResource("StyleBoxFlat_qxria")
-value = 40.9
 
 [node name="HSeparator2" type="HSeparator" parent="PlayerPanel/HBoxContainer4/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)

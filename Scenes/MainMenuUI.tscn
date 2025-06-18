@@ -1,13 +1,143 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnkkj2em63kbw"]
+[gd_scene load_steps=34 format=3 uid="uid://dnkkj2em63kbw"]
 
 [ext_resource type="Shader" uid="uid://dllt36fkhomx7" path="res://Shaders/Vignette.gdshader" id="1_r3ws6"]
 [ext_resource type="PackedScene" uid="uid://bxf6k3a12g5fy" path="res://Scenes/GUI/title.tscn" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://dsd6if2xrq88r" path="res://Assets/Textures/loading/frame_1.png" id="2_scr8g"]
+[ext_resource type="Texture2D" uid="uid://nok7r2n8w5lf" path="res://Assets/Textures/loading/frame_2.png" id="3_tv3i8"]
+[ext_resource type="Texture2D" uid="uid://dgrbkq8tilnl0" path="res://Assets/Textures/loading/frame_3.png" id="4_1pap4"]
+[ext_resource type="Texture2D" uid="uid://miptxo2hh10m" path="res://Assets/Textures/loading/frame_4.png" id="5_ptdfr"]
+[ext_resource type="Texture2D" uid="uid://esaefidsa84a" path="res://Assets/Textures/loading/frame_5.png" id="6_s8rbw"]
+[ext_resource type="Texture2D" uid="uid://ebwyx520a0vo" path="res://Assets/Textures/loading/frame_6.png" id="7_ctv60"]
+[ext_resource type="Texture2D" uid="uid://dfi42608lahii" path="res://Assets/Textures/loading/frame_7.png" id="8_pktso"]
+[ext_resource type="Texture2D" uid="uid://bufssgr6kdt10" path="res://Assets/Textures/loading/frame_8.png" id="9_rovu0"]
+[ext_resource type="Texture2D" uid="uid://tna1u4ae2raa" path="res://Assets/Textures/loading/frame_9.png" id="10_pvy4v"]
+[ext_resource type="Texture2D" uid="uid://bcuc728w7hxbk" path="res://Assets/Textures/loading/frame_10.png" id="11_0g3na"]
+[ext_resource type="Texture2D" uid="uid://d11ytcunedgot" path="res://Assets/Textures/loading/frame_11.png" id="12_7nwth"]
+[ext_resource type="Texture2D" uid="uid://hvitsmeks0w2" path="res://Assets/Textures/loading/frame_12.png" id="13_7ongv"]
+[ext_resource type="Texture2D" uid="uid://d27s2xbcn82ao" path="res://Assets/Textures/loading/frame_13.png" id="14_vsycy"]
+[ext_resource type="Texture2D" uid="uid://yduwprsfres" path="res://Assets/Textures/loading/frame_14.png" id="15_2re6t"]
+[ext_resource type="Texture2D" uid="uid://doub31xb3fb1t" path="res://Assets/Textures/loading/frame_15.png" id="16_qhqg6"]
+[ext_resource type="Texture2D" uid="uid://6cs647j7be1n" path="res://Assets/Textures/loading/frame_16.png" id="17_2wqfl"]
+[ext_resource type="Texture2D" uid="uid://2olexihxbcde" path="res://Assets/Textures/loading/frame_17.png" id="18_v4mcr"]
+[ext_resource type="Texture2D" uid="uid://drtbpcgyyc4nb" path="res://Assets/Textures/loading/frame_18.png" id="19_q6oqw"]
+[ext_resource type="Texture2D" uid="uid://b36db6sbk5xdu" path="res://Assets/Textures/loading/frame_19.png" id="20_xmus7"]
+[ext_resource type="Texture2D" uid="uid://dxcp3kf5u7bjp" path="res://Assets/Textures/loading/frame_20.png" id="21_1urfj"]
+[ext_resource type="Texture2D" uid="uid://b3h1lr5of85e" path="res://Assets/Textures/loading/frame_21.png" id="22_00vff"]
+[ext_resource type="Texture2D" uid="uid://cl51x1caonqul" path="res://Assets/Textures/loading/frame_22.png" id="23_b4gwl"]
+[ext_resource type="Texture2D" uid="uid://cxiqwlqn05cja" path="res://Assets/Textures/loading/frame_23.png" id="24_kgq5w"]
+[ext_resource type="Texture2D" uid="uid://dlddgp7o5pp5e" path="res://Assets/Textures/loading/frame_24.png" id="25_7qohu"]
+[ext_resource type="Shader" uid="uid://dh2g3nc716kw6" path="res://Shaders/CRT.gdshader" id="27_tv3i8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r3ws6"]
 shader = ExtResource("1_r3ws6")
 shader_parameter/outerRadius = 0.268
 shader_parameter/MainAlpha = 0.148
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cvqh"]
+shader = ExtResource("27_tv3i8")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -4.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tv3i8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1pap4"]
+texture = SubResource("CanvasTexture_tv3i8")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_u473w"]
+blend_mode = 3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gakvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_scr8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tv3i8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1pap4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ptdfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s8rbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ctv60")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pktso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rovu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pvy4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0g3na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7nwth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7ongv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vsycy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2re6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qhqg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2wqfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_v4mcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_q6oqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xmus7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_1urfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_00vff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_b4gwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_kgq5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_7qohu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 40.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -52,6 +182,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.541176)
+
+[node name="CRT" type="Control" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CRT"]
+material = SubResource("ShaderMaterial_6cvqh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -133,6 +281,7 @@ expand_to_text_length = true
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 40
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1pap4")
 text = "PLAY"
 
 [node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer/VBoxContainer"]
@@ -153,42 +302,17 @@ layout_mode = 2
 [node name="Back" type="Button" parent="Control/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-text = "   BACK   "
+text = "Enable 64 bit mode"
 
-[node name="Control2" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button" type="Button" parent="Control2/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer"]
 layout_mode = 2
-text = "PLAY"
 
-[node name="Button2" type="Button" parent="Control2/VBoxContainer"]
-layout_mode = 2
-text = "SETTINGS"
-
-[node name="Button3" type="Button" parent="Control2/VBoxContainer"]
-layout_mode = 2
-text = "EXIT"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_u473w")
+position = Vector2(146, 335)
+scale = Vector2(0.640894, 0.640893)
+sprite_frames = SubResource("SpriteFrames_gakvu")
+frame_progress = 0.474039
 
 [node name="Title" parent="." instance=ExtResource("1_tt5f1")]
 layout_mode = 1

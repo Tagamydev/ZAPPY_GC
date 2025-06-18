@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://puy6ggl1qfn2"]
 
-[ext_resource type="Script" uid="uid://dkmvf6msg1bo3" path="res://client.gd" id="1_0owtf"]
+[ext_resource type="Script" uid="uid://dkmvf6msg1bo3" path="res://Scripts/client.gd" id="1_0owtf"]
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_04uwt"]
 [ext_resource type="PackedScene" uid="uid://dnkkj2em63kbw" path="res://Scenes/MainMenuUI.tscn" id="3_sydoi"]
 

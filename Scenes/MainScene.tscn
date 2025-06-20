@@ -102,13 +102,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuButton" type="MenuButton" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 98.0
-offset_top = 25.0
-offset_right = 173.0
-offset_bottom = 56.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuButton" type="MenuButton" parent="Control/HBoxContainer"]
+layout_mode = 2
 text = "PLAYERS"
+flat = false
+item_count = 4
+popup/item_0/text = "player1"
+popup/item_0/id = 0
+popup/item_1/text = "player2"
+popup/item_1/id = 1
+popup/item_2/text = "player3"
+popup/item_2/id = 2
+popup/item_3/text = "1"
+popup/item_3/id = 3
+
+[node name="MenuButton2" type="MenuButton" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "TILES"
 flat = false
 item_count = 4
 popup/item_0/text = "player1"
@@ -131,6 +146,59 @@ offset_right = 0.0
 offset_bottom = -380.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 764.0
+offset_top = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control/Control"]
+modulate = Color(1, 1, 1, 0.635294)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VSeparator" type="VSeparator" parent="Control/Control/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(19.965, 0)
+layout_mode = 2
+
+[node name="Chat" type="RichTextLabel" parent="Control/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "player1:  porr ejemplo si pongo una linea muy larga porque soy tonto
+
+player2:  otro tonto...
+
+c
+
+d
+
+e
+
+f
+otesuhauashu"
+fit_content = true
+scroll_following = true
+
+[node name="VSeparator2" type="VSeparator" parent="Control/Control/HBoxContainer"]
+layout_mode = 2
 
 [node name="GameManager" type="Node3D" parent="."]
 script = ExtResource("5_q68mp")

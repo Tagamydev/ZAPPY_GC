@@ -134,8 +134,8 @@ tracks/6/path = NodePath("Portal2:scale:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(1, 1),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, 3, 0, 0, 0, 0),
+"handle_modes": PackedInt32Array(0, 1),
+"points": PackedFloat32Array(0.2, 0, 0, 0, 0, 3, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.25)
 }
 tracks/7/type = "bezier"
@@ -145,8 +145,8 @@ tracks/7/path = NodePath("Portal2:scale:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"handle_modes": PackedInt32Array(1, 1),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, 3, 0, 0, 0, 0),
+"handle_modes": PackedInt32Array(0, 1),
+"points": PackedFloat32Array(0.2, 0, 0, 0, 0, 3, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.25)
 }
 tracks/8/type = "bezier"
@@ -156,8 +156,8 @@ tracks/8/path = NodePath("Portal2:scale:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"handle_modes": PackedInt32Array(1, 1),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, 3, 0, 0, 0, 0),
+"handle_modes": PackedInt32Array(0, 1),
+"points": PackedFloat32Array(0.2, 0, 0, 0, 0, 3, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.25)
 }
 tracks/9/type = "bezier"

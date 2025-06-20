@@ -13,11 +13,16 @@ func create_islands(position):
 	var instance = island.instantiate()
 	instance.position = position
 	add_child(instance)
+	
+func parse_message(message):
+	var	split = message.split(" ")
+	print(split[0])
 
 func _ready():
+	
 	var	i = 0
 	var j = 0
-	
+	SignalBus.command.connect(parse_message)
 	i = 0
 	while i < island_x:
 		j = 0

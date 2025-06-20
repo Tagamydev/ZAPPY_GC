@@ -27,7 +27,7 @@ func _process(delta):
 			if not connected:
 				connected = true
 				print("Connected to server.")
-				_send_message("Hello, Server!")
+				_send_message("GRAPHIC")
 
 			# Check for incoming data
 			var available := tcp.get_available_bytes()
@@ -41,7 +41,7 @@ func _process(delta):
 					print("Error reading data: ", result[0])
 
 		StreamPeerTCP.STATUS_ERROR:
-			print("Connection error.")
+			print("error: server connection timeout")
 			connected = false
 
 		StreamPeerTCP.STATUS_NONE:

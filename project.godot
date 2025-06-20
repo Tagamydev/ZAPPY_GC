@@ -15,6 +15,10 @@ run/main_scene="uid://dfysvhl71wb7s"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalBus="*res://Scripts/SignalBus.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

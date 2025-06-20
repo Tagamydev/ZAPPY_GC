@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dg33r1aaitwb5" path="res://Scripts/game_manager.gd" id="5_q68mp"]
 [ext_resource type="PackedScene" uid="uid://o8clx8ssohi8" path="res://Prefabs/player.tscn" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://bd8tkowwdcctb" path="res://Scenes/GUI/player_viewer.tscn" id="5_y4jh7"]
-[ext_resource type="Script" uid="uid://dkmvf6msg1bo3" path="res://Scripts/client.gd" id="6_y4jh7"]
+[ext_resource type="Script" uid="uid://dkmvf6msg1bo3" path="res://Scripts/Network.gd" id="6_y4jh7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
 sky_top_color = Color(0, 0.447383, 0.823598, 1)

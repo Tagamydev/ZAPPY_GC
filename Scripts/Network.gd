@@ -1,21 +1,25 @@
 extends Node
 
-var tcp := StreamPeerTCP.new()
+var enable := false
+
+var tcp : StreamPeer = null
 var connected := false
 
-# Set your server IP and port here
-const SERVER_IP := "127.0.0.1"
-const SERVER_PORT := 4242
 
-
-func _ready():
-	var err := tcp.connect_to_host(SERVER_IP, SERVER_PORT)
+func connection(host, port):
+	tcp = StreamPeerTCP.new()
+	
+	var err : Error = tcp.connect_to_host(host, port)
 	if err != OK:
 		print("Failed to connect: ", err)
 	else:
 		print("Connecting...")
+	enable = true
+	
+func _ready():
+	SignalBus.new_connection.connect(connection)
 
-func _process(delta):
+func listen():
 	# Required call!
 	tcp.poll()
 
@@ -37,19 +41,28 @@ func _process(delta):
 					var byte_array = result[1]
 					var message = byte_array.get_string_from_utf8()
 					print("Received: ", message)
+					SignalBus.command.emit(message)
 				else:
 					print("Error reading data: ", result[0])
 
 		StreamPeerTCP.STATUS_ERROR:
 			print("error: server connection timeout")
 			connected = false
+			enable = false
+			tcp.free()
+			tcp = null
 
 		StreamPeerTCP.STATUS_NONE:
 			# Not connected
 			pass
+	
+
+func _process(delta):
+	if (enable):
+		listen()
+	
 
 func _send_message(message: String):
 	if tcp.get_status() == StreamPeerTCP.STATUS_CONNECTED:
 		var byte_data := message.to_utf8_buffer()
 		tcp.put_data(byte_data)
-		print("Sent: ", message)

@@ -1,0 +1,21 @@
+ppo 1 2 3 1
+pgt 1 1
+pin 1 2 3 0 1 0 0 0 0 0
+bct 2 3 1 0 0 0 0 0 0
+pbc 2 Hello from BlueTeam!
+pex 2
+ppo 1 1 3 4
+ppo 2 4 4 2
+pic 2 2 2 1 2
+pie 2 2 1
+plv 1 2
+plv 2 2
+bct 2 2 0 0 0 0 0 0 0
+pfk 1
+enw 11 1 2 2
+eht 11
+ebo 11
+pnw 3 2 2 3 1 RedTeam
+pdi 2
+sst 80
+seg RedTeam

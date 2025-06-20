@@ -14,7 +14,7 @@ func connection(host, port):
 	if err != OK:
 		print("Failed to connect: ", err)
 	else:
-		print("Connecting...")
+		print("New conextion started. Connecting...")
 	enable = true
 	
 func _ready():
@@ -29,6 +29,7 @@ func listen():
 			print("Connecting...")
 
 		StreamPeerTCP.STATUS_CONNECTED:
+			SignalBus.start_game.emit()
 			if not connected:
 				connected = true
 				print("Connected to server.")

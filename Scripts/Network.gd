@@ -7,9 +7,10 @@ var connected := false
 
 
 func connection(host, port):
+	tcp = null
 	tcp = StreamPeerTCP.new()
 	
-	var err : Error = tcp.connect_to_host(host, port)
+	var err : Error = tcp.connect_to_host(host, int(port))
 	if err != OK:
 		print("Failed to connect: ", err)
 	else:
@@ -49,7 +50,6 @@ func listen():
 			print("error: server connection timeout")
 			connected = false
 			enable = false
-			tcp.free()
 			tcp = null
 
 		StreamPeerTCP.STATUS_NONE:

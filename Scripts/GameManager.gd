@@ -6,14 +6,16 @@ var	island_x : int = 10
 var island_y : int = 11
 var island_total_x = 0
 var island_total_y = 0
-var characters: Array[Node3D] = []
-var tiles: Array[Node3D] = []
+var characters: Array = []
+var tiles: Array = []
+var time = 100
 
 
 func create_islands(position, x, y):
 	var instance = island.instantiate()
 	instance.position = position
 	add_child(instance)
+	tiles.append(instance)
 	SignalBus.new_island.emit(x, y)
 
 
@@ -47,6 +49,8 @@ func parse_command(command):
 		"msz":
 			print(split[0])
 		"bct":
+			var tile: Node3D = tiles[(str(split[1]).to_int() * str(split[2]).to_int())]
+			tile.bct(split[3], split[4], split[5], split[6], split[7], split[8], split[9])
 			print(split[0])
 		"pin":
 			print(split[0])
@@ -79,7 +83,8 @@ func parse_command(command):
 		"edi":
 			print(split[0])
 		"sgt":
-			print(split[0])
+			if split.size() == 2:
+				time = split[1]
 		"sst":
 			print(split[0])
 		"seg":

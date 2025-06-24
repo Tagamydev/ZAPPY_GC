@@ -1,0 +1,30 @@
+extends Node3D
+
+var	Island : Tiles = Tiles.new()
+
+func SpawnItem(item, n):
+	match item:
+		"food":
+			Island.food = Island.food + (n - Island.food)
+		"linemate":
+			Island.linemate = Island.linemate + (n - Island.linemate)
+		"deraumere":
+			Island.deraumere = Island.deraumere + (n - Island.deraumere)
+		"sibur":
+			Island.sibur = Island.sibur + (n - Island.sibur)
+		"mendiane":
+			Island.mendiane = Island.mendiane + (n - Island.mendiane)
+		"phiras":
+			Island.phiras = Island.phiras + (n - Island.phiras)
+		"thystame":
+			Island.thystame = Island.thystame + (n - Island.thystame)
+
+
+func bct(food, linemate, deraumere, sibur, mendiane, phiras, thystame):
+	SpawnItem("food", str(food).to_int())
+	SpawnItem("linemate", str(linemate).to_int())
+	SpawnItem("deraumere", str(deraumere).to_int())
+	SpawnItem("sibur", str(sibur).to_int())
+	SpawnItem("mendiane", str(mendiane).to_int())
+	SpawnItem("phiras", str(phiras).to_int())
+	SpawnItem("thystame", str(thystame).to_int())

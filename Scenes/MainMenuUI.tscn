@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dnkkj2em63kbw"]
+[gd_scene load_steps=36 format=3 uid="uid://dnkkj2em63kbw"]
 
 [ext_resource type="Shader" uid="uid://dllt36fkhomx7" path="res://Shaders/Vignette.gdshader" id="1_r3ws6"]
 [ext_resource type="PackedScene" uid="uid://bxf6k3a12g5fy" path="res://Scenes/GUI/title.tscn" id="1_tt5f1"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cxiqwlqn05cja" path="res://Assets/Textures/loading/frame_23.png" id="24_kgq5w"]
 [ext_resource type="Texture2D" uid="uid://dlddgp7o5pp5e" path="res://Assets/Textures/loading/frame_24.png" id="25_7qohu"]
 [ext_resource type="Shader" uid="uid://dh2g3nc716kw6" path="res://Shaders/CRT.gdshader" id="27_tv3i8"]
+[ext_resource type="Script" uid="uid://bwa1ta34s63ev" path="res://Scripts/LoadWheel.gd" id="28_ptdfr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r3ws6"]
 shader = ExtResource("1_r3ws6")
@@ -185,6 +186,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.541176)
 
 [node name="CRT" type="Control" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -194,7 +196,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CRT"]
-visible = false
 material = SubResource("ShaderMaterial_6cvqh")
 layout_mode = 1
 anchors_preset = 15
@@ -316,6 +317,7 @@ position = Vector2(146, 335)
 scale = Vector2(0.640894, 0.640893)
 sprite_frames = SubResource("SpriteFrames_gakvu")
 frame_progress = 0.474039
+script = ExtResource("28_ptdfr")
 
 [node name="Title" parent="." instance=ExtResource("1_tt5f1")]
 layout_mode = 1

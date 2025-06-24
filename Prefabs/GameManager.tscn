@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://g8geyo2wcjcc"]
+
+[ext_resource type="Script" uid="uid://dg33r1aaitwb5" path="res://Scripts/GameManager.gd" id="1_uc36f"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_bwyv8"]
+
+[node name="GameManager" type="Node3D"]
+script = ExtResource("1_uc36f")
+
+[node name="Islands" type="Node3D" parent="."]
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.315, 0)
+mesh = SubResource("PrismMesh_bwyv8")

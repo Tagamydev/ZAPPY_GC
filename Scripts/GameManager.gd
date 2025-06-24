@@ -6,20 +6,40 @@ var	island_x : int = 10
 var island_y : int = 11
 var island_total_x = 0
 var island_total_y = 0
-var characters: Array[Characters] = []
-var tiles: Array[Characters] = []
+var characters: Array[Node3D] = []
+var tiles: Array[Node3D] = []
 
 
-func create_islands(position):
+func create_islands(position, x, y):
 	var instance = island.instantiate()
 	instance.position = position
 	add_child(instance)
+	SignalBus.new_island.emit(x, y)
+
+
+func msz(x, y):
+	island_x = x
+	island_y = y
+	var	i = 0
+	var j = 0
+
+	i = 0
+	while i < island_x:
+		j = 0
+		while j < island_y:
+			create_islands(Vector3(i * 10, 0, j * 10), i , j)
+			j += 1
+		i += 1
+
 
 func parse_command(command):
 	var	split = command.split(" ")
 	match split[0]:
 		"msz":
-			print(split[0])
+			if split.size() == 3:
+				msz(int(split[1]), int(split[2]))
+			else:
+				print("Error: msz command: wrong number of arguments: ", command)
 		"pnw":
 			print(split[0])
 		"tna":
@@ -79,17 +99,13 @@ func parse_message(message):
 	for command in commands.size():
 		parse_command(commands[command])
 	print("size of the array:", commands.size())
-	
+
+
+func return_menu():
+	SignalBus.SceneLoaded = false
+
 
 func _ready():
-	
-	var	i = 0
-	var j = 0
 	SignalBus.command.connect(parse_message)
-	i = 0
-	while i < island_x:
-		j = 0
-		while j < island_y:
-			create_islands(Vector3(i * 10, 0, j * 10))
-			j += 1
-		i += 1
+	SignalBus.SceneLoaded = true
+	print("SceneLoaded!!!!")

@@ -117,8 +117,17 @@ script = ExtResource("4_y4jh7")
 
 [node name="TilesList" type="MenuButton" parent="Control/HBoxContainer"]
 layout_mode = 2
-text = "ISLANDS"
+text = "TILES"
 flat = false
+item_count = 4
+popup/item_0/text = "player1"
+popup/item_0/id = 0
+popup/item_1/text = "player2"
+popup/item_1/id = 1
+popup/item_2/text = "player3"
+popup/item_2/id = 2
+popup/item_3/text = "1"
+popup/item_3/id = 3
 script = ExtResource("5_q68mp")
 
 [node name="PlayerViewer" parent="Control" instance=ExtResource("5_y4jh7")]

@@ -2,17 +2,19 @@ extends Node3D
 
 
 var island = preload("res://Prefabs/island.tscn")
+var player = preload("res://Prefabs/Player.tscn")
 var	island_x : int = 10
 var island_y : int = 11
 var island_total_x = 0
 var island_total_y = 0
-var characters: Array = []
+var players: Array = []
 var tiles: Array = []
 var time = 100
 
 
 func create_islands(position, x, y):
 	var instance = island.instantiate()
+	
 	instance.position = position
 	add_child(instance)
 	tiles.append(instance)
@@ -34,8 +36,18 @@ func msz(x, y):
 		i += 1
 
 
+func pnw(n, x, y, direction, level, team):
+	var instance = player.instantiate()
+	
+	instance.position = position
+	add_child(instance)
+	players.append(instance)
+	SignalBus.new_player.emit(n, team)
+
+
 func parse_command(command):
 	var	split = command.split(" ")
+
 	match split[0]:
 		"msz":
 			if split.size() == 3:
@@ -43,15 +55,20 @@ func parse_command(command):
 			else:
 				print("Error: msz command: wrong number of arguments: ", command)
 		"pnw":
-			print(split[0])
+			if split.size() == 7:
+				pnw(split[1], split[2], split[3], split[4], split[5], split[6])
+			else:
+				print("Error: msz command: wrong number of arguments: ", command)
 		"tna":
 			print(split[0])
 		"msz":
 			print(split[0])
 		"bct":
-			var tile: Node3D = tiles[(str(split[1]).to_int() * str(split[2]).to_int())]
-			tile.bct(split[3], split[4], split[5], split[6], split[7], split[8], split[9])
-			print(split[0])
+			if split.size() == 10:
+				var tile: Node3D = tiles[(str(split[1]).to_int() * str(split[2]).to_int())]
+				tile.bct(split[3], split[4], split[5], split[6], split[7], split[8], split[9])
+			else:
+				print("Error: msz command: wrong number of arguments: ", command)
 		"pin":
 			print(split[0])
 		"ppo":

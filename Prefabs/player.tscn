@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://o8clx8ssohi8"]
+[gd_scene load_steps=7 format=3 uid="uid://o8clx8ssohi8"]
+
+[ext_resource type="Script" uid="uid://bpbmvcanwhhp5" path="res://Scripts/Player.gd" id="1_um8lo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3icqa"]
 albedo_color = Color(1, 0.68144, 0.582295, 1)
@@ -14,7 +16,8 @@ albedo_color = Color(0.28, 0.028, 0.0406001, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nftw"]
 albedo_color = Color(0, 0.1105, 0.51, 1)
 
-[node name="Player" type="Node3D"]
+[node name="Character" type="Node3D"]
+script = ExtResource("1_um8lo")
 
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.17, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.897817, 0.0592226)

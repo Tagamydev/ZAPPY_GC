@@ -292,7 +292,7 @@ seg RedTeam
 > Server message (chat, info, debug).
 
 ```
-smg The game will restart in 60 seconds.
+smg The game will restart in 60 seconds. 
 ```
 
 ---

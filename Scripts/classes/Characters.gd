@@ -8,3 +8,4 @@ var level: int = 0
 var team: String = "default"
 var color: Color = Color.CHARTREUSE
 var inventory: Inventory = Inventory.new()
+var texture: Texture2D = null

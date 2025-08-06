@@ -35,15 +35,31 @@ func msz(x, y):
 			j += 1
 		i += 1
 
-
+# 🧍 `pnw #n X Y O L N` — Player Info
+# Player ID 1 is at tile (3,4), facing **East** (O=2), level 1, from team "TeamRocket".
 func pnw(n, x, y, direction, level, team):
 	var instance = player.instantiate()
-	
-	instance.position = Vector3(1, 2, 1)
+
+	# Generate random number between 1 and 6 (inclusive)
+	var random_index = randi_range(1, 6)
+	var profile_path = "res://Assets/Textures/character0%d.png" % random_index
+	var profile_texture = load(profile_path) as Texture2D
+
+	# Set position and properties
+	instance.position = Vector3(float(x), float(y), 0)  # Or adjust to fit your grid/scale
 	add_child(instance)
 	players.append(instance)
+
+	instance.Character.id = n
+	instance.Character.level = level
+	instance.Character.texture = profile_texture  # Assuming `texture` is used for rendering
+
 	SignalBus.new_player.emit(n, team)
 
+
+# `pbc #n M`
+func pbc(number, message):
+	SignalBus.new_message.emit(str("Player n", number, ": ", message))
 
 func parse_command(command):
 	var	split = command.split(" ")
@@ -82,6 +98,7 @@ func parse_command(command):
 		"pdr":
 			print(split[0])
 		"pbc":
+			pbc(split[1], split[2])
 			print(split[0])
 		"pdi":
 			print(split[0])

@@ -39,7 +39,7 @@ func msz(x, y):
 func pnw(n, x, y, direction, level, team):
 	var instance = player.instantiate()
 	
-	instance.position = position
+	instance.position = Vector3(1, 2, 1)
 	add_child(instance)
 	players.append(instance)
 	SignalBus.new_player.emit(n, team)
@@ -112,6 +112,8 @@ func parse_command(command):
 			print(split[0])
 		"sbp":
 			print(split[0])
+		"":
+			return
 		_:
 			print("wtf is this...", split[0])
 	

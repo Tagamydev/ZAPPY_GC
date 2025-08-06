@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=15 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
 [ext_resource type="Script" uid="uid://bakorgipwct1w" path="res://Scripts/PlayersList.gd" id="4_y4jh7"]
 [ext_resource type="Script" uid="uid://d3rlghlqml471" path="res://Scripts/chat.gd" id="5_f140w"]
 [ext_resource type="Script" uid="uid://dkeqn7iyq2ju1" path="res://Scripts/TilesList.gd" id="5_q68mp"]
-[ext_resource type="PackedScene" uid="uid://o8clx8ssohi8" path="res://Prefabs/Player.tscn" id="5_qxria"]
 [ext_resource type="PackedScene" uid="uid://bd8tkowwdcctb" path="res://Scenes/GUI/PlayerViewer.tscn" id="5_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://kvtpefh4xjmy" path="res://Scenes/GUI/TileViewer.tscn" id="7_f140w"]
 [ext_resource type="PackedScene" uid="uid://g8geyo2wcjcc" path="res://Prefabs/GameManager.tscn" id="8_f140w"]
@@ -82,9 +81,6 @@ transform = Transform3D(1, 5.73695e-07, -2.6077e-07, 7.45058e-09, 1, -1.30385e-0
 [node name="Sea" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_nhkr4")
 
-[node name="Player" parent="." instance=ExtResource("5_qxria")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.529828, 0)
-
 [node name="Egg" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03448, 0)
 visible = false
@@ -120,25 +116,13 @@ text = "ISLANDS"
 flat = false
 script = ExtResource("5_q68mp")
 
-[node name="PlayerViewer" parent="Control" instance=ExtResource("5_y4jh7")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_top = -380.0
-offset_right = 0.0
-offset_bottom = -380.0
-grow_horizontal = 1
-grow_vertical = 0
-
 [node name="Chat" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 764.0
-offset_top = 258.0
+offset_left = 769.0
+offset_top = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -192,17 +176,28 @@ script = ExtResource("5_f140w")
 [node name="VSeparator2" type="VSeparator" parent="Control/Chat/HBoxContainer"]
 layout_mode = 2
 
-[node name="TileViewer" parent="Control" instance=ExtResource("7_f140w")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 407.0
-offset_top = -380.0
-offset_right = 407.496
-offset_bottom = -380.0
-grow_horizontal = 1
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TileViewer" parent="Control/HBoxContainer2" instance=ExtResource("7_f140w")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+
+[node name="PlayerViewer" parent="Control/HBoxContainer2" instance=ExtResource("5_y4jh7")]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 8
+
+[node name="VSeparator" type="VSeparator" parent="Control/HBoxContainer2"]
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+custom_minimum_size = Vector2(335.71, 0)
+layout_mode = 2
 
 [node name="GameManager" parent="." instance=ExtResource("8_f140w")]

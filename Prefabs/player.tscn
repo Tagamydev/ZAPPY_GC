@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://o8clx8ssohi8"]
+[gd_scene load_steps=8 format=3 uid="uid://o8clx8ssohi8"]
 
 [ext_resource type="Script" uid="uid://bpbmvcanwhhp5" path="res://Scripts/Player.gd" id="1_um8lo"]
 
@@ -16,28 +16,34 @@ albedo_color = Color(0.28, 0.028, 0.0406001, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nftw"]
 albedo_color = Color(0, 0.1105, 0.51, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_um8lo"]
+
 [node name="Character" type="Node3D"]
 script = ExtResource("1_um8lo")
 
 [node name="Head" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.17, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.897817, 0.0592226)
+visible = false
 material_override = SubResource("StandardMaterial3D_3icqa")
 mesh = SubResource("BoxMesh_y6xdh")
 skeleton = NodePath("../..")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.38, 0, 0, 0, 0.35, 0, 0, 0, 0.145, 0, 0.62348, 0.0632012)
+visible = false
 material_override = SubResource("StandardMaterial3D_5wxv7")
 mesh = SubResource("BoxMesh_y6xdh")
 skeleton = NodePath("../..")
 
 [node name="Backpack" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.38, 0, 0, 0, 0.395, 0, 0, 0, 0.18, 0, 0.599475, -0.0985719)
+visible = false
 material_override = SubResource("StandardMaterial3D_y5hcb")
 mesh = SubResource("BoxMesh_y6xdh")
 skeleton = NodePath("../..")
 
 [node name="Legs" type="Node3D" parent="."]
+visible = false
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Legs"]
 transform = Transform3D(0.38, 0, 0, 0, 0.15, 0, 0, 0, 0.145, 0, 0.373957, 0.0632012)
@@ -56,3 +62,14 @@ transform = Transform3D(0.13, 0, 0, 0, 0.3, 0, 0, 0, 0.145, 0.125359, 0.149257, 
 material_override = SubResource("StandardMaterial3D_2nftw")
 mesh = SubResource("BoxMesh_y6xdh")
 skeleton = NodePath("../../..")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.618656, 0)
+mesh = SubResource("BoxMesh_um8lo")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179234, 0.84974, 0.326925)
+operation = 2
+mesh = SubResource("BoxMesh_um8lo")

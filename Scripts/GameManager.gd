@@ -12,9 +12,55 @@ var players: Array = []
 var players_list: Dictionary = {}
 
 var tiles: Array = []
+var players_in_tiles: Dictionary = {}
 var teams: Array = []
 var time = 100
 
+
+
+func move_player(id, x, y):
+	if players_list.has(id):
+		var char: Characters = players_list[id].Character
+		var key = str(char.x, ", ", char.y)
+		var key2 = str(x, ", ", y)
+		
+		if players_in_tiles.has(key):
+			players_in_tiles[key].erase(id)
+		
+		if not players_in_tiles.has(key2):
+			players_in_tiles[key2] = []
+			
+		players_in_tiles[key2].append(id)
+		
+		char.x = int(x)
+		char.y = int(y)
+
+		# Get the player node (actual scene node, not the data)
+		var player_node = players_list[id] # Make sure this is a Node3D
+
+		# Get the correct tile index
+		var tile_index = int(y) * island_x + int(x)
+		var tile: Node3D = tiles[tile_index]
+
+		# Get walkable plane
+		var walk_plane = tile.get_node("walkPlane") as MeshInstance3D
+
+		# Get mesh bounds
+		var mesh_aabb = walk_plane.get_mesh().get_aabb()
+
+		# Pick a random point inside plane
+		var local_x = randf_range(mesh_aabb.position.x, mesh_aabb.position.x + mesh_aabb.size.x)
+		var local_z = randf_range(mesh_aabb.position.z, mesh_aabb.position.z + mesh_aabb.size.z)
+
+		# Convert to world coordinates
+		var world_pos = walk_plane.to_global(Vector3(local_x, 0, local_z))
+
+		# Teleport player
+		player_node.global_position = world_pos
+		
+		print("moving player to: ", str(key2))
+		
+	
 
 # Index	Name
 # 0	Nourriture
@@ -61,7 +107,6 @@ func pnw(n, x, y, direction, level, team):
 		var profile_texture = load(profile_path) as Texture2D
 
 		# Set position and properties
-		instance.position = Vector3(float(x), float(y), 0)  # Or adjust to fit your grid/scale
 		add_child(instance)
 		players.append(instance)
 
@@ -73,6 +118,7 @@ func pnw(n, x, y, direction, level, team):
 		
 		
 		players_list[n] = instance
+		move_player(n, x, y)
 		SignalBus.new_player.emit(n, team)
 
 
@@ -112,8 +158,7 @@ func pin(id, x, y, Nourriture, Linemate, Deraumere, Sibur, Mendiane, Phiras, Thy
 		
 	
 		# this will tp the character
-		char.x = float(x)
-		char.y = float(y)
+		move_player(id, x, y)
 		
 		char.inventory.food = int(Nourriture)
 		char.inventory.linemate = int(Linemate)
@@ -135,8 +180,7 @@ func ppo(id, x, y, orientation):
 		var char: Characters = players_list[id].Character
 		
 		# this will tp the character
-		char.x = float(x)
-		char.y = float(y)
+		move_player(id, x, y)
 		char.orientation = orientation
 		
 func plv(id, level):

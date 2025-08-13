@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctm51847fmtj0"]
+[gd_scene load_steps=6 format=3 uid="uid://ctm51847fmtj0"]
 
 [ext_resource type="Script" uid="uid://bqyrd6ra7rwq8" path="res://Scripts/Island.gd" id="1_tqsrf"]
 
@@ -6,6 +6,12 @@
 albedo_color = Color(0.552645, 0.814432, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tr2i4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d60fm"]
+albedo_color = Color(0.12549, 0.337255, 0.12549, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d60fm"]
+size = Vector2(9, 9)
 
 [node name="Island" type="Node3D"]
 script = ExtResource("1_tqsrf")
@@ -15,3 +21,8 @@ transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_tr2i4")
 mesh = SubResource("BoxMesh_tr2i4")
 skeleton = NodePath("../..")
+
+[node name="walkPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506125, 0)
+material_override = SubResource("StandardMaterial3D_d60fm")
+mesh = SubResource("PlaneMesh_d60fm")

@@ -7,6 +7,7 @@ var items: PopupMenu = null
 
 	
 func _on_item_selected(id: int) -> void:
+	print(items.get_item_text(id))
 	SignalBus.select_player.emit(id)
 
 func addPlayer(number, team):

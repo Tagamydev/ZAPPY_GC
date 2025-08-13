@@ -15,8 +15,17 @@ extends Control
 @onready var	texture: TextureRect = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control/ProfilePicture
 @onready var	color: ColorRect = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control/ColorRect
 
-func show_player(number):
+
+func show_by_id(id):
+	var player: Characters = gameMannager.players_list[str(id)].Character
+	show_player(player)
+	
+func show_by_sort(number):
 	var player: Characters = gameMannager.players[number].Character
+	show_player(player)
+	
+
+func show_player(player):
 	visible = true
 	
 	Name.text = str("Player ", player.id)
@@ -31,10 +40,10 @@ func show_player(number):
 	color.color = player.color
 	
 	
-	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	SignalBus.select_player.connect(show_player)
+	SignalBus.select_player.connect(show_by_sort)
+	SignalBus.select_player_by_id.connect(show_by_id)
 	pass # Replace with function body.
 
 

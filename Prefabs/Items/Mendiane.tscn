@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvp702hwholy2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vj082"]
+albedo_color = Color(0, 0.4, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2bp8g"]
+
+[node name="MeshInstance3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.151235, 0)
+material_override = SubResource("StandardMaterial3D_vj082")
+mesh = SubResource("BoxMesh_2bp8g")

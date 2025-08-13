@@ -28,6 +28,8 @@ func show_by_sort(number):
 func show_player(player):
 	visible = true
 	
+	Level = player.level
+	Team = player.team
 	Name.text = str("Player ", player.id)
 	Linemate.updateItem(player.inventory.linemate)
 	Mendiane.updateItem(player.inventory.mendiane)

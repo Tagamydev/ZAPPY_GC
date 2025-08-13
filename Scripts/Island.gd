@@ -1,6 +1,14 @@
 extends Node3D
 
 var	Island : Tiles = Tiles.new()
+var portal = preload("res://Prefabs/portal.tscn")
+
+func create_portal():
+	var instance = portal.instantiate()
+	
+	add_child(instance)
+	instance.play_portal_animation()
+
 
 func SpawnItem(item, n):
 	match item:

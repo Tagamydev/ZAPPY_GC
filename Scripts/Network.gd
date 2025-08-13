@@ -43,7 +43,7 @@ func listen():
 			if not connected:
 				connected = true
 				print("Connected to server.")
-				_send_message("GRAPHIC")
+				_send_message("GRAPHIC\n")
 				SignalBus.start_game.emit()
 
 			# Check for incoming data

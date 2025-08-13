@@ -3,14 +3,27 @@ extends Node3D
 
 var island = preload("res://Prefabs/island.tscn")
 var player = preload("res://Prefabs/Player.tscn")
+var egg = preload("res://Prefabs/Egg.tscn")
 var	island_x : int = 10
 var island_y : int = 11
 var island_total_x = 0
 var island_total_y = 0
 var players: Array = []
+var players_list: Dictionary = {}
+
 var tiles: Array = []
+var teams: Array = []
 var time = 100
 
+
+# Index	Name
+# 0	Nourriture
+# 1	Linemate
+# 2	Deraumère
+# 3	Sibur
+# 4	Mendiane
+# 5	Phiras
+# 6	Thystame
 
 func create_islands(position, x, y):
 	var instance = island.instantiate()
@@ -38,28 +51,100 @@ func msz(x, y):
 # 🧍 `pnw #n X Y O L N` — Player Info
 # Player ID 1 is at tile (3,4), facing **East** (O=2), level 1, from team "TeamRocket".
 func pnw(n, x, y, direction, level, team):
-	var instance = player.instantiate()
+	
+	if not players_list.has(n):
+		var instance = player.instantiate()
 
-	# Generate random number between 1 and 6 (inclusive)
-	var random_index = randi_range(1, 6)
-	var profile_path = "res://Assets/Textures/character0%d.png" % random_index
-	var profile_texture = load(profile_path) as Texture2D
+		# Generate random number between 1 and 6 (inclusive)
+		var random_index = randi_range(1, 6)
+		var profile_path = "res://Assets/Textures/character0%d.png" % random_index
+		var profile_texture = load(profile_path) as Texture2D
 
-	# Set position and properties
-	instance.position = Vector3(float(x), float(y), 0)  # Or adjust to fit your grid/scale
-	add_child(instance)
-	players.append(instance)
+		# Set position and properties
+		instance.position = Vector3(float(x), float(y), 0)  # Or adjust to fit your grid/scale
+		add_child(instance)
+		players.append(instance)
 
-	instance.Character.id = n
-	instance.Character.level = level
-	instance.Character.texture = profile_texture  # Assuming `texture` is used for rendering
-
-	SignalBus.new_player.emit(n, team)
+		instance.Character.id = n
+		instance.Character.level = level
+		instance.Character.texture = profile_texture  # Assuming `texture` is used for rendering
+		instance.Character.team = team
+		
+		
+		
+		players_list[n] = instance
+		SignalBus.new_player.emit(n, team)
 
 
 # `pbc #n M`
 func pbc(number, message):
 	SignalBus.new_message.emit(str("Player n", number, ": ", message))
+
+
+func tna(team):
+	if (teams.find(team) == -1):
+		teams.append(team)
+
+
+# 🥚 `enw #e #n X Y` — Egg
+#Sent once per existing egg:
+# enw 5 1 2 3
+#**Means:** Egg ID `5` was laid by player `1` at tile (2,3).
+func enw(id, father, x, y):
+	var instance = egg.instantiate()
+
+	add_child(instance)
+
+
+
+
+# `pin #n X Y q0 q1 q2 q3 q4 q5 q6`
+
+#> Player inventory has changed.
+# **Example:**
+# pin 1 2 2 3 0 0 0 0 1 0
+# → Player 1 is at (2,2) and now holds:
+# * 3 food
+# * 1 Phiras
+func pin(id, x, y, Nourriture, Linemate, Deraumere, Sibur, Mendiane, Phiras, Thystame):
+	if (players_list.has(id)):
+		var char: Characters = players_list[id].Character
+		
+	
+		# this will tp the character
+		char.x = float(x)
+		char.y = float(y)
+		
+		char.inventory.food = int(Nourriture)
+		char.inventory.linemate = int(Linemate)
+		char.inventory.deraumere = int(Deraumere)
+		char.inventory.sibur = int(Sibur)
+		char.inventory.mendiane = int(Mendiane)
+		char.inventory.phiras = int(Phiras)
+		char.inventory.thystame = int(Thystame)
+
+
+### 🧍 **Player Events**
+#### `ppo #n X Y O`
+#> Player has moved or turned.
+#**Example:**
+#ppo 1 3 5 2
+
+func ppo(id, x, y, orientation):
+	if (players_list.has(id)):
+		var char: Characters = players_list[id].Character
+		
+		# this will tp the character
+		char.x = float(x)
+		char.y = float(y)
+		char.orientation = orientation
+		
+func plv(id, level):
+	if (players_list.has(id)):
+		var char: Characters = players_list[id].Character
+		
+		# this will tp the character
+		char.level = int(level)
 
 func parse_command(command):
 	var	split = command.split(" ")
@@ -74,23 +159,31 @@ func parse_command(command):
 			if split.size() == 7:
 				pnw(split[1], split[2], split[3], split[4], split[5], split[6])
 			else:
-				print("Error: msz command: wrong number of arguments: ", command)
+				print("Error: pnw command: wrong number of arguments: ", command)
 		"tna":
-			print(split[0])
-		"msz":
-			print(split[0])
+			if split.size() == 3:
+				tna(str(split[1]))
 		"bct":
 			if split.size() == 10:
 				var tile: Node3D = tiles[(str(split[1]).to_int() * str(split[2]).to_int())]
 				tile.bct(split[3], split[4], split[5], split[6], split[7], split[8], split[9])
 			else:
-				print("Error: msz command: wrong number of arguments: ", command)
+				print("Error: bct command: wrong number of arguments: ", command)
 		"pin":
-			print(split[0])
+			if split.size() == 11:
+				pin(split[1], split[2], split[3], split[4], split[5], split[6], split[7], split[8], split[9], split[10])
+			else:
+				print("Error: pin command: wrong number of arguments: ", command)
 		"ppo":
-			print(split[0])
+			if split.size() == 5:
+				ppo(split[1], split[2], split[3], split[4])
+			else:
+				print("Error: ppo command: wrong number of arguments: ", command)
 		"plv":
-			print(split[0])
+			if split.size() == 3:
+				plv(split[1], split[2])
+			else:
+				print("Error: plv command: wrong number of arguments: ", command)
 		"pex":
 			print(split[0])
 		"pgt":
@@ -109,7 +202,10 @@ func parse_command(command):
 		"pfk":
 			print(split[0])
 		"enw":
-			print(split[0])
+			if split.size() == 5:
+				enw(split[1], split[2], split[3], split[4])
+			else:
+				print("Error: enw command: wrong number of arguments: ", command)
 		"eht":
 			print(split[0])
 		"ebo":
@@ -118,7 +214,7 @@ func parse_command(command):
 			print(split[0])
 		"sgt":
 			if split.size() == 2:
-				time = split[1]
+				time = int(split[1])
 		"sst":
 			print(split[0])
 		"seg":
@@ -131,6 +227,8 @@ func parse_command(command):
 			print(split[0])
 		"":
 			return
+		"BIENVENUE":
+			return#print("ignore this...")
 		_:
 			print("wtf is this...", split[0])
 	

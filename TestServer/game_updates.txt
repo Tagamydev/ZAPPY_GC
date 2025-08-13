@@ -2,20 +2,39 @@ ppo 1 2 3 1
 pgt 1 1
 pin 1 2 3 0 1 0 0 0 0 0
 bct 2 3 1 0 0 0 0 0 0
+
 pbc 2 Hello from BlueTeam!
 pex 2
+
 ppo 1 1 3 4
 ppo 2 4 4 2
+
+# Player 1 & 2 start an incantation at (2,2)
 pic 2 2 2 1 2
+# Someone drops resources for the ritual
+pdr 1 1
+bct 2 2 1 0 0 0 0 0 0
 pie 2 2 1
+
+# Level updates after ritual
 plv 1 2
 plv 2 2
 bct 2 2 0 0 0 0 0 0 0
+
+# Player 1 lays an egg
 pfk 1
 enw 11 1 2 2
+
+# Egg hatches
 eht 11
 ebo 11
 pnw 3 2 2 3 1 RedTeam
+
+# Blue player dies
 pdi 2
+
+# Time unit changes
 sst 80
+
+# RedTeam wins
 seg RedTeam

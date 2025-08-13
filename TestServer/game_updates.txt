@@ -1,6 +1,8 @@
 ppo 1 2 3 1
 pgt 1 1
 pin 1 2 3 0 1 0 0 0 0 0
+
+pin 2 2 3 0 1 255 1 0 3 0
 bct 2 3 1 0 0 0 0 0 0
 
 pbc 2 Hello from BlueTeam!

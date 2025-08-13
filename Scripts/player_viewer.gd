@@ -28,9 +28,11 @@ func show_by_sort(number):
 func show_player(player):
 	visible = true
 	
-	Level = player.level
-	Team = player.team
+	Level.text = str(player.level)
+	Team.text = str(player.team)
 	Name.text = str("Player ", player.id)
+	
+	
 	Linemate.updateItem(player.inventory.linemate)
 	Mendiane.updateItem(player.inventory.mendiane)
 	Phiras.updateItem(player.inventory.phiras)
@@ -38,14 +40,22 @@ func show_player(player):
 	Tystame.updateItem(player.inventory.thystame)
 	Deraumer.updateItem(player.inventory.deraumere)
 	Food.updateItem(player.inventory.food)
+	
+	
 	texture.texture = player.texture
 	color.color = player.color
 	
 	
+func hide_player_viewer(id):
+	visible = false
+	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBus.select_player.connect(show_by_sort)
 	SignalBus.select_player_by_id.connect(show_by_id)
+	
+	SignalBus.select_tile.connect(hide_player_viewer)
 	pass # Replace with function body.
 
 

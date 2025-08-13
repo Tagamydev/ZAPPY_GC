@@ -115,6 +115,8 @@ func pnw(n, x, y, direction, level, team):
 		instance.Character.texture = profile_texture  # Assuming `texture` is used for rendering
 		instance.Character.team = team
 		
+
+		
 		
 		
 		players_list[n] = instance
@@ -160,6 +162,8 @@ func pin(id, x, y, Nourriture, Linemate, Deraumere, Sibur, Mendiane, Phiras, Thy
 		# this will tp the character
 		move_player(id, x, y)
 		
+		
+		print(str("Player: ", id, "Nourriture: ", Nourriture, " ,Linemate: ", Linemate, " ,Deraumere: ", Deraumere, " ,Sibur: ", Sibur, " ,Mendiane: ", Mendiane))
 		char.inventory.food = int(Nourriture)
 		char.inventory.linemate = int(Linemate)
 		char.inventory.deraumere = int(Deraumere)
@@ -215,6 +219,7 @@ func parse_command(command):
 				print("Error: bct command: wrong number of arguments: ", command)
 		"pin":
 			if split.size() == 11:
+				print(str("Pin: ", split))
 				pin(split[1], split[2], split[3], split[4], split[5], split[6], split[7], split[8], split[9], split[10])
 			else:
 				print("Error: pin command: wrong number of arguments: ", command)

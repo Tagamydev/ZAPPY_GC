@@ -12,3 +12,5 @@ signal new_player(n, team)
 signal add_tiles_to_list(tilesList)
 signal select_player(n)
 signal select_player_by_id(id)
+
+signal select_tile(n)

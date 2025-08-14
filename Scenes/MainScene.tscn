@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=21 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Script" uid="uid://00ht70xmlcoq" path="res://Scripts/character_body_spectate.gd" id="1_f140w"]
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://rks2p611yiox" path="res://Scripts/tile_viewer.gd" id="7_4b75m"]
 [ext_resource type="PackedScene" uid="uid://kvtpefh4xjmy" path="res://Scenes/GUI/TileViewer.tscn" id="7_f140w"]
 [ext_resource type="PackedScene" uid="uid://g8geyo2wcjcc" path="res://Prefabs/GameManager.tscn" id="8_f140w"]
+[ext_resource type="Texture2D" uid="uid://t68gvt8qw5jf" path="res://Assets/Textures/lock.png" id="9_4b75m"]
+[ext_resource type="Script" uid="uid://c77eprlvnvfwe" path="res://Scripts/Lock.gd" id="10_8ju71"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
 sky_top_color = Color(0, 0.447383, 0.823598, 1)
@@ -180,19 +182,7 @@ layout_mode = 2
 [node name="Chat" type="RichTextLabel" parent="Control/Chat/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "player1:  porr ejemplo si pongo una linea muy larga porque soy tonto
-
-player2:  otro tonto...
-
-c
-
-d
-
-e
-
-f
-otesuhauashu"
-fit_content = true
+text = "Welcome to the chat"
 scroll_following = true
 script = ExtResource("5_f140w")
 
@@ -228,6 +218,33 @@ custom_minimum_size = Vector2(335.71, 0)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Button" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Control/Button"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -76.0
+offset_right = 132.0
+offset_bottom = 208.0
+grow_horizontal = 0
+scale = Vector2(0.355, 0.355)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(1, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.0941176)
+icon = ExtResource("9_4b75m")
+script = ExtResource("10_8ju71")
+
 [node name="GameManager" parent="." instance=ExtResource("8_f140w")]
 
 [connection signal="pressed" from="Control/HBoxContainer/PlayersList" to="Spectator/CharacterBody3D" method="_on_players_list_pressed"]
+[connection signal="pressed" from="Control/Button/Button" to="Control/Button/Button" method="_on_pressed"]

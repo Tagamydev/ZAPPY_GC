@@ -91,7 +91,7 @@ func msz(x, y):
 	while i < island_x:
 		j = 0
 		while j < island_y:
-			create_islands(Vector3(i * 5.1, 0, j * 5.1), i , j)
+			create_islands(Vector3(i * 5, 0, j * 5), i , j)
 			j += 1
 		i += 1
 

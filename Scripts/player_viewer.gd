@@ -16,16 +16,27 @@ extends Control
 @onready var	color: ColorRect = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control/ColorRect
 
 
+var playerSelected
+
+func lock_player(player):
+	SignalBus.lock_player.emit(player.object)
+
 func show_by_id(id):
 	var player: Characters = gameMannager.players_list[str(id)].Character
 	show_player(player)
+	lock_player(player)
 	
 func show_by_sort(number):
 	var player: Characters = gameMannager.players[number].Character
 	show_player(player)
+	lock_player(player)
 	
+func update_player_viewer():
+	if visible:
+		show_player(playerSelected)
 
 func show_player(player):
+	playerSelected = player
 	visible = true
 	
 	Level.text = str(player.level)

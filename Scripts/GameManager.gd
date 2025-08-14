@@ -116,6 +116,8 @@ func pnw(n, x, y, direction, level, team):
 		instance.Character.texture = profile_texture  # Assuming `texture` is used for rendering
 		instance.Character.team = team
 		
+		instance.rotate_orientation(int(direction))
+		
 
 		
 		
@@ -187,6 +189,7 @@ func ppo(id, x, y, orientation):
 		# this will tp the character
 		move_player(id, x, y)
 		char.orientation = orientation
+		players_list[id].rotate_orientation(int(orientation))
 		
 func plv(id, level):
 	if (players_list.has(id)):

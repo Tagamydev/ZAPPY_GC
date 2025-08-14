@@ -77,6 +77,7 @@ func create_islands(position, x, y):
 	instance.position = position
 	add_child(instance)
 	tiles.append(instance)
+	instance.terrain.generate_terrain()
 	SignalBus.new_island.emit(x, y)
 
 
@@ -90,7 +91,7 @@ func msz(x, y):
 	while i < island_x:
 		j = 0
 		while j < island_y:
-			create_islands(Vector3(i * 10, 0, j * 10), i , j)
+			create_islands(Vector3(i * 5.1, 0, j * 5.1), i , j)
 			j += 1
 		i += 1
 

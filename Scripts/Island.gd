@@ -18,6 +18,8 @@ var Tystame_l: Array = []
 var food_l: Array = []
 
 @onready var walk_plane = $walkPlane
+@onready var terrain = $Terrain
+
 func create_portal():
 	var instance = portal.instantiate()
 	

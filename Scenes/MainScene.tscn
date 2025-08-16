@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=20 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Script" uid="uid://00ht70xmlcoq" path="res://Scripts/character_body_spectate.gd" id="1_f140w"]
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://d3rlghlqml471" path="res://Scripts/chat.gd" id="5_f140w"]
 [ext_resource type="Script" uid="uid://dkeqn7iyq2ju1" path="res://Scripts/TilesList.gd" id="5_q68mp"]
 [ext_resource type="PackedScene" uid="uid://bd8tkowwdcctb" path="res://Scenes/GUI/PlayerViewer.tscn" id="5_y4jh7"]
-[ext_resource type="Script" uid="uid://rks2p611yiox" path="res://Scripts/tile_viewer.gd" id="7_4b75m"]
 [ext_resource type="PackedScene" uid="uid://kvtpefh4xjmy" path="res://Scenes/GUI/TileViewer.tscn" id="7_f140w"]
 [ext_resource type="PackedScene" uid="uid://g8geyo2wcjcc" path="res://Prefabs/GameManager.tscn" id="8_f140w"]
 [ext_resource type="Texture2D" uid="uid://t68gvt8qw5jf" path="res://Assets/Textures/lock.png" id="9_4b75m"]
@@ -203,7 +202,6 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 8
-script = ExtResource("7_4b75m")
 
 [node name="PlayerViewer" parent="Control/HBoxContainer2" instance=ExtResource("5_y4jh7")]
 visible = false
@@ -246,5 +244,4 @@ script = ExtResource("10_8ju71")
 
 [node name="GameManager" parent="." instance=ExtResource("8_f140w")]
 
-[connection signal="pressed" from="Control/HBoxContainer/PlayersList" to="Spectator/CharacterBody3D" method="_on_players_list_pressed"]
 [connection signal="pressed" from="Control/Button/Button" to="Control/Button/Button" method="_on_pressed"]

@@ -17,6 +17,9 @@ var Sibur_l: Array = []
 var Tystame_l: Array = []
 var food_l: Array = []
 
+var x = 0
+var y = 0
+
 @onready var walk_plane = $walkPlane
 @onready var terrain = $Terrain
 

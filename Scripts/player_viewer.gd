@@ -28,8 +28,7 @@ func show_by_id(id):
 	
 func show_by_sort(number):
 	var player: Characters = gameMannager.players[number].Character
-	show_player(player)
-	lock_player(player)
+	SignalBus.select_player_by_id.emit(player.id)
 	
 func update_player_viewer():
 	if visible:
@@ -57,7 +56,7 @@ func show_player(player):
 	color.color = player.color
 	
 	
-func hide_player_viewer(id):
+func hide_player_viewer():
 	visible = false
 	
 
@@ -65,8 +64,7 @@ func hide_player_viewer(id):
 func _ready():
 	SignalBus.select_player.connect(show_by_sort)
 	SignalBus.select_player_by_id.connect(show_by_id)
-	
-	SignalBus.select_tile.connect(hide_player_viewer)
+	SignalBus.hide_player_viewer.connect(hide_player_viewer)
 	pass # Replace with function body.
 
 

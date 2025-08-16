@@ -78,6 +78,8 @@ func create_islands(position, x, y):
 	add_child(instance)
 	tiles.append(instance)
 	instance.terrain.generate_terrain()
+	instance.x = x
+	instance.y = y
 	SignalBus.new_island.emit(x, y)
 
 
@@ -217,7 +219,10 @@ func parse_command(command):
 				tna(str(split[1]))
 		"bct":
 			if split.size() == 10:
-				var tile: Node3D = tiles[(str(split[1]).to_int() * str(split[2]).to_int())]
+				var x = str(split[1]).to_int()
+				var y = str(split[2]).to_int()
+				var index = y * island_x + x
+				var tile: Node3D = tiles[index]
 				tile.bct(split[3], split[4], split[5], split[6], split[7], split[8], split[9])
 			else:
 				print("Error: bct command: wrong number of arguments: ", command)

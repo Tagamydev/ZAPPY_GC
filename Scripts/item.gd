@@ -5,7 +5,6 @@ extends PanelContainer
 # Called when the node enters the scene tree for the first time.
 
 func updateItem(number):
-	print(str("here is the number: ", number))
 	quantity.text = str(number)
 	if (number != 0):
 		texture.modulate = Color(1, 1, 1, 1)

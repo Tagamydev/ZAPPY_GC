@@ -1,5 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://kvtpefh4xjmy"]
+[gd_scene load_steps=10 format=3 uid="uid://kvtpefh4xjmy"]
 
+[ext_resource type="Script" uid="uid://rks2p611yiox" path="res://Scripts/tile_viewer.gd" id="1_4f3fu"]
+[ext_resource type="Script" uid="uid://77dukly5nkx0" path="res://Scripts/item.gd" id="2_b1sv7"]
 [ext_resource type="Texture2D" uid="uid://bo4k7imc4rs2x" path="res://Assets/Textures/linemate.png" id="3_4np6s"]
 [ext_resource type="Texture2D" uid="uid://ceyxb04jibwge" path="res://Assets/Textures/mendiane.png" id="4_x7afq"]
 [ext_resource type="Texture2D" uid="uid://oae4k3y8qlx0" path="res://Assets/Textures/phiras.png" id="5_w8xqt"]
@@ -8,12 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://kfu58l8xw3pt" path="res://Assets/Textures/deraumere.png" id="8_wjwd2"]
 [ext_resource type="Texture2D" uid="uid://n3a5v1hcfl50" path="res://Assets/Textures/food.png" id="9_7bv0s"]
 
-[node name="PlayerViewer" type="Control"]
+[node name="TileViewer" type="Control"]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
+script = ExtResource("1_4f3fu")
 
 [node name="PlayerPanel" type="Panel" parent="."]
 layout_mode = 1
@@ -41,7 +44,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/HBoxContainer3/PanelContainer"]
+[node name="TileTitle" type="RichTextLabel" parent="PlayerPanel/HBoxContainer3/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Tile [x][y]"
@@ -76,53 +79,56 @@ layout_mode = 2
 size_flags_vertical = 10
 alignment = 1
 
-[node name="MenuButton" type="MenuButton" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
+[node name="PlayersList" type="MenuButton" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "PLAYERS"
 flat = false
 
-[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
+[node name="Linemate" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
+script = ExtResource("2_b1sv7")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer4/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer4/Linemate"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("3_4np6s")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer4/PanelContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer4/Linemate"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
+[node name="Mendiane" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
+script = ExtResource("2_b1sv7")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer4/PanelContainer2"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer4/Mendiane"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("4_x7afq")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer4/PanelContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer4/Mendiane"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer3" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
+[node name="Phiras" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
+script = ExtResource("2_b1sv7")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer4/PanelContainer3"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer4/Phiras"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("5_w8xqt")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer4/PanelContainer3"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer4/Phiras"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
@@ -133,61 +139,65 @@ layout_mode = 2
 size_flags_vertical = 10
 alignment = 1
 
-[node name="PanelContainer4" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
+[node name="Sibur" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+script = ExtResource("2_b1sv7")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer4"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Sibur"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("6_2jhwr")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer4"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Sibur"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer5" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
+[node name="Tystame" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+script = ExtResource("2_b1sv7")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer5"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Tystame"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("7_i053m")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Tystame"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer6" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
+[node name="Deraumere" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+script = ExtResource("2_b1sv7")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer6"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Deraumere"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("8_wjwd2")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer6"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Deraumere"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="PanelContainer7" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
+[node name="Food" type="PanelContainer" parent="PlayerPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+script = ExtResource("2_b1sv7")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer7"]
+[node name="TextureRect" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Food"]
 modulate = Color(0.258824, 0.258824, 0.258824, 1)
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 texture = ExtResource("9_7bv0s")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/PanelContainer7"]
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerPanel/VBoxContainer/HBoxContainer2/Food"]
 layout_mode = 2
 text = "255"
 horizontal_alignment = 2

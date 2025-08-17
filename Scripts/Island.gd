@@ -8,6 +8,7 @@ var Mendiane = preload("res://Prefabs/Items/Mendiane.tscn")
 var Phiras = preload("res://Prefabs/Items/Phiras.tscn")
 var Sibur = preload("res://Prefabs/Items/Sibur.tscn")
 var Tystame = preload("res://Prefabs/Items/Tystame.tscn")
+var food = preload("res://Prefabs/Items/Food.tscn")
 
 var Deraumere_l: Array = []
 var Linemate_l: Array = [] 
@@ -62,7 +63,7 @@ func SpawnItem(item, n):
 						i += 1
 				elif diff > 0:
 					while (i != n):
-						food_l.append(spawn_item(Sibur))
+						food_l.append(spawn_item(food))
 						i += 1
 		"linemate":
 			if Island.linemate != n:

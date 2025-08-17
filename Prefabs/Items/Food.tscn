@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbpxllbluix8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2y4r"]
+albedo_color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
+emission_enabled = true
+emission = Color(0.513007, 0.172827, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ybxex"]
+
+[node name="MeshInstance3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 0, 0.151235, 0)
+material_override = SubResource("StandardMaterial3D_j2y4r")
+mesh = SubResource("SphereMesh_ybxex")

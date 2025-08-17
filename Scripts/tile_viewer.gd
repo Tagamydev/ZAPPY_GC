@@ -48,6 +48,7 @@ func _ready():
 	SignalBus.select_tile.connect(show_tile)
 	SignalBus.select_player.connect(hide_tile_viewer)
 	SignalBus.select_player_by_id.connect(hide_tile_viewer)
+	SignalBus.hide_tile_viewer.connect(hide_tile_viewer)
 	pass # Replace with function body.
 
 

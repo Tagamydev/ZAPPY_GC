@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://kvtpefh4xjmy"]
+[gd_scene load_steps=11 format=3 uid="uid://kvtpefh4xjmy"]
 
 [ext_resource type="Script" uid="uid://rks2p611yiox" path="res://Scripts/tile_viewer.gd" id="1_4f3fu"]
 [ext_resource type="Script" uid="uid://77dukly5nkx0" path="res://Scripts/item.gd" id="2_b1sv7"]
+[ext_resource type="Script" uid="uid://o3t662c7mltu" path="res://Scripts/close_tile_menu.gd" id="2_cmj1d"]
 [ext_resource type="Texture2D" uid="uid://bo4k7imc4rs2x" path="res://Assets/Textures/linemate.png" id="3_4np6s"]
 [ext_resource type="Texture2D" uid="uid://ceyxb04jibwge" path="res://Assets/Textures/mendiane.png" id="4_x7afq"]
 [ext_resource type="Texture2D" uid="uid://oae4k3y8qlx0" path="res://Assets/Textures/phiras.png" id="5_w8xqt"]
@@ -57,6 +58,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "X"
+script = ExtResource("2_cmj1d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel"]
 layout_mode = 1
@@ -202,3 +204,5 @@ layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[connection signal="pressed" from="PlayerPanel/HBoxContainer3/Button" to="PlayerPanel/HBoxContainer3/Button" method="_on_pressed"]

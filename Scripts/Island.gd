@@ -20,6 +20,7 @@ var food_l: Array = []
 var x = 0
 var y = 0
 var width = 0
+var height = 0
 
 @onready var walk_plane = $walkPlane
 @onready var terrain = $Terrain
@@ -37,7 +38,10 @@ func spawn_item(item):
 	var mesh_aabb = walk_plane.get_mesh().get_aabb()
 	var local_x = randf_range(mesh_aabb.position.x, mesh_aabb.position.x + mesh_aabb.size.x)
 	var local_z = randf_range(mesh_aabb.position.z, mesh_aabb.position.z + mesh_aabb.size.z)
+	
+	
 	var world_pos = walk_plane.to_global(Vector3(local_x, 0, local_z))
+	world_pos.y = terrain.get_height(world_pos.x, world_pos.z, width, height) 
 	
 	add_child(block)
 	block.global_position = world_pos

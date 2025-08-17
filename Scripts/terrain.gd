@@ -93,6 +93,37 @@ func get_biome_color(height: float, shadow: float) -> Color:
 	return base_color
 
 
+const TILE_SIZE := 5.0
+
+func _ensure_noises() -> void:
+	if noise_large == null:
+		noise_large = FastNoiseLite.new()
+		noise_large.noise_type = FastNoiseLite.TYPE_PERLIN
+		noise_large.frequency = frequency_large
+	if noise_small == null:
+		noise_small = FastNoiseLite.new()
+		noise_small.noise_type = FastNoiseLite.TYPE_PERLIN
+		noise_small.frequency = frequency_small
+
+func get_height(global_x: float, global_z: float, map_width_tiles: int, map_height_tiles: int) -> float:
+	_ensure_noises()
+	var map_world_width  = float(map_width_tiles)  * TILE_SIZE
+	var map_world_height = float(map_height_tiles) * TILE_SIZE
+
+	var base_height = noise_large.get_noise_2d(global_x, global_z) * (amplitude * 10.0)
+	var detail      = noise_small.get_noise_2d(global_x, global_z) * (amplitude * 0.4)
+	var h = base_height + detail
+
+	var mask = falloff(global_x, global_z, map_world_width, map_world_height)
+	if mask < 0.0:
+		mask *= 5.0
+	h *= mask
+	if mask < 0.0:
+		h = mask  
+	h += 0.43                      # or: h = 0.0 if you want sea level outside island
+	return h
+
+
 func generate_geometry(x, y, map_width, map_height):
 	var medium = 0.0
 	
@@ -117,11 +148,11 @@ func generate_geometry(x, y, map_width, map_height):
 	var map_world_width = map_width * tile_size
 	var map_world_height = map_height * tile_size
 
-
 	# Prepare color array same size as vertices
 	var colors := PackedColorArray()
 	colors.resize(vertices.size())
-	
+
+
 	for i in range(vertices.size()):
 		var v = vertices[i]
 		var world_x = v.x + chunk_origin.x
@@ -147,8 +178,8 @@ func generate_geometry(x, y, map_width, map_height):
 		colors[i] = get_biome_color(height, detail)
 
 	mesh_data[Mesh.ARRAY_COLOR] = colors
-
 	medium = medium / vertices.size()
+
 	# Put vertices back into mesh data
 	mesh_data[Mesh.ARRAY_VERTEX] = vertices
 
@@ -158,11 +189,8 @@ func generate_geometry(x, y, map_width, map_height):
 
 	# Assign the new mesh to the MeshInstance3D
 	mesh = new_mesh
-	
-	
-	
+
 	return medium
-	
 
 
 func generate_biome(seed_value: int, x, y, map_width, map_height, height):
@@ -186,3 +214,7 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 func generate_terrain(x, y, map_width, map_height):
 	generate_biome(x * map_width + y, x, y, map_width, map_height, generate_geometry(x, y, map_width, map_height))
 	
+	
+func get_height_at(x, z) -> float:
+
+	return 0.0 

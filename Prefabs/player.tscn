@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://o8clx8ssohi8"]
+[gd_scene load_steps=16 format=3 uid="uid://o8clx8ssohi8"]
 
 [ext_resource type="Script" uid="uid://bpbmvcanwhhp5" path="res://Scripts/player.gd" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://cjh7ywxsu0xm7" path="res://Scripts/SelectCharacter.gd" id="2_x3d5u"]
@@ -35,6 +35,8 @@ transparency = 1
 albedo_texture = ExtResource("3_b43ah")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vxq8l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_b43ah"]
 
 [node name="Character" type="Node3D"]
 script = ExtResource("1_um8lo")
@@ -103,3 +105,7 @@ transform = Transform3D(-1.94175, -2.93196e-07, 0, 2.93196e-07, -1.94175, 0, 0, 
 material_override = SubResource("StandardMaterial3D_shmu5")
 mesh = SubResource("PlaneMesh_vxq8l")
 skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0, 0)
+mesh = SubResource("SphereMesh_b43ah")

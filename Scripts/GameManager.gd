@@ -2,7 +2,7 @@ extends Node3D
 
 
 var island = preload("res://Prefabs/island.tscn")
-var player = preload("res://Prefabs/Player.tscn")
+var player = preload("res://Prefabs/player.tscn")
 var egg = preload("res://Prefabs/Egg.tscn")
 var	island_x : int = 10
 var island_y : int = 11
@@ -51,10 +51,13 @@ func move_player(id, x, y):
 		# Pick a random point inside plane
 		var local_x = randf_range(mesh_aabb.position.x, mesh_aabb.position.x + mesh_aabb.size.x)
 		var local_z = randf_range(mesh_aabb.position.z, mesh_aabb.position.z + mesh_aabb.size.z)
+		
+
 
 		# Convert to world coordinates
 		var world_pos = walk_plane.to_global(Vector3(local_x, 0, local_z))
-
+		world_pos.y = tile.terrain.get_height(world_pos.x, world_pos.z, island_x, island_y) 
+		world_pos.y += 0.2
 		# Teleport player
 		player_node.global_position = world_pos
 		
@@ -81,6 +84,7 @@ func create_islands(position, x, y):
 	instance.x = x
 	instance.y = y
 	instance.width = island_x
+	instance.height = island_y
 	SignalBus.new_island.emit(x, y)
 
 

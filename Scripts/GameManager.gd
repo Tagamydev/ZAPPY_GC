@@ -77,7 +77,7 @@ func create_islands(position, x, y):
 	instance.position = position
 	add_child(instance)
 	tiles.append(instance)
-	instance.terrain.generate_terrain()
+	instance.terrain.generate_terrain(x, y, island_x, island_y)
 	instance.x = x
 	instance.y = y
 	instance.width = island_x

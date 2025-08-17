@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Zappy_GC"
-run/main_scene="uid://dfysvhl71wb7s"
+run/main_scene="uid://puy6ggl1qfn2"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

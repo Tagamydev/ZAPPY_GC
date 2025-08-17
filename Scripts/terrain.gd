@@ -208,7 +208,7 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 	collider.global_position = Vector3(collider.global_position.x, height, collider.global_position.z)
 	
 	mat.emission_enabled = false
-	mat.emission = Color(1, 1, 1)
+	mat.emission = Color(0.4, 0.4, 0.4)
 
 	
 func generate_terrain(x, y, map_width, map_height):

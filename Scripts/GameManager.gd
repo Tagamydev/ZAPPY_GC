@@ -59,7 +59,9 @@ func move_player(id, x, y):
 		world_pos.y = tile.terrain.get_height(world_pos.x, world_pos.z, island_x, island_y) 
 		world_pos.y += 0.2
 		# Teleport player
-		player_node.global_position = world_pos
+		
+		player_node.move_to_position(player_node.global_position, world_pos, 3)
+		#player_node.global_position = world_pos
 		
 		print("moving player to: ", str(key2))
 		

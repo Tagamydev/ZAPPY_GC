@@ -17,6 +17,9 @@ var teams: Array = []
 var time = 100
 
 
+func get_standar_duration():
+	return float(7.0 * 1.0 / float(time))
+
 
 func move_player(id, x, y):
 	if players_list.has(id):
@@ -60,7 +63,7 @@ func move_player(id, x, y):
 		world_pos.y += 0.2
 		# Teleport player
 		
-		player_node.move_to_position(player_node.global_position, world_pos, 3)
+		player_node.move_to_position(player_node.global_position, world_pos, get_standar_duration())
 		#player_node.global_position = world_pos
 		
 		print("moving player to: ", str(key2))

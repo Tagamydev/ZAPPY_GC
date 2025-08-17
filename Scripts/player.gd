@@ -10,6 +10,7 @@ func _ready():
 	print("I'm alive mtf")
 
 
+
 func move_to_position(start_pos: Vector3, target_pos: Vector3, duration: float) -> void:
 	# Set the starting position
 	if not first:

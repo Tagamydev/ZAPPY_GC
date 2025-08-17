@@ -7,6 +7,8 @@ extends MeshInstance3D
 @export var noise_small : FastNoiseLite
 
 
+@onready var collider = $"../MeshInstance3D"
+
 var biome_colors := {
 	0: Color(0.2, 0.3, 0.2),   # pantano (swampy dark green)
 	1: Color(0.8, 0.7, 0.6),   # meseta (plateau, sandy brown)
@@ -75,6 +77,7 @@ func get_biome_color(height: float, shadow: float) -> Color:
 	if not (height < points[2][0] and height > -0.7):
 		var shadow_strength = clamp((shadow + 1.0) * 0.5, 0.0, 1.0)
 		shadow_strength = 1.0 - shadow_strength
+		shadow_strength *= 1.3
 
 		# Extract HSV from the color
 		var h: float = base_color.h
@@ -155,6 +158,9 @@ func generate_geometry(x, y, map_width, map_height):
 
 	# Assign the new mesh to the MeshInstance3D
 	mesh = new_mesh
+	
+	
+	
 	return medium
 	
 
@@ -163,25 +169,6 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 	# Create a seeded RNG
 	
 	height = int(height)
-	
-	var rng := RandomNumberGenerator.new()
-	rng.seed = seed_value
-
-	# Get a random number between 0 and 5, based on that seed
-	var number = rng.randi_range(0, 5)
-	
-	if height == 0:
-		number = 8
-	elif height == 3:
-		number = 6
-	elif height > 3:
-		number = 7
-	elif height < 0:
-		number = 9
-
-	if x == 0 or y == 0 or x == map_width - 1  or y == map_height - 1:
-		number = 8
-		
 	# make a new material with the biome color
 	var mat := StandardMaterial3D.new()
 	#mat.albedo_color = biome_colors[number]
@@ -189,8 +176,11 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 	mat.vertex_color_use_as_albedo = true
 	# assign it to this mesh
 	set_surface_override_material(0, mat)
-
-	print("Biome set to:", number, "width heigth like", height)
+	
+	collider.global_position = Vector3(collider.global_position.x, height, collider.global_position.z)
+	
+	mat.emission_enabled = false
+	mat.emission = Color(1, 1, 1)
 
 	
 func generate_terrain(x, y, map_width, map_height):

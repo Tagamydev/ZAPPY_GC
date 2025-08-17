@@ -80,6 +80,7 @@ func create_islands(position, x, y):
 	instance.terrain.generate_terrain()
 	instance.x = x
 	instance.y = y
+	instance.width = island_x
 	SignalBus.new_island.emit(x, y)
 
 
@@ -96,6 +97,7 @@ func msz(x, y):
 			create_islands(Vector3(i * 5, 0, j * 5), i , j)
 			j += 1
 		i += 1
+
 
 # 🧍 `pnw #n X Y O L N` — Player Info
 # Player ID 1 is at tile (3,4), facing **East** (O=2), level 1, from team "TeamRocket".

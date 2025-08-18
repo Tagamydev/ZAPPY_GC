@@ -12,6 +12,5 @@ func _process(delta):
 
 
 func _on_pressed():
-	print("viva espanias")
 	SignalBus.hide_player_viewer.emit()
 	

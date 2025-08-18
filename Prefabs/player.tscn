@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://o8clx8ssohi8"]
+[gd_scene load_steps=38 format=3 uid="uid://o8clx8ssohi8"]
 
 [ext_resource type="Script" uid="uid://bpbmvcanwhhp5" path="res://Scripts/player.gd" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://cjh7ywxsu0xm7" path="res://Scripts/SelectCharacter.gd" id="2_x3d5u"]
@@ -34,6 +34,27 @@ albedo_color = Color(0.28, 0.028, 0.0406001, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nftw"]
 albedo_color = Color(0, 0.1105, 0.51, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vxq8l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gg3t4"]
+albedo_color = Color(0.41, 0.2009, 0.2009, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhekp"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8lmw"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_k2qb3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxq8l"]
+albedo_color = Color(0.1, 0.043, 0.06865, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gg3t4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2qb3"]
+albedo_color = Color(0.1, 0.043, 0.06865, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3d5u"]
 albedo_color = Color(1, 0, 0, 1)
@@ -180,12 +201,303 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Character:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Character:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Character:scale:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles3D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Magic:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Magic/Book:position:x")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Magic/Book:position:y")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Magic/Book:position:z")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_javds"]
+resource_name = "Expulsion"
+length = 1.75
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.2, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 3.33941, -0.25, 0, 0.25, 0, 3.8182, 0, 0, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.2, 1.4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.5, 1.16667, 1.4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Character:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, 0, 0, 0, 0, 3.14159, 0, 0, 0, 0, 4.71239, 0, 0, 0, 0, 6.28319, 0, 0, 0, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.616667, 0.733333, 0.866667, 1.04655, 1.05, 1.16667, 1.4)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Character:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.616667, 0.733333, 0.866667, 1.04655, 1.05, 1.16667, 1.4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Character:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.616667, 0.733333, 0.866667, 1.04655, 1.05, 1.16667, 1.4)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Character:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.4, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.39, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166, 0.5, 0.518605, 1.39199, 1.46667, 1.6, 1.75)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Character:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 1.3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1.3, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166, 0.5, 0.518605, 1.39199, 1.46667, 1.6, 1.75)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Character:scale:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166, 0.5, 0.518605, 1.39199, 1.46667, 1.6, 1.75)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GPUParticles3D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.36667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wuv02"]
+resource_name = "Incantation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Magic:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Magic/Book:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(1, 1, 1, 1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Magic/Book:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(1, 1, 1, 1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Magic/Book:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(1, 1, 1, 1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 1, 2, 3, 4)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_javds"]
 _data = {
+&"Expulsion": SubResource("Animation_javds"),
+&"Incantation": SubResource("Animation_wuv02"),
 &"RESET": SubResource("Animation_gg3t4"),
 &"walk": SubResource("Animation_vxq8l")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ygst"]
+albedo_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="Curve" id="Curve_lhekp"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t8lmw"]
+curve = SubResource("Curve_lhekp")
+
+[sub_resource type="Curve" id="Curve_k2qb3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wuv02"]
+curve = SubResource("Curve_k2qb3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8afax"]
+emission_shape_scale = Vector3(1, 0, 1)
+angle_min = -360.0
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_t8lmw")
+velocity_pivot = Vector3(0, 1, 0)
+direction = Vector3(1, 360, 0)
+spread = 90.0
+initial_velocity_max = 10.0
+scale_min = 0.8
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_wuv02")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t7w7j"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Character" type="Node3D"]
 script = ExtResource("1_um8lo")
@@ -259,6 +571,60 @@ material_override = SubResource("StandardMaterial3D_2nftw")
 mesh = SubResource("BoxMesh_y6xdh")
 skeleton = NodePath("../../../../..")
 
+[node name="Magic" type="Node3D" parent="Model"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Magic"]
+transform = Transform3D(0.2, 0, 0, 0, 0.42, 0, 0, 0, 0.06, -7.82726e-09, 0.674932, 0.179067)
+mesh = SubResource("BoxMesh_vxq8l")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Model/Magic"]
+transform = Transform3D(0.03, -1.32737e-08, 4.49379e-11, 3.40351e-10, 1.12991, -0.00778631, 4.49381e-11, 0.303666, 0.0289719, 0.286469, 0.665727, 0.225375)
+material_override = SubResource("StandardMaterial3D_gg3t4")
+mesh = SubResource("BoxMesh_vxq8l")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Magic"]
+transform = Transform3D(0.337, 0, 0, 0, 0.05, 0, 0, 0, 0.337, 4.43184e-09, 0.999832, 0.0776114)
+material_override = SubResource("StandardMaterial3D_lhekp")
+mesh = SubResource("BoxMesh_vxq8l")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model/Magic"]
+transform = Transform3D(0.404, 0, 0, 0, 0.83, 0, 0, 0, 0.314, 7.6406e-09, 0.429024, 0.00420354)
+material_override = SubResource("StandardMaterial3D_lhekp")
+mesh = SubResource("BoxMesh_vxq8l")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Model/Magic"]
+transform = Transform3D(0.389, 0, 0, 0, 0.088, 0, 0, 0, 0.392, 9.3787e-09, 0.0472476, -0.0355596)
+material_override = SubResource("StandardMaterial3D_lhekp")
+mesh = SubResource("BoxMesh_vxq8l")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model/Magic"]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, 4.43184e-09, 1.12734, 0.0776114)
+material_override = SubResource("StandardMaterial3D_t8lmw")
+mesh = SubResource("PrismMesh_k2qb3")
+
+[node name="Book" type="Node3D" parent="Model/Magic"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/Magic/Book"]
+transform = Transform3D(0.299437, 0.00905867, 5.40011e-09, -0.0597966, 0.0251959, 0.323376, 0.0534963, -0.0225412, 0.36146, -0.17056, 0.476781, 0.523354)
+material_override = SubResource("StandardMaterial3D_vxq8l")
+mesh = SubResource("BoxMesh_gg3t4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model/Magic/Book/MeshInstance3D"]
+transform = Transform3D(0.9, 0, 0, 0, 1.85714, 0, 0, 0, 0.898969, 0, 1.26081, 0)
+mesh = SubResource("BoxMesh_gg3t4")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Magic/Book"]
+transform = Transform3D(0.299437, -0.00905867, 5.40011e-09, 0.0597966, 0.0251959, 0.323376, -0.0534962, -0.0225412, 0.36146, 0.152289, 0.476781, 0.523354)
+material_override = SubResource("StandardMaterial3D_k2qb3")
+mesh = SubResource("BoxMesh_gg3t4")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model/Magic/Book/MeshInstance3D2"]
+transform = Transform3D(0.9, 0, 0, 0, 1.85714, 0, 0, 0, 0.898969, 0, 1.26081, 0)
+mesh = SubResource("BoxMesh_gg3t4")
+skeleton = NodePath("../..")
+
 [node name="Arrow" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(-0.515, 7.77628e-08, 0, -7.77628e-08, -0.515, 0, 0, 0, 0.06, 0, 1.4804, 0.0858815)
 visible = false
@@ -269,3 +635,13 @@ mesh = SubResource("PrismMesh_b43ah")
 libraries = {
 &"": SubResource("AnimationLibrary_javds")
 }
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Model"]
+material_override = SubResource("StandardMaterial3D_3ygst")
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8afax")
+draw_pass_1 = SubResource("BoxMesh_t7w7j")

@@ -140,8 +140,14 @@ func pnw(n, x, y, direction, level, team):
 		SignalBus.new_player.emit(n, team)
 
 
+
+
+
+
 # `pbc #n M`
 func pbc(number, message):
+	var stri: String = message
+
 	SignalBus.new_message.emit(str("Player n", number, ": ", message))
 
 
@@ -211,8 +217,35 @@ func plv(id, level):
 		# this will tp the character
 		char.level = int(level)
 
+
+# 🔮 **Incantations (Level Up Rituals)**
+# `pic X Y L #n #n ...`
+#> Incantation started on tile (X, Y) at level L by players.
+# **Example:**
+# pic 2 2 2 1 3 4
+# → An incantation is starting at (2,2) for level 2, involving players 1, 3, and 4.
+func pic(split: PackedStringArray):
+	var x = int(split[1])
+	var y = int(split[2])
+	var l = int(split[3])
+	
+	print("Incantation started at level:", l)
+	
+	var i: int = 4
+	while  i < split.size():
+		SignalBus.start_player_incatation.emit(int(split[i]))
+		i += 1
+		
+	var index = y * island_x + x
+	var tile: Node3D = tiles[index]
+	tile.start_incantation()
+
+
 func parse_command(command):
 	var	split = command.split(" ")
+	
+	var test: String = "hola"
+	test.split()
 
 	match split[0]:
 		"msz":
@@ -253,21 +286,31 @@ func parse_command(command):
 				plv(split[1], split[2])
 			else:
 				print("Error: plv command: wrong number of arguments: ", command)
+				
+				
+				
 		"pex":
 			print(split[0])
 		"pgt":
 			print(split[0])
 		"pdr":
 			print(split[0])
+			
+			
+			
 		"pbc":
 			pbc(split[1], split[2])
-			print(split[0])
 		"pdi":
 			print(split[0])
+			
+			
+			
 		"pic":
-			print(split[0])
+			pic(split)
 		"pie":
 			print(split[0])
+			
+			
 		"pfk":
 			print(split[0])
 		"enw":

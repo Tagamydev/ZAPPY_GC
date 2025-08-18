@@ -26,6 +26,22 @@ var height = 0
 @onready var walk_plane = $walkPlane
 @onready var terrain = $Terrain
 
+@onready var player: AnimationPlayer = $Incantation/AnimationPlayer
+
+func stop_incantation():
+	player.play_backwards("Incantation")
+
+	player.animation_finished.connect(_on_incantation_finished, CONNECT_ONE_SHOT)
+
+func _on_incantation_finished(anim_name: String) -> void:
+	if anim_name == "Incantation":
+		player.play("RESET")
+
+func start_incantation():
+	player.play("Incantation")
+
+
+
 func create_portal():
 	var instance = portal.instantiate()
 	

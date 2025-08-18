@@ -7,9 +7,14 @@ var Character : Characters = Characters.new()
 var first = false
 var rot = 1
 
+
+func start_enchantation(n):
+	if n == Character.id:
+		player.play("Incantation")
+
 func _ready():
 	Character.object = self
-	print("I'm alive mtf")
+	SignalBus.start_player_incatation.connect(start_enchantation)
 
 
 func reset_rot(n):

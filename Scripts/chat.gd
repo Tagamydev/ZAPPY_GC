@@ -6,4 +6,3 @@ func new_message(message):
 func _ready():
 	text = ""
 	SignalBus.new_message.connect(new_message)
-	new_message("arriba españa")

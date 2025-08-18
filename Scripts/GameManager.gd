@@ -200,9 +200,9 @@ func ppo(id, x, y, orientation):
 		var char: Characters = players_list[id].Character
 		
 		# this will tp the character
-		move_player(id, x, y)
 		char.orientation = orientation
 		players_list[id].rotate_orientation(int(orientation))
+		move_player(id, x, y)
 		
 func plv(id, level):
 	if (players_list.has(id)):

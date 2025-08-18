@@ -11,6 +11,13 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b43ah"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shmu5"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.188235)
+albedo_texture = ExtResource("3_b43ah")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vxq8l"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3icqa"]
 albedo_color = Color(1, 0.68144, 0.582295, 1)
 
@@ -35,13 +42,6 @@ emission = Color(0.667828, 0, 0.131102, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_b43ah"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shmu5"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.576471)
-albedo_texture = ExtResource("3_b43ah")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_vxq8l"]
-
 [node name="Character" type="Node3D"]
 script = ExtResource("1_um8lo")
 
@@ -58,7 +58,13 @@ script = ExtResource("2_x3d5u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_b43ah")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0, 1, 0, 0.487176, 0)
+material_override = SubResource("StandardMaterial3D_shmu5")
+mesh = SubResource("PlaneMesh_vxq8l")
+
 [node name="Model" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Head" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(0.17, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.897817, 0.0592226)
@@ -111,9 +117,3 @@ transform = Transform3D(-0.515, 7.77628e-08, 0, -7.77628e-08, -0.515, 0, 0, 0, 0
 visible = false
 material_override = SubResource("StandardMaterial3D_x3d5u")
 mesh = SubResource("PrismMesh_b43ah")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Arrow"]
-transform = Transform3D(-1.94175, -2.93196e-07, 0, 2.93196e-07, -1.94175, 0, 0, 0, 16.6667, 0, 0.867, 0)
-material_override = SubResource("StandardMaterial3D_shmu5")
-mesh = SubResource("PlaneMesh_vxq8l")
-skeleton = NodePath("../../..")

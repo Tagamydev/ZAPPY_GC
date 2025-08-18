@@ -3,6 +3,7 @@ extends Node3D
 var Character : Characters = Characters.new()
 
 @onready var model = $Model
+@onready var player : AnimationPlayer = $Model/AnimationPlayer
 var first = false
 var rot = 1
 
@@ -13,6 +14,8 @@ func _ready():
 
 func reset_rot(n):
 	rotate_orientation(rot)
+	player.stop()
+	player.play("RESET")
 
 
 func move_to_position(start_pos: Vector3, target_pos: Vector3, duration: float) -> void:
@@ -22,7 +25,6 @@ func move_to_position(start_pos: Vector3, target_pos: Vector3, duration: float) 
 		first = true
 	global_position = start_pos
 
-	print("model rotation before: ", model.global_rotation_degrees.y)
 
 	var parent := model.get_parent() as Node3D
 	var from_local := parent.to_local(model.global_transform.origin)
@@ -31,8 +33,7 @@ func move_to_position(start_pos: Vector3, target_pos: Vector3, duration: float) 
 
 	model.rotation.y = atan2(dir_local.x, dir_local.z)  # radians, local Y only
 	
-	print("model rotation after: ", model.global_rotation_degrees.y)
-
+	player.play("walk")
 
 	# Create tween
 	var tween := get_tree().create_tween()

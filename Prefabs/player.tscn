@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://o8clx8ssohi8"]
+[gd_scene load_steps=21 format=3 uid="uid://o8clx8ssohi8"]
 
 [ext_resource type="Script" uid="uid://bpbmvcanwhhp5" path="res://Scripts/player.gd" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://cjh7ywxsu0xm7" path="res://Scripts/SelectCharacter.gd" id="2_x3d5u"]
@@ -42,6 +42,151 @@ emission = Color(0.667828, 0, 0.131102, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_b43ah"]
 
+[sub_resource type="Animation" id="Animation_vxq8l"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -8.54862e-09, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 5.82421e-09, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -8.44074e-10, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -3.89753e-10, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.196838, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.13364, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Character:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0521539, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.0171255, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Character:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.102283, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.101586, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Character:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2.27972e-09, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -7.48579e-10, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+}
+
+[sub_resource type="Animation" id="Animation_gg3t4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Character:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Character:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Character:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_javds"]
+_data = {
+&"RESET": SubResource("Animation_gg3t4"),
+&"walk": SubResource("Animation_vxq8l")
+}
+
 [node name="Character" type="Node3D"]
 script = ExtResource("1_um8lo")
 
@@ -66,54 +211,61 @@ mesh = SubResource("PlaneMesh_vxq8l")
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Head" type="MeshInstance3D" parent="Model"]
+[node name="Character" type="Node3D" parent="Model"]
+
+[node name="Head" type="MeshInstance3D" parent="Model/Character"]
 transform = Transform3D(0.17, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.897817, 0.0592226)
 material_override = SubResource("StandardMaterial3D_3icqa")
 mesh = SubResource("BoxMesh_y6xdh")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Head"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model/Character/Head"]
 transform = Transform3D(-1.0285e-08, 0, -0.235294, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 0, 0.0724645, 0.561242)
 visible = false
 material_override = SubResource("StandardMaterial3D_javds")
 mesh = ExtResource("4_vxq8l")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 script = ExtResource("5_gg3t4")
 
-[node name="Body" type="MeshInstance3D" parent="Model"]
+[node name="Body" type="MeshInstance3D" parent="Model/Character"]
 transform = Transform3D(0.38, 0, 0, 0, 0.35, 0, 0, 0, 0.145, 0, 0.62348, 0.0632012)
 material_override = SubResource("StandardMaterial3D_5wxv7")
 mesh = SubResource("BoxMesh_y6xdh")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 
-[node name="Backpack" type="MeshInstance3D" parent="Model"]
+[node name="Backpack" type="MeshInstance3D" parent="Model/Character"]
 transform = Transform3D(0.38, 0, 0, 0, 0.395, 0, 0, 0, 0.18, 0, 0.599475, -0.0985719)
 material_override = SubResource("StandardMaterial3D_y5hcb")
 mesh = SubResource("BoxMesh_y6xdh")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 
-[node name="Legs" type="Node3D" parent="Model"]
+[node name="Legs" type="Node3D" parent="Model/Character"]
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Model/Legs"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Model/Character/Legs"]
 transform = Transform3D(0.38, 0, 0, 0, 0.15, 0, 0, 0, 0.145, 0, 0.373957, 0.0632012)
 material_override = SubResource("StandardMaterial3D_2nftw")
 mesh = SubResource("BoxMesh_y6xdh")
-skeleton = NodePath("../../../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="Model/Legs"]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Model/Character/Legs"]
 transform = Transform3D(0.13, 0, 0, 0, 0.3, 0, 0, 0, 0.145, -0.124696, 0.149257, 0.063003)
 material_override = SubResource("StandardMaterial3D_2nftw")
 mesh = SubResource("BoxMesh_y6xdh")
-skeleton = NodePath("../../../..")
+skeleton = NodePath("../../../../..")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="Model/Legs"]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Model/Character/Legs"]
 transform = Transform3D(0.13, 0, 0, 0, 0.3, 0, 0, 0, 0.145, 0.125359, 0.149257, 0.063003)
 material_override = SubResource("StandardMaterial3D_2nftw")
 mesh = SubResource("BoxMesh_y6xdh")
-skeleton = NodePath("../../../..")
+skeleton = NodePath("../../../../..")
 
 [node name="Arrow" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(-0.515, 7.77628e-08, 0, -7.77628e-08, -0.515, 0, 0, 0, 0.06, 0, 1.4804, 0.0858815)
 visible = false
 material_override = SubResource("StandardMaterial3D_x3d5u")
 mesh = SubResource("PrismMesh_b43ah")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Model"]
+libraries = {
+&"": SubResource("AnimationLibrary_javds")
+}

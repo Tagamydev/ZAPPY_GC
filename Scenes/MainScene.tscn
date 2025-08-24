@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=29 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Script" uid="uid://00ht70xmlcoq" path="res://Scripts/character_body_spectate.gd" id="1_f140w"]
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
@@ -9,7 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://kvtpefh4xjmy" path="res://Scenes/GUI/TileViewer.tscn" id="7_f140w"]
 [ext_resource type="PackedScene" uid="uid://g8geyo2wcjcc" path="res://Prefabs/GameManager.tscn" id="8_f140w"]
 [ext_resource type="Texture2D" uid="uid://t68gvt8qw5jf" path="res://Assets/Textures/lock.png" id="9_4b75m"]
+[ext_resource type="Script" uid="uid://c1ph3hh366m54" path="res://Scripts/server_status.gd" id="10_6t1o7"]
 [ext_resource type="Script" uid="uid://c77eprlvnvfwe" path="res://Scripts/Lock.gd" id="10_8ju71"]
+[ext_resource type="Texture2D" uid="uid://orlauqema77h" path="res://Assets/Textures/zappy.png" id="10_xb4mg"]
+[ext_resource type="Script" uid="uid://buto5685emgd1" path="res://Scripts/reconnection_button.gd" id="11_5qxwa"]
+[ext_resource type="Script" uid="uid://wbva75xmne8m" path="res://Scripts/load_progress_bar.gd" id="11_xb4mg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
 sky_top_color = Color(0, 0.447383, 0.823598, 1)
@@ -77,6 +81,48 @@ subdivide_depth = 32
 
 [sub_resource type="BoxMesh" id="BoxMesh_tr2i4"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xb4mg"]
+blend_mode = 3
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6t1o7"]
+
+[sub_resource type="Animation" id="Animation_xb4mg"]
+resource_name = "HideLoadScreen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6t1o7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qxwa"]
+_data = {
+&"HideLoadScreen": SubResource("Animation_xb4mg"),
+&"RESET": SubResource("Animation_6t1o7")
+}
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -128,10 +174,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 61.0
+grow_horizontal = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 169.0
+offset_bottom = 50.0
 mouse_filter = 2
 
 [node name="PlayersList" type="MenuButton" parent="Control/HBoxContainer"]
@@ -223,32 +278,110 @@ custom_minimum_size = Vector2(335.71, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Control" parent="Control"]
+[node name="TextureButton" type="TextureButton" parent="Control"]
+modulate = Color(1, 1, 1, 0.364706)
+material = SubResource("CanvasItemMaterial_xb4mg")
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -52.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = 53.0
 grow_horizontal = 0
+size_flags_horizontal = 3
+texture_normal = ExtResource("9_4b75m")
+texture_pressed = ExtResource("9_4b75m")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("10_8ju71")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.937
+anchor_right = 1.0
+anchor_bottom = 0.048
+offset_left = -328.424
+offset_top = 14.0
+offset_right = -65.0
+offset_bottom = 13.896
+grow_horizontal = 0
+alignment = 2
+
+[node name="Button" type="RichTextLabel" parent="Control/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Server Status:"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="RichTextLabel" parent="Control/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "[color=green]online[/color]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_6t1o7")
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Reconnect"
+script = ExtResource("11_5qxwa")
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Control/Button"]
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -76.0
-offset_right = 132.0
-offset_bottom = 208.0
-grow_horizontal = 0
-scale = Vector2(0.355, 0.355)
-theme_override_colors/icon_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_focus_color = Color(1, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.0941176)
-icon = ExtResource("9_4b75m")
-script = ExtResource("10_8ju71")
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_6t1o7")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -316.0
+offset_top = -187.5
+offset_right = 316.0
+offset_bottom = 187.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+nine_patch_stretch = true
+texture_under = ExtResource("10_xb4mg")
+texture_progress = ExtResource("10_xb4mg")
+tint_under = Color(0.0728426, 0.0728426, 0.0728426, 1)
+script = ExtResource("11_xb4mg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_5qxwa")
+}
 
 [node name="GameManager" parent="." instance=ExtResource("8_f140w")]
 
-[connection signal="pressed" from="Control/Button/Button" to="Control/Button/Button" method="_on_pressed"]
+[connection signal="pressed" from="Control/TextureButton" to="Control/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer3/Button2" to="Control/HBoxContainer3/Button2" method="_on_pressed"]

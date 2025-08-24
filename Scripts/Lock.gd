@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 var playerLock = null
 var boolfocus = false
@@ -20,7 +20,6 @@ func	unlock():
 	boolfocus = false
 
 func _on_pressed():
-	print("hallo")
 	if boolfocus:
 		SignalBus.unlock_player.emit()
 		boolfocus = false

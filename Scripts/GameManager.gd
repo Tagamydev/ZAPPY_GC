@@ -103,9 +103,14 @@ func msz(x, y):
 	while i < island_x:
 		j = 0
 		while j < island_y:
-			create_islands(Vector3(i * 5, 0, j * 5), i , j)
+			var pos = Vector3(i * 5, 0, j * 5)
+			create_islands(pos, i , j)
+			if i == (island_x / 2) and j == (island_y / 2):
+				SignalBus.player_start.emit(pos)
+			SignalBus.load_bar.emit(((i * island_y) + j + 1) / (island_x * island_y) * 100)
 			j += 1
 		i += 1
+	SignalBus.remove_load_screen.emit()
 
 
 # 🧍 `pnw #n X Y O L N` — Player Info

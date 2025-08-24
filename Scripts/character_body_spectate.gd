@@ -14,6 +14,22 @@ var rotating := false
 var playerLocked: Node3D = null
 var lock: bool = false
 
+func move_player_start(pos):
+	global_position = pos
+	global_position.y += 50
+	var dir = (pos - camera.global_transform.origin).normalized()
+
+	# Get yaw (rotation around Y axis)
+	var yaw = atan2(dir.x, dir.z)
+
+	# Get pitch (rotation around X axis)
+	var pitch = asin(dir.y)
+
+	# Apply to your neck/camera
+	neck.rotation.y = yaw + PI
+	camera.rotation.x = pitch
+	
+
 func raycastInteraction():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_origin = camera.project_ray_origin(mouse_pos)
@@ -104,3 +120,4 @@ func unlock():
 func _ready():
 	SignalBus.unlock_player.connect(unlock)
 	SignalBus.lock_player.connect(lock_player)
+	SignalBus.player_start.connect(move_player_start)

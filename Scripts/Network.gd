@@ -7,7 +7,26 @@ var connected := false
 var commandBuffer: Array = []
 var flush := false
 
+
+var host_restore
+var port_restore
+var once_reconnection: bool = false
+
+
+func retry_connection():
+	flush = false
+	commandBuffer.clear()
+	connected = false
+	enable = false
+	tcp = null
+	SignalBus.SceneLoaded = false
+	once_reconnection = false
+	SignalBus.new_connection.emit(host_restore, port_restore)
+
+
 func connection(host, port):
+	host_restore = host
+	port_restore = port
 	tcp = null
 	tcp = StreamPeerTCP.new()
 	
@@ -21,6 +40,7 @@ func connection(host, port):
 
 func _ready():
 	SignalBus.new_connection.connect(connection)
+	SignalBus.retry_connection.connect(retry_connection)
 
 
 func error(error):
@@ -68,6 +88,9 @@ func listen():
 
 
 		StreamPeerTCP.STATUS_NONE:
+			if not once_reconnection:
+				SignalBus.server_down.emit()
+				once_reconnection = true
 			# Not connected
 			pass
 	
@@ -75,6 +98,7 @@ func listen():
 func return_to_menu():
 	flush = false
 	commandBuffer.clear()
+	SignalBus.SceneLoaded = false
 
 
 func _process(delta):

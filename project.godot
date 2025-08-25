@@ -25,6 +25,10 @@ Network="*res://Scripts/Network.gd"
 
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Zappy_GC"
+
 [input]
 
 forward={

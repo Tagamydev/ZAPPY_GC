@@ -6,15 +6,24 @@ var Character : Characters = Characters.new()
 @onready var player : AnimationPlayer = $Model/AnimationPlayer
 var first = false
 var rot = 1
+var enchanted = false
 
 
 func start_enchantation(n):
 	if n == Character.id:
 		player.play("Incantation")
+		enchanted = true
+
+func stop_enchantation():
+	if enchanted:
+		enchanted = false
+		player.play("RESET")
+
 
 func _ready():
 	Character.object = self
 	SignalBus.start_player_incatation.connect(start_enchantation)
+	SignalBus.stop_enchantation.connect(stop_enchantation)
 
 
 func reset_rot(n):

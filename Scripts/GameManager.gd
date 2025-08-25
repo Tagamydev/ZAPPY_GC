@@ -245,6 +245,16 @@ func pic(split: PackedStringArray):
 	var tile: Node3D = tiles[index]
 	tile.start_incantation()
 
+func pie(split: PackedStringArray):
+	print("piee!!!!!!!!!!!!!!!!!!!!!!!")
+	var x = int(split[1])
+	var y = int(split[2])
+
+	var index = y * island_x + x
+	var tile: Node3D = tiles[index]
+	tile.stop_incantation()
+	SignalBus.stop_enchantation.emit()
+
 
 func parse_command(command):
 	var	split = command.split(" ")
@@ -313,7 +323,7 @@ func parse_command(command):
 		"pic":
 			pic(split)
 		"pie":
-			print(split[0])
+			pie(split)
 			
 			
 		"pfk":

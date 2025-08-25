@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dnkkj2em63kbw"]
+[gd_scene load_steps=34 format=3 uid="uid://dnkkj2em63kbw"]
 
 [ext_resource type="Shader" uid="uid://dllt36fkhomx7" path="res://Shaders/Vignette.gdshader" id="1_r3ws6"]
 [ext_resource type="PackedScene" uid="uid://bxf6k3a12g5fy" path="res://Scenes/GUI/title.tscn" id="1_tt5f1"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://cl51x1caonqul" path="res://Assets/Textures/loading/frame_22.png" id="23_b4gwl"]
 [ext_resource type="Texture2D" uid="uid://cxiqwlqn05cja" path="res://Assets/Textures/loading/frame_23.png" id="24_kgq5w"]
 [ext_resource type="Texture2D" uid="uid://dlddgp7o5pp5e" path="res://Assets/Textures/loading/frame_24.png" id="25_7qohu"]
-[ext_resource type="Shader" uid="uid://dh2g3nc716kw6" path="res://Shaders/CRT.gdshader" id="27_tv3i8"]
 [ext_resource type="Script" uid="uid://bwa1ta34s63ev" path="res://Scripts/LoadWheel.gd" id="28_ptdfr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r3ws6"]
@@ -35,23 +34,6 @@ shader = ExtResource("1_r3ws6")
 shader_parameter/outerRadius = 0.268
 shader_parameter/MainAlpha = 0.148
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cvqh"]
-shader = ExtResource("27_tv3i8")
-shader_parameter/resolution = Vector2(600, 600)
-shader_parameter/scan_line_amount = 1.0
-shader_parameter/warp_amount = 0.1
-shader_parameter/noise_amount = 0.03
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
-shader_parameter/grille_size = 5.0
-shader_parameter/vignette_amount = 0.6
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/aberation_amount = 0.5
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 0.0100004
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -4.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_tv3i8"]
 
@@ -184,25 +166,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.541176)
-
-[node name="CRT" type="Control" parent="."]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CRT"]
-material = SubResource("ShaderMaterial_6cvqh")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1

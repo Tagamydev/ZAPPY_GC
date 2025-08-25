@@ -13,7 +13,7 @@ var port_restore
 var once_reconnection: bool = false
 
 
-func retry_connection():
+func set_zero():
 	flush = false
 	commandBuffer.clear()
 	connected = false
@@ -21,6 +21,9 @@ func retry_connection():
 	tcp = null
 	SignalBus.SceneLoaded = false
 	once_reconnection = false
+
+func retry_connection():
+	set_zero()
 	SignalBus.new_connection.emit(host_restore, port_restore)
 
 
@@ -41,13 +44,12 @@ func connection(host, port):
 func _ready():
 	SignalBus.new_connection.connect(connection)
 	SignalBus.retry_connection.connect(retry_connection)
+	SignalBus.hide_menu.connect(set_zero)
 
 
 func error(error):
 	SignalBus.stop_load_animation.emit(error)
-	connected = false
-	enable = false
-	tcp = null
+	set_zero()
 	print(error)
 
 

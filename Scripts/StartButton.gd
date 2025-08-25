@@ -7,7 +7,9 @@ extends Button
 var portNumber = "4242"
 var hostString = "127.0.0.1"
 
+
 func _on_pressed() -> void:
+	SignalBus.hide_menu.emit()
 	if Port.text != "":
 		portNumber = Port.text
 	if Host.text != "":

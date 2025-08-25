@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=33 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Script" uid="uid://00ht70xmlcoq" path="res://Scripts/character_body_spectate.gd" id="1_f140w"]
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://orlauqema77h" path="res://Assets/Textures/zappy.png" id="10_xb4mg"]
 [ext_resource type="Script" uid="uid://buto5685emgd1" path="res://Scripts/reconnection_button.gd" id="11_5qxwa"]
 [ext_resource type="Script" uid="uid://wbva75xmne8m" path="res://Scripts/load_progress_bar.gd" id="11_xb4mg"]
+[ext_resource type="Script" uid="uid://bwgrhyix02qku" path="res://Scripts/pause.gd" id="14_enc0b"]
+[ext_resource type="Shader" uid="uid://dysmcsjegdga1" path="res://Shaders/Blur.gdshader" id="14_xc4hf"]
+[ext_resource type="PackedScene" uid="uid://dnkkj2em63kbw" path="res://Scenes/MainMenuUI.tscn" id="15_6rnll"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
 sky_top_color = Color(0, 0.447383, 0.823598, 1)
@@ -122,6 +125,12 @@ _data = {
 &"HideLoadScreen": SubResource("Animation_xb4mg"),
 &"RESET": SubResource("Animation_6t1o7")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6rnll"]
+shader = ExtResource("14_xc4hf")
+shader_parameter/blur_amount = 3.775
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -337,6 +346,7 @@ text = "Reconnect"
 script = ExtResource("11_5qxwa")
 
 [node name="Control" type="Control" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -380,6 +390,28 @@ script = ExtResource("11_xb4mg")
 libraries = {
 &"": SubResource("AnimationLibrary_5qxwa")
 }
+
+[node name="PauseMenu" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_enc0b")
+
+[node name="ColorRect" type="ColorRect" parent="Control/PauseMenu"]
+material = SubResource("ShaderMaterial_6rnll")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" parent="Control/PauseMenu" instance=ExtResource("15_6rnll")]
+layout_mode = 1
 
 [node name="GameManager" parent="." instance=ExtResource("8_f140w")]
 

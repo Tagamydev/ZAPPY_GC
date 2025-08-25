@@ -346,7 +346,6 @@ text = "Reconnect"
 script = ExtResource("11_5qxwa")
 
 [node name="Control" type="Control" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -392,7 +391,7 @@ libraries = {
 }
 
 [node name="PauseMenu" type="Control" parent="Control"]
-visible = false
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

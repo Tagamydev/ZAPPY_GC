@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dnkkj2em63kbw"]
+[gd_scene load_steps=36 format=3 uid="uid://dnkkj2em63kbw"]
 
 [ext_resource type="Shader" uid="uid://dllt36fkhomx7" path="res://Shaders/Vignette.gdshader" id="1_r3ws6"]
 [ext_resource type="PackedScene" uid="uid://bxf6k3a12g5fy" path="res://Scenes/GUI/title.tscn" id="1_tt5f1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d0514cw1dt6fp" path="res://Scripts/64bit_button.gd" id="3_ptdfr"]
 [ext_resource type="Texture2D" uid="uid://nok7r2n8w5lf" path="res://Assets/Textures/loading/frame_2.png" id="3_tv3i8"]
 [ext_resource type="Texture2D" uid="uid://dgrbkq8tilnl0" path="res://Assets/Textures/loading/frame_3.png" id="4_1pap4"]
+[ext_resource type="Script" uid="uid://b37b3w6qqo7e1" path="res://Scripts/MusicButton.gd" id="4_s8rbw"]
 [ext_resource type="Texture2D" uid="uid://miptxo2hh10m" path="res://Assets/Textures/loading/frame_4.png" id="5_ptdfr"]
 [ext_resource type="Texture2D" uid="uid://esaefidsa84a" path="res://Assets/Textures/loading/frame_5.png" id="6_s8rbw"]
 [ext_resource type="Texture2D" uid="uid://ebwyx520a0vo" path="res://Assets/Textures/loading/frame_6.png" id="7_ctv60"]
@@ -273,6 +274,20 @@ size_flags_vertical = 4
 text = "Enable 64 bit mode"
 script = ExtResource("3_ptdfr")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(142.225, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+button_pressed = true
+text = "Music"
+script = ExtResource("4_s8rbw")
+
 [node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer"]
 layout_mode = 2
 
@@ -291,3 +306,4 @@ offset_bottom = 246.0
 
 [connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/Play" to="Control/VBoxContainer/VBoxContainer/Play" method="_on_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/Back" to="Control/VBoxContainer/VBoxContainer/Back" method="_on_pressed"]
+[connection signal="toggled" from="Control/VBoxContainer/HBoxContainer/CheckBox" to="Control/VBoxContainer/HBoxContainer/CheckBox" method="_on_toggled"]

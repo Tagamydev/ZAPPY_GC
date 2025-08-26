@@ -2,6 +2,8 @@ extends Node
 
 var SceneLoaded = false
 
+var MusicEnabled = true
+
 signal command(message)
 signal new_message(message)
 signal new_connection(host, port)
@@ -27,3 +29,4 @@ signal stop_enchantation()
 signal hide_menu()
 signal enable_crt()
 signal disable_crt()
+signal update_music()

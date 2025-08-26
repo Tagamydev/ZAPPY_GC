@@ -12,6 +12,7 @@ var players: Array = []
 var players_list: Dictionary = {}
 
 var tiles: Array = []
+var tile_dic: Dictionary = {}
 var players_in_tiles: Dictionary = {}
 var teams: Array = []
 var time = 100
@@ -42,8 +43,7 @@ func move_player(id, x, y):
 		var player_node = players_list[id] # Make sure this is a Node3D
 
 		# Get the correct tile index
-		var tile_index = int(y) * island_x + int(x)
-		var tile: Node3D = tiles[tile_index]
+		var tile: Node3D = tiles[tile_dic[key2]]
 
 		# Get walkable plane
 		var walk_plane = tile.get_node("walkPlane") as MeshInstance3D
@@ -83,6 +83,10 @@ func create_islands(position, x, y):
 	var instance = island.instantiate()
 	
 	instance.position = position
+	instance.index = tiles.size()
+	var key = str(x, ", ", y)
+	tile_dic[key] = tiles.size()
+	
 	add_child(instance)
 	tiles.append(instance)
 	instance.terrain.generate_terrain(x, y, island_x, island_y)
@@ -90,10 +94,12 @@ func create_islands(position, x, y):
 	instance.y = y
 	instance.width = island_x
 	instance.height = island_y
+	instance.label.text = str("[",x ,", ", y,"]")
 	SignalBus.new_island.emit(x, y)
 
 
 func msz(x, y):
+	print("TilesX:", x, "TilesY:", y)
 	island_x = x
 	island_y = y
 	var	i = 0
@@ -104,6 +110,7 @@ func msz(x, y):
 		j = 0
 		while j < island_y:
 			var pos = Vector3(i * 5, 0, j * 5)
+			
 			create_islands(pos, i , j)
 			if i == (island_x / 2) and j == (island_y / 2):
 				SignalBus.player_start.emit(pos)

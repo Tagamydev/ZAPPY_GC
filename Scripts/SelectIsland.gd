@@ -6,14 +6,14 @@ extends StaticBody3D
 
 
 func objectPressed():
-	SignalBus.select_tile.emit(island.x * island.width + island.y)
+	SignalBus.select_tile.emit(island.index)
 	
 func hide_island(n):
 	selection.get_surface_override_material(0).emission_enabled = false
 	
 	
 func select_island(n):
-	if island.x * island.width + island.y == n:
+	if island.index == n:
 		selection.get_surface_override_material(0).emission_enabled = true
 	else:
 		selection.get_surface_override_material(0).emission_enabled = false

@@ -23,8 +23,11 @@ var y = 0
 var width = 0
 var height = 0
 
+@onready var label: Label3D = $Label3D
 @onready var walk_plane = $walkPlane
 @onready var terrain = $Terrain
+
+var index = 0
 
 @onready var player: AnimationPlayer = $Incantation/AnimationPlayer
 

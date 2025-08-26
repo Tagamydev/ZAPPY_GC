@@ -452,3 +452,8 @@ amount = 400
 lifetime = 2.5
 process_material = SubResource("ParticleProcessMaterial_m28nf")
 draw_pass_1 = SubResource("PlaneMesh_yxkem")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.009, 0)
+pixel_size = 0.015
+text = "[0,0]"

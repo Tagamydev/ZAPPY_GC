@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=34 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Script" uid="uid://00ht70xmlcoq" path="res://Scripts/character_body_spectate.gd" id="1_f140w"]
 [ext_resource type="Shader" uid="uid://ccvieruh5rbxr" path="res://Shaders/Water.gdshader" id="2_nhkr4"]
@@ -17,8 +17,7 @@
 [ext_resource type="Script" uid="uid://bwgrhyix02qku" path="res://Scripts/pause.gd" id="14_enc0b"]
 [ext_resource type="Shader" uid="uid://dysmcsjegdga1" path="res://Shaders/Blur.gdshader" id="14_xc4hf"]
 [ext_resource type="PackedScene" uid="uid://dnkkj2em63kbw" path="res://Scenes/MainMenuUI.tscn" id="15_6rnll"]
-[ext_resource type="ArrayMesh" uid="uid://fpwiw3nw0ooq" path="res://Assets/Models/clouds.obj" id="18_hx8n4"]
-[ext_resource type="Script" uid="uid://bnup1ehsbopea" path="res://Scripts/clouds.gd" id="19_i0j58"]
+[ext_resource type="Script" uid="uid://bnup1ehsbopea" path="res://Scripts/clouds.gd" id="18_hx8n4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_tr2i4"]
 sky_top_color = Color(0, 0.447383, 0.823598, 1)
@@ -133,11 +132,6 @@ shader = ExtResource("14_xc4hf")
 shader_parameter/blur_amount = 3.775
 shader_parameter/mix_amount = 0.0
 shader_parameter/color_over = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hx8n4"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(1, 1, 1, 0.32549)
 
 [node name="Node3D" type="Node3D"]
 
@@ -427,11 +421,8 @@ layout_mode = 1
 
 [node name="GameManager" parent="." instance=ExtResource("8_f140w")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.795, 0, 0, 0, 0.795, 0, 0, 0, 0.795, 0, -96.4917, 0)
-material_override = SubResource("StandardMaterial3D_hx8n4")
-mesh = ExtResource("18_hx8n4")
-script = ExtResource("19_i0j58")
+[node name="Clouds" type="Node3D" parent="."]
+script = ExtResource("18_hx8n4")
 
 [connection signal="pressed" from="Control/TextureButton" to="Control/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer3/Button2" to="Control/HBoxContainer3/Button2" method="_on_pressed"]

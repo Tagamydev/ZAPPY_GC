@@ -27,7 +27,7 @@ func move_player(id, x, y):
 		var char: Characters = players_list[id].Character
 		var key = str(char.x, ", ", char.y)
 		var key2 = str(x, ", ", y)
-		
+
 		if players_in_tiles.has(key):
 			players_in_tiles[key].erase(id)
 		
@@ -287,8 +287,8 @@ func parse_command(command):
 			if split.size() == 10:
 				var x = str(split[1]).to_int()
 				var y = str(split[2]).to_int()
-				var index = y * island_x + x
-				var tile: Node3D = tiles[index]
+				var key2 = str(x, ", ", y)
+				var tile: Node3D = tiles[tile_dic[key2]]
 				tile.bct(split[3], split[4], split[5], split[6], split[7], split[8], split[9])
 			else:
 				print("Error: bct command: wrong number of arguments: ", command)

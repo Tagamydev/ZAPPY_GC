@@ -168,12 +168,20 @@ func pbc(number, message):
 
 	SignalBus.new_message.emit(str("Player n", number, ": ", message))
 
+var used_hues: Array = []
+
+func get_distinct_color() -> Color:
+	var step = 1.0 / max(1, (used_hues.size() + 1))
+	var h = fmod(used_hues.size() * step, 1.0) # evenly spread hues
+	used_hues.append(h)
+	return Color.from_hsv(h, 0.8, 0.9)
+
 
 func tna(team: String):
 	if (teams.find(team) == -1):
 		teams.append(team)
 		#todo
-		teams_dic[team] = Color.DARK_SLATE_BLUE
+		teams_dic[team] = get_distinct_color()
 
 
 # 🥚 `enw #e #n X Y` — Egg

@@ -8,6 +8,8 @@ extends MeshInstance3D
 
 
 @onready var collider = $"../MeshInstance3D"
+@onready var snow: GPUParticles3D = $"../Snow"
+
 
 var biome_colors := {
 	0: Color(0.2, 0.3, 0.2),   # pantano (swampy dark green)
@@ -197,6 +199,9 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 	# Create a seeded RNG
 	
 	height = int(height)
+	
+	if (height > 2):
+		snow.emitting = true
 	# make a new material with the biome color
 	var mat := StandardMaterial3D.new()
 	#mat.albedo_color = biome_colors[number]
@@ -206,7 +211,8 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 	set_surface_override_material(0, mat)
 	
 	collider.global_position = Vector3(collider.global_position.x, height, collider.global_position.z)
-	
+	snow.global_position = collider.global_position
+	snow.global_position.y += 1
 	mat.emission_enabled = false
 	mat.emission = Color(0.4, 0.4, 0.4)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ctm51847fmtj0"]
+[gd_scene load_steps=30 format=3 uid="uid://ctm51847fmtj0"]
 
 [ext_resource type="Script" uid="uid://bqyrd6ra7rwq8" path="res://Scripts/Island.gd" id="1_tqsrf"]
 [ext_resource type="Script" uid="uid://cu52dooi6ed2i" path="res://Scripts/SelectIsland.gd" id="3_4ufhe"]
@@ -14,6 +14,26 @@ albedo_color = Color(0.12549, 0.337255, 0.12549, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_d60fm"]
 size = Vector2(9, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gby2t"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="Curve" id="Curve_m28nf"]
+_data = [Vector2(0.00588235, 0), 0.0, 0.0, 0, 0, Vector2(0.505882, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxkem"]
+curve = SubResource("Curve_m28nf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_om84m"]
+emission_shape = 3
+emission_box_extents = Vector3(-2.5, 4, 2.5)
+gravity = Vector3(0, -0.2, 0)
+scale_curve = SubResource("CurveTexture_yxkem")
+
+[sub_resource type="BoxMesh" id="BoxMesh_r5v22"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m28nf"]
 size = Vector2(5, 5)
@@ -398,6 +418,15 @@ transform = Transform3D(0.5, 0, 0, 0, 0.05, 0, 0, 0, 0.5, 0, 0.94176, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_d60fm")
 mesh = SubResource("PlaneMesh_d60fm")
+
+[node name="Snow" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.1243, 0)
+material_override = SubResource("StandardMaterial3D_gby2t")
+emitting = false
+amount = 50
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_om84m")
+draw_pass_1 = SubResource("BoxMesh_r5v22")
 
 [node name="Terrain" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.529846, 0)

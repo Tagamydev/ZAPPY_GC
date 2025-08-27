@@ -248,8 +248,8 @@ func pic(split: PackedStringArray):
 		SignalBus.start_player_incatation.emit(int(split[i]))
 		i += 1
 		
-	var index = y * island_x + x
-	var tile: Node3D = tiles[index]
+	var key2 = str(x, ", ", y)
+	var tile: Node3D = tiles[tile_dic[key2]]
 	tile.start_incantation()
 
 func pie(split: PackedStringArray):
@@ -257,8 +257,8 @@ func pie(split: PackedStringArray):
 	var x = int(split[1])
 	var y = int(split[2])
 
-	var index = y * island_x + x
-	var tile: Node3D = tiles[index]
+	var key2 = str(x, ", ", y)
+	var tile: Node3D = tiles[tile_dic[key2]]
 	tile.stop_incantation()
 	SignalBus.stop_enchantation.emit()
 

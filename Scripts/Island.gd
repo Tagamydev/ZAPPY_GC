@@ -23,9 +23,16 @@ var y = 0
 var width = 0
 var height = 0
 
+var terrain_heigth = 0
+
 @onready var label: Label3D = $Label3D
 @onready var walk_plane = $walkPlane
 @onready var terrain = $Terrain
+
+var snow_tree = preload("res://Prefabs/Trees/Snow_Tree.tscn")
+var standar_tree = preload("res://Prefabs/Trees/Standar_Tree.tscn")
+var palm_tree = preload("res://Prefabs/Trees/Palm_Tree.tscn")
+var sea_tree = preload("res://Prefabs/Trees/Sea_Tree.tscn")
 
 var index = 0
 
@@ -43,6 +50,29 @@ func _on_incantation_finished(anim_name: String) -> void:
 func start_incantation():
 	player.play("Incantation")
 
+
+
+func spawn_trees():
+	var i = 0
+	var total = 0
+	var item = snow_tree
+
+	if (terrain_heigth < 0):
+		total = int(randf_range(0, 10))
+		item = sea_tree
+	elif (terrain_heigth < 1):
+		total = int(randf_range(0, 2))
+		item = palm_tree
+	elif (terrain_heigth < 4):
+		total = int(randf_range(2, 10))
+		item = standar_tree
+	else:
+		total = int(randf_range(0, 2))
+		item = snow_tree
+	
+	while (i < total):
+		spawn_item(item)
+		i += 1
 
 
 func create_portal():
@@ -65,6 +95,11 @@ func spawn_item(item):
 	
 	add_child(block)
 	block.global_position = world_pos
+	block.global_rotation.y = randf_range(0, 360)
+	block.global_rotation.x = randf_range(-0.25, 0.25)
+	block.global_rotation.z = randf_range(-0.25, 0.25)
+	var random_scale = randf_range(0.8, 1.5)
+	block.scale = Vector3(random_scale, random_scale, random_scale)
 	return block
 
 

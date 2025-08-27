@@ -10,6 +10,6 @@ emission = Color(0.513007, 0.172827, 0, 1)
 [node name="MeshInstance3D" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.67, 0, 0, 0, 0.67, 0, 0, 0, 0.67, 0, 0.151235, 0)
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, 0.151235, 0)
 material_override = SubResource("StandardMaterial3D_j2y4r")
 mesh = SubResource("SphereMesh_ybxex")

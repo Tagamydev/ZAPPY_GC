@@ -98,6 +98,7 @@ func create_islands(position, x, y):
 	instance.width = island_x
 	instance.height = island_y
 	instance.label.text = str("[",x ,", ", y,"]")
+	instance.spawn_trees()
 	SignalBus.new_island.emit(x, y)
 
 

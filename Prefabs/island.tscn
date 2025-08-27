@@ -484,5 +484,6 @@ draw_pass_1 = SubResource("PlaneMesh_yxkem")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.009, 0)
+visible = false
 pixel_size = 0.015
 text = "[0,0]"

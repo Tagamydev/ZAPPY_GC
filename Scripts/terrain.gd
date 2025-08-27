@@ -9,6 +9,7 @@ extends MeshInstance3D
 
 @onready var collider = $"../MeshInstance3D"
 @onready var snow: GPUParticles3D = $"../Snow"
+@onready var island = $".."
 
 
 var biome_colors := {
@@ -48,8 +49,8 @@ func get_biome_color(height: float, shadow: float) -> Color:
 		Vector2(-1.0, 0), 
 		Vector2(0.0, 1), 
 		Vector2(0.3, 2),
-		Vector2(2.0, 3),  
-		Vector2(4.5, 4)   
+		Vector2(5.0, 3),  
+		Vector2(6.5, 4)   
 	]
 
 	var palette = [
@@ -201,7 +202,8 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 	height = int(height)
 	
 	if (height > 2):
-		snow.emitting = true
+		if int(randf_range(0.0, 4.0)) % 2 == 0:
+			snow.emitting = true
 	# make a new material with the biome color
 	var mat := StandardMaterial3D.new()
 	#mat.albedo_color = biome_colors[number]
@@ -215,6 +217,7 @@ func generate_biome(seed_value: int, x, y, map_width, map_height, height):
 	snow.global_position.y += 1
 	mat.emission_enabled = false
 	mat.emission = Color(0.4, 0.4, 0.4)
+	island.terrain_heigth = height
 
 	
 func generate_terrain(x, y, map_width, map_height):

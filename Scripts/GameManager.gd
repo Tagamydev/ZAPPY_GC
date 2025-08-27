@@ -13,8 +13,11 @@ var players_list: Dictionary = {}
 
 var tiles: Array = []
 var tile_dic: Dictionary = {}
+
 var players_in_tiles: Dictionary = {}
+
 var teams: Array = []
+var teams_dic: Dictionary = {}
 var time = 100
 
 
@@ -122,7 +125,7 @@ func msz(x, y):
 
 # 🧍 `pnw #n X Y O L N` — Player Info
 # Player ID 1 is at tile (3,4), facing **East** (O=2), level 1, from team "TeamRocket".
-func pnw(n, x, y, direction, level, team):
+func pnw(n, x, y, direction, level, team: String):
 	
 	if not players_list.has(n):
 		var instance = player.instantiate()
@@ -140,6 +143,9 @@ func pnw(n, x, y, direction, level, team):
 		instance.Character.level = level
 		instance.Character.texture = profile_texture  # Assuming `texture` is used for rendering
 		instance.Character.team = team
+		if teams_dic.has(team):
+			instance.Character.color = teams_dic[team]
+			instance.change_body_color(teams_dic[team])
 		
 		instance.rotate_orientation(int(direction))
 		
@@ -163,9 +169,11 @@ func pbc(number, message):
 	SignalBus.new_message.emit(str("Player n", number, ": ", message))
 
 
-func tna(team):
+func tna(team: String):
 	if (teams.find(team) == -1):
 		teams.append(team)
+		#todo
+		teams_dic[team] = Color.DARK_SLATE_BLUE
 
 
 # 🥚 `enw #e #n X Y` — Egg
@@ -281,7 +289,7 @@ func parse_command(command):
 			else:
 				print("Error: pnw command: wrong number of arguments: ", command)
 		"tna":
-			if split.size() == 3:
+			if split.size() == 2:
 				tna(str(split[1]))
 		"bct":
 			if split.size() == 10:

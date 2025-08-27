@@ -8,6 +8,15 @@ var first = false
 var rot = 1
 var enchanted = false
 
+@onready var body = $Model/Character/Body
+
+func change_body_color(body_col: Color):
+	var mat := StandardMaterial3D.new()
+	#mat.albedo_color = biome_colors[number]
+	# assign it to this mesh
+	body.set_surface_override_material(0, mat)
+	mat.albedo_color = body_col
+	
 
 func start_enchantation(n):
 	if n == Character.id:

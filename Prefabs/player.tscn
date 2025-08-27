@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://o8clx8ssohi8"]
+[gd_scene load_steps=37 format=3 uid="uid://o8clx8ssohi8"]
 
 [ext_resource type="Script" uid="uid://bpbmvcanwhhp5" path="res://Scripts/player.gd" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://cjh7ywxsu0xm7" path="res://Scripts/SelectCharacter.gd" id="2_x3d5u"]
@@ -25,9 +25,6 @@ albedo_color = Color(1, 0.68144, 0.582295, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_javds"]
 albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wxv7"]
-albedo_color = Color(0.877954, 0.368666, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y5hcb"]
 albedo_color = Color(0.28, 0.028, 0.0406001, 1)
@@ -541,7 +538,6 @@ script = ExtResource("5_gg3t4")
 
 [node name="Body" type="MeshInstance3D" parent="Model/Character"]
 transform = Transform3D(0.38, 0, 0, 0, 0.35, 0, 0, 0, 0.145, 0, 0.62348, 0.0632012)
-material_override = SubResource("StandardMaterial3D_5wxv7")
 mesh = SubResource("BoxMesh_y6xdh")
 skeleton = NodePath("../../../..")
 

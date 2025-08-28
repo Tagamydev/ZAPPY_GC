@@ -135,7 +135,12 @@ func pnw(n, x, y, direction, level, team: String):
 		var random_index = randi_range(1, 6)
 		var profile_path = "res://Assets/Textures/character0%d.png" % random_index
 		var profile_texture = load(profile_path) as Texture2D
+		var skin_color = 0
 
+		if random_index == 5:
+			skin_color = Color(18.0 / 255.0, 76.0 / 255.0, 51.0 / 255.0)
+		else:
+			skin_color = Color(255.0 /255.0, 174.0 / 255.0, 148.0 / 255.0)
 		# Set position and properties
 		add_child(instance)
 		players.append(instance)
@@ -146,7 +151,7 @@ func pnw(n, x, y, direction, level, team: String):
 		instance.Character.team = team
 		if teams_dic.has(team):
 			instance.Character.color = teams_dic[team]
-			instance.change_body_color(teams_dic[team])
+			instance.set_colors(skin_color, teams_dic[team])
 		
 		instance.rotate_orientation(int(direction))
 		
@@ -280,6 +285,10 @@ func pie(split: PackedStringArray):
 	SignalBus.stop_enchantation.emit()
 
 
+func pdi(number):
+	players[number].death()
+
+
 func parse_command(command):
 	var	split = command.split(" ")
 	
@@ -340,7 +349,7 @@ func parse_command(command):
 		"pbc":
 			pbc(split[1], split[2])
 		"pdi":
-			print(split[0])
+			pdi(split[1])
 			
 			
 			

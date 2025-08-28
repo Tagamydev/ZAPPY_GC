@@ -8,14 +8,86 @@ var first = false
 var rot = 1
 var enchanted = false
 
+@onready var tomb = $Tomb
+
+
+@onready var clothes = [
+	$Model/Character/Level1,
+	$Model/Character/Level2,
+	$Model/Character/Level3,
+	$Model/Character/Level4,
+	$Model/Character/Level5,
+	$Model/Character/Level6,
+	$Model/Character/Level7,
+	$Model/Character/Level8
+]
+
+@onready var skin = [
+	$Model/Character/Head/WHead,
+	$Model/Character/Body/Body,
+	$Model/Character/Body/Legs/MeshInstance3D5,
+	$Model/Character/Body/Legs/MeshInstance3D6,
+	$Model/Character/Body/Legs/MeshInstance3D7
+]
+
+@onready var team_col = [
+	$Model/Character/Level1/Clothes,
+	$Model/Character/Level2/Clothes,
+	$Model/Character/Level2/Clothes2,
+	$Model/Character/Level3/Clothes,
+	$Model/Character/Level4/Clothes,
+	$Model/Character/Level5/Clothes,
+	$Model/Character/Level6/Clothes,
+	$Model/Character/Level6/Clothes2,
+	$Model/Character/Level7/Clothes,
+	$Model/Character/Level7/Clothes2,
+	$Model/Character/Level8/Clothes
+]
+
 @onready var body = $Model/Character/Body
 
-func change_body_color(body_col: Color):
-	var mat := StandardMaterial3D.new()
-	#mat.albedo_color = biome_colors[number]
-	# assign it to this mesh
-	body.set_surface_override_material(0, mat)
-	mat.albedo_color = body_col
+func set_clothes(level: int) -> void:
+	# If your levels are 1..8:
+	var idx: int = clampi(level - 1, 0, clothes.size() - 1)
+	# If levels are 0..7, use: var idx := clamp(level, 0, clothes.size() - 1)
+
+	body.visible = (level == 1 or level == 2 or level == 3 or level == 5)
+
+	for n in clothes:
+		n.visible = false
+	clothes[idx].visible = true
+
+func set_colors(skin_color: Color, team_color: Color) -> void:
+	var skin_mat := StandardMaterial3D.new()
+	skin_mat.albedo_color = skin_color
+
+	var team_mat := StandardMaterial3D.new()
+	team_mat.albedo_color = team_color
+
+	# Apply to all surfaces for each mesh
+	for m in skin:
+		if m and m.mesh:
+			for s in range(m.mesh.get_surface_count()):
+				m.set_surface_override_material(s, skin_mat)
+
+
+	for m in team_col:
+		if m and m.mesh:
+			for s in range(m.mesh.get_surface_count()):
+				m.set_surface_override_material(s, team_mat)
+	set_clothes(Character.level)
+
+func update_level():
+	var level := int(Character.level) # 1..8 expected here
+	set_clothes(level)
+
+func death():
+	tomb.visible = true
+	model.visible = false
+
+
+func change_skin_color(skin_col: Color):
+	print("NewSkinColor")
 	
 
 func start_enchantation(n):
@@ -27,6 +99,7 @@ func stop_enchantation():
 	if enchanted:
 		enchanted = false
 		player.play("RESET")
+		update_level()
 
 
 func _ready():

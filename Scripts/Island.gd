@@ -115,7 +115,8 @@ func SpawnItem(item, n):
 					while (i != n):
 						var instance = food_l.back()
 						
-						instance.queue_free()
+						
+						#instance.queue_free()
 						food_l.erase(instance)
 						i += 1
 				elif diff > 0:

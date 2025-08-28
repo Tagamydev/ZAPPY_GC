@@ -2,7 +2,7 @@ extends Node
 
 var SceneLoaded = false
 
-var MusicEnabled = true
+var MusicEnabled = false
 
 signal command(message)
 signal new_message(message)

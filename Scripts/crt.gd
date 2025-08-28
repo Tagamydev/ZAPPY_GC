@@ -7,17 +7,16 @@ extends ColorRect
 var is_player1: bool = false
 
 func enable_crt():
-	player2.volume_db = -100.0
-	player1.volume_db = -6
 	is_player1 = true
 	visible = true
+	update_music()
 	
 	
 func update_music():
 	player1.volume_db = -100
 	player2.volume_db = -100
 	
-	if (SignalBus.MusicEnabled):
+	if SignalBus.MusicEnabled:
 		if is_player1:
 			player1.volume_db = -6
 		else:
@@ -25,10 +24,9 @@ func update_music():
 		
 
 func disable_crt():
-	player1.volume_db = -100.0
-	player2.volume_db = -6
 	is_player1 = false
 	visible = false
+	update_music()
 	
 func _ready() -> void:
 	SignalBus.update_music.connect(update_music)

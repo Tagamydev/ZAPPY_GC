@@ -7,6 +7,8 @@ func _on_pressed() -> void:
 	
 	if turn_off:
 		SignalBus.enable_crt.emit()
+		text = "Disable 64 bit mode."
 	else:
 		SignalBus.disable_crt.emit()
+		text = "Enable 64 bit mode."
 	pass # Replace with function body.

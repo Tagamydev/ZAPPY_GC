@@ -113,7 +113,10 @@ func SpawnItem(item, n):
 				var i = 0
 				if diff < 0:
 					while (i != n):
-						food_l.erase(food_l.back())
+						var instance = food_l.back()
+						
+						instance.queue_free()
+						food_l.erase(instance)
 						i += 1
 				elif diff > 0:
 					while (i != n):
@@ -127,7 +130,10 @@ func SpawnItem(item, n):
 				var i = 0
 				if diff < 0:
 					while (i != n):
-						Linemate_l.erase(Linemate_l.back())
+						var instance = Linemate_l.back()
+						
+						instance.queue_free()
+						Linemate_l.erase(instance)
 						i += 1
 				elif diff > 0:
 					while (i != n):
@@ -141,7 +147,10 @@ func SpawnItem(item, n):
 				var i = 0
 				if diff < 0:
 					while (i != n):
-						Deraumere_l.erase(Deraumere_l.back())
+						var instance = Deraumere_l.back()
+						
+						instance.queue_free()
+						Deraumere_l.erase(instance)
 						i += 1
 				elif diff > 0:
 					while (i != n):
@@ -155,7 +164,10 @@ func SpawnItem(item, n):
 				var i = 0
 				if diff < 0:
 					while (i != n):
-						Sibur_l.erase(Sibur_l.back())
+						var instance = Sibur_l.back()
+						
+						instance.queue_free()
+						Sibur_l.erase(instance)
 						i += 1
 				elif diff > 0:
 					while (i != n):
@@ -169,7 +181,10 @@ func SpawnItem(item, n):
 				var i = 0
 				if diff < 0:
 					while (i != n):
-						Mendiane_l.erase(Mendiane_l.back())
+						var instance = Mendiane_l.back()
+						
+						instance.queue_free()
+						Mendiane_l.erase(instance)
 						i += 1
 				elif diff > 0:
 					while (i != n):
@@ -183,7 +198,10 @@ func SpawnItem(item, n):
 				var i = 0
 				if diff < 0:
 					while (i != n):
-						Phiras_l.erase(Phiras_l.back())
+						var instance = Phiras_l.back()
+						
+						instance.queue_free()
+						Phiras_l.erase(instance)
 						i += 1
 				elif diff > 0:
 					while (i != n):
@@ -197,7 +215,10 @@ func SpawnItem(item, n):
 				var i = 0
 				if diff < 0:
 					while (i != n):
-						Tystame_l.erase(Tystame_l.back())
+						var instance = Tystame_l.back()
+						
+						instance.queue_free()
+						Tystame_l.erase(instance)
 						i += 1
 				elif diff > 0:
 					while (i != n):

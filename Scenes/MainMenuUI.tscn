@@ -285,7 +285,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 button_pressed = true
-text = "Music"
+text = "Sound"
 script = ExtResource("4_s8rbw")
 
 [node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer"]

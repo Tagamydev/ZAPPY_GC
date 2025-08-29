@@ -102,129 +102,75 @@ func spawn_item(item):
 	block.scale = Vector3(random_scale, random_scale, random_scale)
 	return block
 
+var item_map = {
+	"food": {
+		"prop": "food",
+		"list": food_l,
+		"scene": food
+	},
+	"linemate": {
+		"prop": "linemate",
+		"list": Linemate_l,
+		"scene": Linemate
+	},
+	"deraumere": {
+		"prop": "deraumere",
+		"list": Deraumere_l,
+		"scene": Deraumere
+	},
+	"sibur": {
+		"prop": "sibur",
+		"list": Sibur_l,
+		"scene": Sibur
+	},
+	"mendiane": {
+		"prop": "mendiane",
+		"list": Mendiane_l,
+		"scene": Mendiane
+	},
+	"phiras": {
+		"prop": "phiras",
+		"list": Phiras_l,
+		"scene": Phiras
+	},
+	"thystame": {
+		"prop": "thystame",
+		"list": Tystame_l,
+		"scene": Tystame
+	}
+}
+
+
+func update_item(item: String, n: int) -> void:
+	if not item_map.has(item):
+		return
+	
+	var info = item_map[item]
+	var prop = info.prop
+	var list = info.list
+	var scene = info.scene
+
+	var current = Island.get(prop)
+	if current == n:
+		return
+	
+	var diff = n - current
+	Island.set(prop, n)
+
+	if diff < 0:
+		for i in range(abs(diff)):
+			if list.size() != 0:
+				var instance = list.back()
+				if (instance != null):
+					instance.queue_free()
+				list.erase(instance)
+	elif diff > 0:
+		for i in range(diff):
+			list.append(spawn_item(scene))
+
 
 func SpawnItem(item, n):
-	match item:
-		"food":
-			if Island.food != n:
-				var diff = n - Island.food
-				Island.food = Island.food + (n - Island.food)
-				
-				var i = 0
-				if diff < 0:
-					while (i != n):
-						var instance = food_l.back()
-						
-						
-						#instance.queue_free()
-						food_l.erase(instance)
-						i += 1
-				elif diff > 0:
-					while (i != n):
-						food_l.append(spawn_item(food))
-						i += 1
-		"linemate":
-			if Island.linemate != n:
-				var diff = n - Island.linemate
-				Island.linemate = Island.linemate + (n - Island.linemate)
-				
-				var i = 0
-				if diff < 0:
-					while (i != n):
-						var instance = Linemate_l.back()
-						
-						instance.queue_free()
-						Linemate_l.erase(instance)
-						i += 1
-				elif diff > 0:
-					while (i != n):
-						Linemate_l.append(spawn_item(Linemate))
-						i += 1
-		"deraumere":
-			if Island.deraumere != n:
-				var diff = n - Island.deraumere
-				Island.deraumere = Island.deraumere + (n - Island.deraumere)
-				
-				var i = 0
-				if diff < 0:
-					while (i != n):
-						var instance = Deraumere_l.back()
-						
-						instance.queue_free()
-						Deraumere_l.erase(instance)
-						i += 1
-				elif diff > 0:
-					while (i != n):
-						Deraumere_l.append(spawn_item(Deraumere))
-						i += 1
-		"sibur":
-			if Island.sibur != n:
-				var diff = n - Island.sibur
-				Island.sibur = Island.sibur + (n - Island.sibur)
-				
-				var i = 0
-				if diff < 0:
-					while (i != n):
-						var instance = Sibur_l.back()
-						
-						instance.queue_free()
-						Sibur_l.erase(instance)
-						i += 1
-				elif diff > 0:
-					while (i != n):
-						Sibur_l.append(spawn_item(Sibur))
-						i += 1
-		"mendiane":
-			if Island.mendiane != n:
-				var diff = n - Island.mendiane
-				Island.mendiane = Island.mendiane + (n - Island.mendiane)
-				
-				var i = 0
-				if diff < 0:
-					while (i != n):
-						var instance = Mendiane_l.back()
-						
-						instance.queue_free()
-						Mendiane_l.erase(instance)
-						i += 1
-				elif diff > 0:
-					while (i != n):
-						Mendiane_l.append(spawn_item(Mendiane))
-						i += 1
-		"phiras":
-			if Island.phiras != n:
-				var diff = n - Island.phiras
-				Island.phiras = Island.phiras + (n - Island.phiras)
-				
-				var i = 0
-				if diff < 0:
-					while (i != n):
-						var instance = Phiras_l.back()
-						
-						instance.queue_free()
-						Phiras_l.erase(instance)
-						i += 1
-				elif diff > 0:
-					while (i != n):
-						Phiras_l.append(spawn_item(Phiras))
-						i += 1
-		"thystame":
-			if Island.thystame != n:
-				var diff = n - Island.thystame
-				Island.thystame = Island.thystame + (n - Island.thystame)
-				
-				var i = 0
-				if diff < 0:
-					while (i != n):
-						var instance = Tystame_l.back()
-						
-						instance.queue_free()
-						Tystame_l.erase(instance)
-						i += 1
-				elif diff > 0:
-					while (i != n):
-						Tystame_l.append(spawn_item(Tystame))
-						i += 1
+	update_item(item, n)
 
 
 func bct(food, linemate, deraumere, sibur, mendiane, phiras, thystame):

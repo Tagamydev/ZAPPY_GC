@@ -1,10 +1,11 @@
-[gd_scene load_steps=49 format=3 uid="uid://o8clx8ssohi8"]
+[gd_scene load_steps=50 format=3 uid="uid://o8clx8ssohi8"]
 
 [ext_resource type="Script" uid="uid://bpbmvcanwhhp5" path="res://Scripts/Player.gd" id="1_um8lo"]
 [ext_resource type="Script" uid="uid://cjh7ywxsu0xm7" path="res://Scripts/SelectCharacter.gd" id="2_x3d5u"]
 [ext_resource type="Texture2D" uid="uid://cnbe5cxtpvmv0" path="res://Assets/Textures/north.png" id="3_b43ah"]
 [ext_resource type="ArrayMesh" uid="uid://rdt8ksldet01" path="res://Assets/Models/snorkel.obj" id="4_vxq8l"]
 [ext_resource type="Script" uid="uid://c5ovyodm0tst6" path="res://Scripts/snorkel.gd" id="5_gg3t4"]
+[ext_resource type="AudioStream" uid="uid://ck0tvln27whg2" path="res://Assets/Audio/Talking.mp3" id="6_gg3t4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_um8lo"]
 
@@ -1129,3 +1130,6 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_8afax")
 draw_pass_1 = SubResource("BoxMesh_t7w7j")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_gg3t4")

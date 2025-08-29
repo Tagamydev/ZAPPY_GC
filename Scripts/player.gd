@@ -9,7 +9,7 @@ var rot = 1
 var enchanted = false
 
 @onready var tomb = $Tomb
-
+@onready var speaker: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 @onready var clothes = [
 	$Model/Character/Level1,
@@ -45,6 +45,11 @@ var enchanted = false
 ]
 
 @onready var body = $Model/Character/Body
+
+func speak(time):
+	speaker.play()
+	speaker.pitch_scale = 2
+
 
 func set_clothes(level: int) -> void:
 	# If your levels are 1..8:

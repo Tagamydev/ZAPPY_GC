@@ -166,13 +166,18 @@ func pnw(n, x, y, direction, level, team: String):
 
 
 
-
-
+var lyrics_it = 0
+var ado = []
 # `pbc #n M`
 func pbc(number, message):
 	var stri: String = message
-
-	SignalBus.new_message.emit(str("Player n", number, ": ", message))
+	players_list[number].speak(time)
+	message = ado[lyrics_it]
+	SignalBus.new_message.emit(str("[color=",players_list[number].Character.color.to_html(),"]Player n", number, ":[/color] ", message))
+	if (lyrics_it == ado.size()):
+		lyrics_it = 0
+	else:
+		lyrics_it += 1
 
 var used_hues: Array = []
 
@@ -285,7 +290,7 @@ func pie(split: PackedStringArray):
 
 
 func pdi(number):
-	players[number].death()
+	players_list[number].death()
 
 
 func parse_command(command):
@@ -403,7 +408,39 @@ func return_menu():
 	SignalBus.SceneLoaded = false
 
 
+
+var lyrics = "はるか遠い 遠い 昔巻かれた首輪
+人が欲しい 人が欲しい と叫ぶ呪いの首輪
+怒らないで 見捨てないで どこもいかないで（ねえ）
+強く絞める 吐くまで絞める 人がいないいないと
+いい成績でしょ
+ねえ ねえ いい子でしょ
+かわいい子でしょ
+ねえ ねえ 良い子でしょう 苦しい ねえ
+愛して 愛して 愛して もっともっと
+愛して 愛して 狂おしいほどに
+苦しい 苦しい 呪縛を 解いて解いて ねえ
+止められない ah
+Ah-ah
+身体 身体 大きくなっても小さい首輪
+苦しくなる 足りなくなる 人が 人が足りない
+クラスの誰にも負けない キレイないい子でしょう（ねえ）
+あの子よりも どの子よりも 誰も 彼も 私を見てよ
+体育館裏 あなたに告白を
+嘘みたいでしょ
+あなたが好きなの 汚いあなたが
+愛して 愛して 愛して 全部あげる
+あなたに あなたに 全部背負ってもらうよ
+足りない あなたが 足りない 離さないよ ah-ah
+ごめんなさい
+愛して 愛して 愛して もっともっと
+愛して 愛して 狂おしいほどに
+苦しい 離さない 苦しい もっともっと ねえ
+幸せなの ah, ah
+幸せなの ah"
+
 func _ready():
 	SignalBus.command.connect(parse_message)
 	SignalBus.SceneLoaded = true
+	ado = lyrics.split("\n")
 	print("SceneLoaded!!!!")

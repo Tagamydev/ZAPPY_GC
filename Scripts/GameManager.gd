@@ -275,7 +275,6 @@ func pic(split: PackedStringArray):
 	tile.start_incantation()
 
 func pie(split: PackedStringArray):
-	print("piee!!!!!!!!!!!!!!!!!!!!!!!")
 	var x = int(split[1])
 	var y = int(split[2])
 
@@ -286,7 +285,6 @@ func pie(split: PackedStringArray):
 
 
 func pdi(number):
-	print("Someone Died!!")
 	players[number].death()
 
 

@@ -16,7 +16,8 @@ var lock: bool = false
 
 func move_player_start(pos):
 	global_position = pos
-	global_position.y += 50
+	global_position.y += 10
+	global_position.x = - 10
 	var dir = (pos - camera.global_transform.origin).normalized()
 
 	# Get yaw (rotation around Y axis)

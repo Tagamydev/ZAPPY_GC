@@ -96,13 +96,21 @@ func _physics_process(delta: float) -> void:
 
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	
+	var up_down = Input.get_vector("Ctrl", "Space", "Ctrl", "Space")
+	if up_down.x > 0:
+		up_down = 1
+	elif up_down.x < 0:
+		up_down = -1
+	else:
+		up_down = 0
+		
 	var direction = (camera.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
 		velocity = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED) # if using gravity
+		velocity.y = move_toward(velocity.y, 0, SPEED) + (0.5 * up_down * SPEED)# if using gravity
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()

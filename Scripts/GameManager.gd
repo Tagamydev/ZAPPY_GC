@@ -171,7 +171,8 @@ var ado = []
 # `pbc #n M`
 func pbc(number, message):
 	var stri: String = message
-	players_list[number].speak(time)
+	var rand = randf_range(0.0, 1)
+	players_list[number].speak(time + rand)
 	message = ado[lyrics_it]
 	SignalBus.new_message.emit(str("[color=",players_list[number].Character.color.to_html(),"]Player n", number, ":[/color] ", message))
 	if (lyrics_it == ado.size()):

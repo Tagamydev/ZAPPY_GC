@@ -84,6 +84,7 @@ func update_level():
 func death():
 	tomb.visible = true
 	model.visible = false
+	print("this player is  death:", Character.id)
 
 
 func change_skin_color(skin_col: Color):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dfysvhl71wb7s"]
+[gd_scene load_steps=48 format=3 uid="uid://dfysvhl71wb7s"]
 
 [ext_resource type="Script" uid="uid://00ht70xmlcoq" path="res://Scripts/character_body_spectate.gd" id="1_f140w"]
 [ext_resource type="Shader" uid="uid://cifrw32dl0gx" path="res://Shaders/WaterDistort.gdshader" id="2_c1ier"]
@@ -9,13 +9,20 @@
 [ext_resource type="Script" uid="uid://dkeqn7iyq2ju1" path="res://Scripts/TilesList.gd" id="5_q68mp"]
 [ext_resource type="PackedScene" uid="uid://bd8tkowwdcctb" path="res://Scenes/GUI/PlayerViewer.tscn" id="5_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://kvtpefh4xjmy" path="res://Scenes/GUI/TileViewer.tscn" id="7_f140w"]
+[ext_resource type="Script" uid="uid://6hsdw21uf5fv" path="res://Scripts/ChatItemsMenu.gd" id="7_r0vnq"]
 [ext_resource type="PackedScene" uid="uid://g8geyo2wcjcc" path="res://Prefabs/GameManager.tscn" id="8_f140w"]
 [ext_resource type="Texture2D" uid="uid://t68gvt8qw5jf" path="res://Assets/Textures/lock.png" id="9_4b75m"]
+[ext_resource type="Texture2D" uid="uid://n3a5v1hcfl50" path="res://Assets/Textures/food.png" id="9_c3pre"]
 [ext_resource type="Script" uid="uid://c1ph3hh366m54" path="res://Scripts/server_status.gd" id="10_6t1o7"]
 [ext_resource type="Script" uid="uid://c77eprlvnvfwe" path="res://Scripts/Lock.gd" id="10_8ju71"]
+[ext_resource type="Texture2D" uid="uid://bo4k7imc4rs2x" path="res://Assets/Textures/linemate.png" id="10_u5v48"]
 [ext_resource type="Texture2D" uid="uid://orlauqema77h" path="res://Assets/Textures/zappy.png" id="10_xb4mg"]
 [ext_resource type="Script" uid="uid://buto5685emgd1" path="res://Scripts/reconnection_button.gd" id="11_5qxwa"]
+[ext_resource type="Texture2D" uid="uid://ceyxb04jibwge" path="res://Assets/Textures/mendiane.png" id="11_s1acj"]
 [ext_resource type="Script" uid="uid://wbva75xmne8m" path="res://Scripts/load_progress_bar.gd" id="11_xb4mg"]
+[ext_resource type="Texture2D" uid="uid://oae4k3y8qlx0" path="res://Assets/Textures/phiras.png" id="12_t8ijv"]
+[ext_resource type="Texture2D" uid="uid://bhraql728jy3i" path="res://Assets/Textures/sibur.png" id="13_rv6c1"]
+[ext_resource type="Texture2D" uid="uid://dcqoynkiw0a26" path="res://Assets/Textures/tystame.png" id="14_dtg5n"]
 [ext_resource type="Script" uid="uid://bwgrhyix02qku" path="res://Scripts/pause.gd" id="14_enc0b"]
 [ext_resource type="Shader" uid="uid://dysmcsjegdga1" path="res://Shaders/Blur.gdshader" id="14_xc4hf"]
 [ext_resource type="PackedScene" uid="uid://dnkkj2em63kbw" path="res://Scenes/MainMenuUI.tscn" id="15_6rnll"]
@@ -250,49 +257,108 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 769.0
+offset_left = 862.0
 offset_top = 260.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Control/Chat"]
-modulate = Color(1, 1, 1, 0.635294)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Chat"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.142
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.096
-offset_top = 9.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Chat"]
+[node name="HSeparator" type="HSeparator" parent="Control/Chat/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="Control/Chat/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Chat/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_r0vnq")
+
+[node name="Button" type="Button" parent="Control/Chat/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chat"
+
+[node name="Button2" type="Button" parent="Control/Chat/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Items"
+
+[node name="Button3" type="Button" parent="Control/Chat/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "v"
+
+[node name="Control" type="Control" parent="Control/Chat/VBoxContainer"]
+custom_minimum_size = Vector2(0, 340.01)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="Control/Chat/VBoxContainer/Control"]
+modulate = Color(1, 1, 1, 0.635294)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Chat/VBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.119
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -0.172001
-offset_top = 43.0
+offset_left = -12.061
+offset_right = -11.889
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VSeparator" type="VSeparator" parent="Control/Chat/HBoxContainer"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(19.965, 0)
-layout_mode = 2
-
-[node name="Chat" type="RichTextLabel" parent="Control/Chat/HBoxContainer"]
+[node name="Chat" type="RichTextLabel" parent="Control/Chat/VBoxContainer/Control/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Welcome to the chat"
 scroll_following = true
 script = ExtResource("5_f140w")
 
-[node name="VSeparator2" type="VSeparator" parent="Control/Chat/HBoxContainer"]
+[node name="Control" type="Control" parent="Control/Chat/VBoxContainer/Control/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemList" type="ItemList" parent="Control/Chat/VBoxContainer/Control/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_right = 13.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 6
+item_0/text = "Food"
+item_0/icon = ExtResource("9_c3pre")
+item_1/text = "Linemate"
+item_1/icon = ExtResource("10_u5v48")
+item_2/text = "Mendiane"
+item_2/icon = ExtResource("11_s1acj")
+item_3/text = "Phiras"
+item_3/icon = ExtResource("12_t8ijv")
+item_4/text = "Sibur"
+item_4/icon = ExtResource("13_rv6c1")
+item_5/text = "Thystame"
+item_5/icon = ExtResource("14_dtg5n")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -304,7 +370,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TileViewer" parent="Control/HBoxContainer2" instance=ExtResource("7_f140w")]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 8
@@ -381,6 +446,7 @@ text = "Reconnect"
 script = ExtResource("11_5qxwa")
 
 [node name="Control" type="Control" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -426,6 +492,7 @@ libraries = {
 }
 
 [node name="PauseMenu" type="Control" parent="Control"]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -455,5 +522,8 @@ material_override = SubResource("StandardMaterial3D_hx8n4")
 mesh = ExtResource("18_hx8n4")
 script = ExtResource("19_i0j58")
 
+[connection signal="pressed" from="Control/Chat/VBoxContainer/HBoxContainer2/Button" to="Control/Chat/VBoxContainer/HBoxContainer2" method="chat_button_pressed"]
+[connection signal="pressed" from="Control/Chat/VBoxContainer/HBoxContainer2/Button2" to="Control/Chat/VBoxContainer/HBoxContainer2" method="items_button_pressed"]
+[connection signal="pressed" from="Control/Chat/VBoxContainer/HBoxContainer2/Button3" to="Control/Chat/VBoxContainer/HBoxContainer2" method="hide_toggle_pressed"]
 [connection signal="pressed" from="Control/TextureButton" to="Control/TextureButton" method="_on_pressed"]
 [connection signal="pressed" from="Control/HBoxContainer3/Button2" to="Control/HBoxContainer3/Button2" method="_on_pressed"]

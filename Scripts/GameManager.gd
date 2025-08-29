@@ -286,6 +286,7 @@ func pie(split: PackedStringArray):
 
 
 func pdi(number):
+	print("Someone Died!!")
 	players[number].death()
 
 

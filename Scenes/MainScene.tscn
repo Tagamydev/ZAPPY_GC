@@ -370,6 +370,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="TileViewer" parent="Control/HBoxContainer2" instance=ExtResource("7_f140w")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 8

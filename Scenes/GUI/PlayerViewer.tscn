@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bd8tkowwdcctb"]
+[gd_scene load_steps=15 format=3 uid="uid://bd8tkowwdcctb"]
 
 [ext_resource type="Script" uid="uid://bg2yfrc46dtgb" path="res://Scripts/player_viewer.gd" id="1_6kpgy"]
 [ext_resource type="Texture2D" uid="uid://djgxgav3337hq" path="res://Assets/Textures/character02.png" id="1_07gjh"]
@@ -8,13 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://ceyxb04jibwge" path="res://Assets/Textures/mendiane.png" id="3_atxbm"]
 [ext_resource type="Texture2D" uid="uid://oae4k3y8qlx0" path="res://Assets/Textures/phiras.png" id="4_2vgnp"]
 [ext_resource type="Script" uid="uid://77dukly5nkx0" path="res://Scripts/item.gd" id="4_87dgi"]
+[ext_resource type="Texture2D" uid="uid://gfx63hwkysgb" path="res://Assets/Textures/characterPhantom.png" id="4_tqu2s"]
 [ext_resource type="Texture2D" uid="uid://bhraql728jy3i" path="res://Assets/Textures/sibur.png" id="5_mqb80"]
+[ext_resource type="Texture2D" uid="uid://bnbofq0xifvv2" path="res://Assets/Textures/booo.png" id="6_qgks1"]
 [ext_resource type="Texture2D" uid="uid://dcqoynkiw0a26" path="res://Assets/Textures/tystame.png" id="6_xmh5m"]
 [ext_resource type="Texture2D" uid="uid://kfu58l8xw3pt" path="res://Assets/Textures/deraumere.png" id="7_l5rfd"]
 [ext_resource type="Texture2D" uid="uid://n3a5v1hcfl50" path="res://Assets/Textures/food.png" id="8_03fxt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxria"]
-bg_color = Color(1, 0.273989, 0.21327, 1)
 
 [node name="PlayerViewer" type="Control"]
 layout_mode = 3
@@ -70,13 +69,6 @@ size_flags_vertical = 3
 [node name="HBoxContainer3" type="HBoxContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
-
-[node name="Health" type="ProgressBar" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-theme_override_styles/fill = SubResource("StyleBoxFlat_qxria")
-value = 40.9
 
 [node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3"]
 clip_contents = true
@@ -173,9 +165,10 @@ offset_left = 0.0310001
 offset_right = 0.0549927
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.640923, 0.186912, 0.507042, 1)
+color = Color(0.155497, 0.405951, 0.617633, 1)
 
 [node name="ProfilePicture" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
+visible = false
 custom_minimum_size = Vector2(48.57, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -188,7 +181,20 @@ texture = ExtResource("1_07gjh")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
+[node name="Phantom" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(48.57, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_tqu2s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
 custom_minimum_size = Vector2(49, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -203,6 +209,24 @@ grow_vertical = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_atxbm")
 expand_mode = 4
+stretch_mode = 5
+
+[node name="Phamtom2" type="TextureRect" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(48.57, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 129.0
+offset_top = -61.5
+offset_right = 129.0
+offset_bottom = -61.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = ExtResource("6_qgks1")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="HSeparator3" type="HSeparator" parent="PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer"]

@@ -11,10 +11,12 @@ extends Control
 @onready var	Name: RichTextLabel = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3/PanelContainer/PlayerName
 @onready var	Level: RichTextLabel =$PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/Panel/HBoxContainer2/VBoxContainer2/LevelPlayer
 @onready var	Team: RichTextLabel = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/Panel/HBoxContainer2/VBoxContainer2/TeamPlayer
-@onready var	Health: ProgressBar = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer3/Health
 @onready var	texture: TextureRect = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control/ProfilePicture
 @onready var	color: ColorRect = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control/ColorRect
 
+
+@onready var	phantom1 = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control/Phantom
+@onready var	phantom2 = $PlayerPanel/HBoxContainer4/VBoxContainer/VBoxContainer/HBoxContainer/Control/Phamtom2
 
 var playerSelected
 
@@ -35,13 +37,16 @@ func update_player_viewer():
 		show_player(playerSelected)
 
 func show_player(player):
+	
+		
 	playerSelected = player
 	visible = true
 	
 	Level.text = str(player.level)
 	Team.text = str(player.team)
 	Name.text = str("Player ", player.id)
-	
+	if player.is_death:
+		Name.text += "(Deceased)"
 	
 	Linemate.updateItem(player.inventory.linemate)
 	Mendiane.updateItem(player.inventory.mendiane)
@@ -51,9 +56,17 @@ func show_player(player):
 	Deraumer.updateItem(player.inventory.deraumere)
 	Food.updateItem(player.inventory.food)
 	
-	
-	texture.texture = player.texture
-	color.color = player.color
+	if not player.is_death:
+		texture.visible = true
+		texture.texture = player.texture
+		color.color = player.color
+		phantom1.visible = false
+		phantom2.visible = false
+	else:
+		texture.visible = false
+		color.color = Color(40.0 / 255.0, 104.0 / 255.0, 157.0 / 255.0)
+		phantom1.visible = true
+		phantom2.visible = true
 	
 	
 func hide_player_viewer():
@@ -65,6 +78,7 @@ func _ready():
 	SignalBus.select_player.connect(show_by_sort)
 	SignalBus.select_player_by_id.connect(show_by_id)
 	SignalBus.hide_player_viewer.connect(hide_player_viewer)
+	SignalBus.update_player_viewer.connect(update_player_viewer)
 	pass # Replace with function body.
 
 

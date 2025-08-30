@@ -25,53 +25,77 @@ func get_standar_duration():
 	return float(7.0 * 1.0 / float(time))
 
 
-func move_player(id, x, y):
+func player_movement(id, x, y, final_pos: Vector3):
+	x = int(x)
+	y = int(y)
+	var char: Characters = players_list[id].Character
+	var key = str(char.x, ", ", char.y)
+	var key2 = str(x, ", ", y)
+	var player_node = players_list[id]
+	var tile: Node3D = tiles[tile_dic[key2]]
+	
+	player_node.Character.x = int(x)
+	player_node.Character.y = int(y)
+	
+	final_pos.y = tile.terrain.get_height(final_pos.x, final_pos.z, island_x, island_y) 
+	final_pos.y += 0.2
+
+	player_node.move_to_position(player_node.global_position, final_pos, get_standar_duration())
+
+
+func update_player_in_tiles(id, x, y):
 	if players_list.has(id):
+		x = int(x)
+		y = int(y)
+		var char: Characters = players_list[id].Character
+		
+		if not (char.x == x and char.y == y):
+			var key = str(char.x, ", ", char.y)
+			var key2 = str(x, ", ", y)
+
+			if players_in_tiles.has(key):
+				players_in_tiles[key].erase(id)
+			
+			if not players_in_tiles.has(key2):
+				players_in_tiles[key2] = []
+				
+			players_in_tiles[key2].append(id)
+
+
+func move_player_to_item(id, x, y, item):
+	if players_list.has(id):
+		x = int(x)
+		y = int(y)
+		update_player_in_tiles(id, x, y)
 		var char: Characters = players_list[id].Character
 		var key = str(char.x, ", ", char.y)
 		var key2 = str(x, ", ", y)
-
-		if players_in_tiles.has(key):
-			players_in_tiles[key].erase(id)
-		
-		if not players_in_tiles.has(key2):
-			players_in_tiles[key2] = []
-			
-		players_in_tiles[key2].append(id)
-		
-		char.x = int(x)
-		char.y = int(y)
-
-		# Get the player node (actual scene node, not the data)
-		var player_node = players_list[id] # Make sure this is a Node3D
-
-		# Get the correct tile index
+		var player_node = players_list[id]
 		var tile: Node3D = tiles[tile_dic[key2]]
+		
+		var item_pos = tile.get_item_pos(item)
+		player_movement(id, x, y, item_pos)
 
-		# Get walkable plane
+func move_player_random(id, x, y):
+	if players_list.has(id):
+		x = int(x)
+		y = int(y)
+		update_player_in_tiles(id, x, y)
+
+		# make random movement
+		var char: Characters = players_list[id].Character
+		var key = str(char.x, ", ", char.y)
+		var key2 = str(x, ", ", y)
+		var player_node = players_list[id]
+		var tile: Node3D = tiles[tile_dic[key2]]
 		var walk_plane = tile.get_node("walkPlane") as MeshInstance3D
-
-		# Get mesh bounds
 		var mesh_aabb = walk_plane.get_mesh().get_aabb()
-
-		# Pick a random point inside plane
 		var local_x = randf_range(mesh_aabb.position.x, mesh_aabb.position.x + mesh_aabb.size.x)
 		var local_z = randf_range(mesh_aabb.position.z, mesh_aabb.position.z + mesh_aabb.size.z)
-		
-
-
-		# Convert to world coordinates
 		var world_pos = walk_plane.to_global(Vector3(local_x, 0, local_z))
-		world_pos.y = tile.terrain.get_height(world_pos.x, world_pos.z, island_x, island_y) 
-		world_pos.y += 0.2
-		# Teleport player
-		
-		player_node.move_to_position(player_node.global_position, world_pos, get_standar_duration())
-		#player_node.global_position = world_pos
-		
-		print("moving player to: ", str(key2))
-		
-	
+
+		player_movement(id, x, y, world_pos)
+
 
 # Index	Name
 # 0	Nourriture
@@ -156,11 +180,8 @@ func pnw(n, x, y, direction, level, team: String):
 		instance.rotate_orientation(int(direction))
 		
 
-		
-		
-		
 		players_list[n] = instance
-		move_player(n, x, y)
+		move_player_random(n, x, y)
 		SignalBus.new_player.emit(n, team)
 
 
@@ -176,7 +197,7 @@ func pbc(number, message):
 		players_list[number].speak(time + rand)
 	message = ado[lyrics_it]
 	SignalBus.new_message.emit(str("[color=",players_list[number].Character.color.to_html(),"]Player n", number, ":[/color] ", message))
-	if (lyrics_it == ado.size()):
+	if (lyrics_it == (ado.size() - 1)):
 		lyrics_it = 0
 	else:
 		lyrics_it += 1
@@ -207,10 +228,7 @@ func enw(id, father, x, y):
 	add_child(instance)
 
 
-
-
 # `pin #n X Y q0 q1 q2 q3 q4 q5 q6`
-
 #> Player inventory has changed.
 # **Example:**
 # pin 1 2 2 3 0 0 0 0 1 0
@@ -219,13 +237,13 @@ func enw(id, father, x, y):
 # * 1 Phiras
 func pin(id, x, y, Nourriture, Linemate, Deraumere, Sibur, Mendiane, Phiras, Thystame):
 	if (players_list.has(id)):
+		x = int(x)
+		y = int(y)
 		var char: Characters = players_list[id].Character
-		
-	
-		# this will tp the character
-		move_player(id, x, y)
-		
-		
+
+		if not (char.x == x and char.y == y):
+			move_player_random(id, x, y)
+
 		print(str("Player: ", id, "Nourriture: ", Nourriture, " ,Linemate: ", Linemate, " ,Deraumere: ", Deraumere, " ,Sibur: ", Sibur, " ,Mendiane: ", Mendiane))
 		char.inventory.food = int(Nourriture)
 		char.inventory.linemate = int(Linemate)
@@ -234,6 +252,7 @@ func pin(id, x, y, Nourriture, Linemate, Deraumere, Sibur, Mendiane, Phiras, Thy
 		char.inventory.mendiane = int(Mendiane)
 		char.inventory.phiras = int(Phiras)
 		char.inventory.thystame = int(Thystame)
+		SignalBus.update_player_viewer.emit()
 
 
 ### 🧍 **Player Events**
@@ -244,13 +263,17 @@ func pin(id, x, y, Nourriture, Linemate, Deraumere, Sibur, Mendiane, Phiras, Thy
 
 func ppo(id, x, y, orientation):
 	if (players_list.has(id)):
+		x = int(x)
+		y = int(y)
 		var char: Characters = players_list[id].Character
 		
 		# this will tp the character
 		char.orientation = orientation
 		players_list[id].rotate_orientation(int(orientation))
-		move_player(id, x, y)
-		
+		if not (char.x == x and char.y == y):
+			move_player_random(id, x, y)
+
+
 func plv(id, level):
 	if (players_list.has(id)):
 		var char: Characters = players_list[id].Character
@@ -281,6 +304,7 @@ func pic(split: PackedStringArray):
 	var tile: Node3D = tiles[tile_dic[key2]]
 	tile.start_incantation()
 
+
 func pie(split: PackedStringArray):
 	var x = int(split[1])
 	var y = int(split[2])
@@ -293,6 +317,29 @@ func pie(split: PackedStringArray):
 
 func pdi(number):
 	players_list[number].death()
+	SignalBus.update_player_viewer.emit()
+
+
+func pgt(player, item):
+	item = int(item)
+	var char: Characters = players_list[player].Character
+	var x = char.x
+	var y = char.y
+	match item:
+		0:
+			move_player_to_item(player, x, y, "food")
+		1:
+			move_player_to_item(player, x, y, "linemate")
+		2:
+			move_player_to_item(player, x, y, "deraumere")
+		3:
+			move_player_to_item(player, x, y, "sibur")
+		4:
+			move_player_to_item(player, x, y, "mendiane")
+		5:
+			move_player_to_item(player, x, y, "phiras")
+		6:
+			move_player_to_item(player, x, y, "thystame")
 
 
 func parse_command(command):
@@ -341,23 +388,17 @@ func parse_command(command):
 			else:
 				print("Error: plv command: wrong number of arguments: ", command)
 				
-				
-				
 		"pex":
 			print(split[0])
 		"pgt":
-			print(split[0])
+			pgt(split[1], split[2])
 		"pdr":
 			print(split[0])
-			
-			
 			
 		"pbc":
 			pbc(split[1], split[2])
 		"pdi":
 			pdi(split[1])
-			
-			
 			
 		"pic":
 			pic(split)

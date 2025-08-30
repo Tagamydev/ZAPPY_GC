@@ -10,3 +10,4 @@ var color: Color = Color.CHARTREUSE
 var inventory: Inventory = Inventory.new()
 var texture: Texture2D = null
 var object: Node3D = null
+var is_death = false

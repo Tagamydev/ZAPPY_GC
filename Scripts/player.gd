@@ -45,6 +45,8 @@ var enchanted = false
 ]
 
 @onready var body = $Model/Character/Body
+var is_death: bool = false
+
 
 func speak(time):
 	speaker.play()
@@ -86,9 +88,12 @@ func update_level():
 	var level := int(Character.level) # 1..8 expected here
 	set_clothes(level)
 
+
 func death():
 	tomb.visible = true
 	model.visible = false
+	Character.is_death = true
+	is_death = true
 	print("this player is  death:", Character.id)
 
 
@@ -121,28 +126,29 @@ func reset_rot(n):
 
 
 func move_to_position(start_pos: Vector3, target_pos: Vector3, duration: float) -> void:
-	# Set the starting position
-	if not first:
-		duration = 0
-		first = true
-	global_position = start_pos
+	if not enchanted:
+		# Set the starting position
+		if not first:
+			duration = 0
+			first = true
+		global_position = start_pos
 
 
-	var parent := model.get_parent() as Node3D
-	var from_local := parent.to_local(model.global_transform.origin)
-	var to_local   := parent.to_local(target_pos)
-	var dir_local  := (to_local - from_local).normalized()
+		var parent := model.get_parent() as Node3D
+		var from_local := parent.to_local(model.global_transform.origin)
+		var to_local   := parent.to_local(target_pos)
+		var dir_local  := (to_local - from_local).normalized()
 
-	model.rotation.y = atan2(dir_local.x, dir_local.z)  # radians, local Y only
-	
-	player.play("walk")
+		model.rotation.y = atan2(dir_local.x, dir_local.z)  # radians, local Y only
+		
+		player.play("walk")
 
-	# Create tween
-	var tween := get_tree().create_tween()
-	tween.tween_property(self, "global_position", target_pos, duration)
-	tween.set_trans(Tween.TRANS_SINE)     # easing (options: LINEAR, QUAD, SINE, etc.)
-	tween.set_ease(Tween.EASE_IN_OUT)     # ease-in-out for smooth start/stop
-	tween.step_finished.connect(reset_rot)
+		# Create tween
+		var tween := get_tree().create_tween()
+		tween.tween_property(self, "global_position", target_pos, duration)
+		tween.set_trans(Tween.TRANS_SINE)     # easing (options: LINEAR, QUAD, SINE, etc.)
+		tween.set_ease(Tween.EASE_IN_OUT)     # ease-in-out for smooth start/stop
+		tween.step_finished.connect(reset_rot)
 
 func rotate_orientation(o: int):
 	var yaw = 0

@@ -141,6 +141,15 @@ var item_map = {
 }
 
 
+func get_item_pos(item):
+	if not item_map.has(item):
+		return
+	
+	var info = item_map[item]
+	var list = info.list
+	
+	return list.back().global_position
+
 func update_item(item: String, n: int) -> void:
 	if not item_map.has(item):
 		return

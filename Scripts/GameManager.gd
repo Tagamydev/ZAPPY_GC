@@ -8,8 +8,11 @@ var	island_x : int = 10
 var island_y : int = 11
 var island_total_x = 0
 var island_total_y = 0
+
 var players: Array = []
 var players_list: Dictionary = {}
+
+var egg_list: Dictionary = {}
 
 var tiles: Array = []
 var tile_dic: Dictionary = {}
@@ -223,9 +226,25 @@ func tna(team: String):
 # enw 5 1 2 3
 #**Means:** Egg ID `5` was laid by player `1` at tile (2,3).
 func enw(id, father, x, y):
-	var instance = egg.instantiate()
+	x = str(x).to_int()
+	y = str(y).to_int()
+	var key2 = str(x, ", ", y)
+	var tile: Node3D = tiles[tile_dic[key2]]
 
-	add_child(instance)
+	egg_list[id] = tile.spawn_item(egg)
+	
+	
+	
+func eht(id):
+	egg_list[id].hatch()
+	
+	
+func ebo(id):
+	egg_list[id].crack_egg()
+	
+	
+func edi(id):
+	egg_list[id].queue_free()
 
 
 # `pin #n X Y q0 q1 q2 q3 q4 q5 q6`
@@ -342,6 +361,7 @@ func pgt(player, item):
 			move_player_to_item(player, x, y, "thystame")
 
 
+
 func parse_command(command):
 	var	split = command.split(" ")
 	
@@ -414,11 +434,13 @@ func parse_command(command):
 			else:
 				print("Error: enw command: wrong number of arguments: ", command)
 		"eht":
-			print(split[0])
+			eht(split[1])
 		"ebo":
-			print(split[0])
+			ebo(split[1])
 		"edi":
-			print(split[0])
+			edi(split[1])
+			
+
 		"sgt":
 			if split.size() == 2:
 				time = int(split[1])

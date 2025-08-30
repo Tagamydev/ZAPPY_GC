@@ -322,11 +322,16 @@ smg The game will restart in 60 seconds.
 | `pdi`   | Player dies                     |
 | `pic`   | Incantation begins              |
 | `pie`   | Incantation ends (success/fail) |
+
+
 | `pfk`   | Player lays egg                 |
 | `enw`   | New egg created                 |
 | `eht`   | Egg hatches                     |
 | `ebo`   | Player connects via egg         |
 | `edi`   | Egg dies                        |
+
+
+
 | `sgt`   | Current time unit               |
 | `sst`   | Time unit changed               |
 | `seg`   | End of game                     |

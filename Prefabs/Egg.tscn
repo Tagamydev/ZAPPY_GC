@@ -1,3 +1,384 @@
-[gd_scene format=3 uid="uid://b0x7qefs0ncp4"]
+[gd_scene load_steps=11 format=3 uid="uid://b0x7qefs0ncp4"]
+
+[ext_resource type="Script" uid="uid://mk3pnh5mkcs6" path="res://Scripts/egg.gd" id="1_f74i1"]
+[ext_resource type="ArrayMesh" uid="uid://dhpsyfsnb5dq8" path="res://Assets/Models/Egg.obj" id="1_wrvtk"]
+[ext_resource type="ArrayMesh" uid="uid://chp7sch0j1cq4" path="res://Assets/Models/Egg_part1.obj" id="3_c2hyd"]
+[ext_resource type="ArrayMesh" uid="uid://cp6f7aoqmnymq" path="res://Assets/Models/Egg_part2.obj" id="4_dftlv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfqtk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f74i1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2hyd"]
+
+[sub_resource type="Animation" id="Animation_f74i1"]
+resource_name = "crack"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/MeshInstance3D2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0.0563767, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/MeshInstance3D2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0.06682, 0, 0, 0, 0, 0.045487, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node3D/MeshInstance3D2:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, -0.0628768, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node3D/MeshInstance3D2:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, -0.294308, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node3D/MeshInstance3D2:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0.666924, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node3D/MeshInstance3D2:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, -0.732536, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node3D/MeshInstance3D3:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, -0.0362973, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node3D/MeshInstance3D3:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0.06682, 0, 0, 0, 0, 0.045487, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node3D/MeshInstance3D3:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0.0203434, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node3D/MeshInstance3D3:scale:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(1),
+"points": PackedFloat32Array(0.1, 0, 0, 0, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node3D/MeshInstance3D3:scale:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(1),
+"points": PackedFloat32Array(0.1, 0, 0, 0, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node3D/MeshInstance3D3:scale:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(1),
+"points": PackedFloat32Array(0.1, 0, 0, 0, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node3D/MeshInstance3D3:rotation:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, -0.041893, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node3D/MeshInstance3D3:rotation:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 0.53702, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node3D/MeshInstance3D3:rotation:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(1, 1),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 1.06696, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.166667)
+}
+
+[sub_resource type="Animation" id="Animation_c2hyd"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/MeshInstance3D2:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D/MeshInstance3D2:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.06682, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node3D/MeshInstance3D2:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node3D/MeshInstance3D2:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node3D/MeshInstance3D2:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node3D/MeshInstance3D2:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node3D/MeshInstance3D3:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node3D/MeshInstance3D3:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.06682, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node3D/MeshInstance3D3:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node3D/MeshInstance3D3:scale:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node3D/MeshInstance3D3:scale:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node3D/MeshInstance3D3:scale:z")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node3D/MeshInstance3D3:rotation:x")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node3D/MeshInstance3D3:rotation:y")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Node3D/MeshInstance3D3:rotation:z")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dftlv"]
+_data = {
+&"RESET": SubResource("Animation_c2hyd"),
+&"crack": SubResource("Animation_f74i1")
+}
 
 [node name="Egg" type="Node3D"]
+script = ExtResource("1_f74i1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.06682, 0)
+material_override = SubResource("StandardMaterial3D_xfqtk")
+mesh = ExtResource("1_wrvtk")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1.785, 0, 0, 0, 1.785, 0, 0, 0, 1.785, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.06682, 0)
+material_override = SubResource("StandardMaterial3D_f74i1")
+mesh = ExtResource("3_c2hyd")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.06682, 0)
+material_override = SubResource("StandardMaterial3D_c2hyd")
+mesh = ExtResource("4_dftlv")
+skeleton = NodePath("../../MeshInstance3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dftlv")
+}

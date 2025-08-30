@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cp6f7aoqmnymq"
+path="res://.godot/imported/Egg_part2.obj-dd11e8d6fd3533a2178447ed717c62de.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Egg_part2.obj-dd11e8d6fd3533a2178447ed717c62de.mesh"]
+
+source_file="res://Assets/Models/Egg_part2.obj"
+dest_files=["res://.godot/imported/Egg_part2.obj-dd11e8d6fd3533a2178447ed717c62de.mesh", "res://.godot/imported/Egg_part2.obj-dd11e8d6fd3533a2178447ed717c62de.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

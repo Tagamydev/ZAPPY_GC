@@ -315,8 +315,10 @@ smg The game will restart in 60 seconds.
 | `pin`   | Player inventory update         |
 | `ppo`   | Player position/orientation     |
 | `plv`   | Player level up                 |
+
 | `pex`   | Player expulsion (kick)         |
 | `pgt`   | Player picks up item            |
+
 | `pdr`   | Player drops item               |
 | `pbc`   | Player broadcasts               |
 | `pdi`   | Player dies                     |
@@ -331,8 +333,22 @@ smg The game will restart in 60 seconds.
 | `edi`   | Egg dies                        |
 
 
+		"sst":
+			print(split[0])
+		"seg":
+			print(split[0])
+		"smg":
+			print(split[0])
+		"suc":
+			print(split[0])
+		"sbp":
+			print(split[0])
+
+
 
 | `sgt`   | Current time unit               |
+
+
 | `sst`   | Time unit changed               |
 | `seg`   | End of game                     |
 | `smg`   | Server message                  |

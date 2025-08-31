@@ -231,21 +231,46 @@ func enw(id, father, x, y):
 	var key2 = str(x, ", ", y)
 	var tile: Node3D = tiles[tile_dic[key2]]
 
-	egg_list[id] = tile.spawn_item(egg)
+	egg_list[int(id)] = tile.spawn_item(egg)
+	
+	print("DANnew egg: ", id)
+	print("key2: ", key2)
+	print("tile_dic: ", tile_dic)
+	print("tile_dic[key2]: ", tile_dic.get(key2, "MISSING"))
+	print("tiles type: ", typeof(tiles), " size: ", tiles.size())
 	
 	
 	
 func eht(id):
-	egg_list[id].hatch()
+	if egg_list.has(int(id)):
+		egg_list[int(id)].hatch()
+	else:
+		print("DANGEEEEEEEEEEEEERRRRRRRRRRRR, ", egg_list, "id to match: ", id)
 	
 	
 func ebo(id):
-	egg_list[id].crack_egg()
+	if egg_list.has(int(id)):
+		egg_list[int(id)].crack_egg()
+	else:
+		print("DANGEEEEEEEEEEEEERRRRRRRRRRRR, ", egg_list, "id to match: ", id)
 	
 	
 func edi(id):
-	egg_list[id].queue_free()
+	if egg_list.has(int(id)):
+		egg_list[int(id)].queue_free()
+		egg_list.erase(int(id))
+	else:
+		print("DANGEEEEEEEEEEEEERRRRRRRRRRRR, ", egg_list, "id to match: ", id)
 
+
+func pfk(player):
+	if players_list.has(player):
+		var char: Characters = players_list[player].Character
+		
+		var x = char.x
+		var y = char.y
+		var number = int(egg_list.keys()[-1]) + 1
+		enw(number, player, x, y)
 
 # `pin #n X Y q0 q1 q2 q3 q4 q5 q6`
 #> Player inventory has changed.
@@ -361,7 +386,16 @@ func pgt(player, item):
 			move_player_to_item(player, x, y, "thystame")
 
 
+func smg(message):
+	SignalBus.new_message.emit(str("[color=red]Server:[/color] ", message))
 
+
+func seg(team):
+	SignalBus.new_message.emit(str("[color=green]the team: ", team, " has win!!![/color]"))
+
+
+		
+	
 func parse_command(command):
 	var	split = command.split(" ")
 	
@@ -427,7 +461,7 @@ func parse_command(command):
 			
 			
 		"pfk":
-			print(split[0])
+			pfk(split[1])
 		"enw":
 			if split.size() == 5:
 				enw(split[1], split[2], split[3], split[4])
@@ -445,11 +479,12 @@ func parse_command(command):
 			if split.size() == 2:
 				time = int(split[1])
 		"sst":
-			print(split[0])
+			if split.size() == 2:
+				time = int(split[1])
 		"seg":
-			print(split[0])
+			seg(split[1])
 		"smg":
-			print(split[0])
+			smg(split[1])
 		"suc":
 			print(split[0])
 		"sbp":

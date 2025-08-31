@@ -13,9 +13,17 @@ extends Control
 @onready var	Players: MenuButton = $PlayerPanel/VBoxContainer/HBoxContainer4/PlayersList
 
 var items: PopupMenu = null
+var last_tile = 0
+
+
+func update_tile_viewer():
+	if visible:
+		show_tile(last_tile)
+
 
 func show_tile(n):
 	visible = true
+	last_tile = n
 	
 	var island: Node3D = gameMannager.tiles[n]
 	var key = str(island.x, ", ", island.y)
@@ -49,6 +57,7 @@ func _ready():
 	SignalBus.select_player.connect(hide_tile_viewer)
 	SignalBus.select_player_by_id.connect(hide_tile_viewer)
 	SignalBus.hide_tile_viewer.connect(hide_tile_viewer)
+	SignalBus.update_tile_viewer.connect(update_tile_viewer)
 	pass # Replace with function body.
 
 

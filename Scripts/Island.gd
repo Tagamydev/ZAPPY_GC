@@ -190,3 +190,4 @@ func bct(food, linemate, deraumere, sibur, mendiane, phiras, thystame):
 	SpawnItem("mendiane", str(mendiane).to_int())
 	SpawnItem("phiras", str(phiras).to_int())
 	SpawnItem("thystame", str(thystame).to_int())
+	SignalBus.update_tile_viewer.emit()

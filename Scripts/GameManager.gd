@@ -234,10 +234,6 @@ func enw(id, father, x, y):
 	egg_list[int(id)] = tile.spawn_item(egg)
 	
 	print("DANnew egg: ", id)
-	print("key2: ", key2)
-	print("tile_dic: ", tile_dic)
-	print("tile_dic[key2]: ", tile_dic.get(key2, "MISSING"))
-	print("tiles type: ", typeof(tiles), " size: ", tiles.size())
 	
 	
 	
@@ -494,14 +490,13 @@ func parse_command(command):
 		"BIENVENUE":
 			return#print("ignore this...")
 		_:
-			print("wtf is this...", split[0])
+			print("Unknown command: ", split[0])
 	
 
 func parse_message(message):
 	var commands = message.split("\n")
 	for command in commands.size():
 		parse_command(commands[command])
-	print("size of the array:", commands.size())
 
 
 func return_menu():

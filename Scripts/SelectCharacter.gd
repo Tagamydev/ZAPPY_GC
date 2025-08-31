@@ -23,7 +23,6 @@ func player_lock(player):
 
 func objectPressed():
 	SignalBus.select_player_by_id.emit(Character.Character.id)
-	print(name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

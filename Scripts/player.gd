@@ -96,11 +96,6 @@ func death():
 	is_death = true
 	print("this player is  death:", Character.id)
 
-
-func change_skin_color(skin_col: Color):
-	print("NewSkinColor")
-	
-
 func start_enchantation(n):
 	if n == Character.id:
 		player.play("Incantation")

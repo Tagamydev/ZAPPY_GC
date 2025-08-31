@@ -11,7 +11,6 @@ func new_island(x, y):
 
 
 func _on_item_selected(id: int) -> void:
-	print(items.get_item_text(id))
 	SignalBus.select_tile.emit(id)
 
 

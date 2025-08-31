@@ -509,35 +509,30 @@ func return_menu():
 
 
 
-var lyrics = "はるか遠い 遠い 昔巻かれた首輪
-人が欲しい 人が欲しい と叫ぶ呪いの首輪
-怒らないで 見捨てないで どこもいかないで（ねえ）
-強く絞める 吐くまで絞める 人がいないいないと
-いい成績でしょ
-ねえ ねえ いい子でしょ
-かわいい子でしょ
-ねえ ねえ 良い子でしょう 苦しい ねえ
-愛して 愛して 愛して もっともっと
-愛して 愛して 狂おしいほどに
-苦しい 苦しい 呪縛を 解いて解いて ねえ
-止められない ah
-Ah-ah
-身体 身体 大きくなっても小さい首輪
-苦しくなる 足りなくなる 人が 人が足りない
-クラスの誰にも負けない キレイないい子でしょう（ねえ）
-あの子よりも どの子よりも 誰も 彼も 私を見てよ
-体育館裏 あなたに告白を
-嘘みたいでしょ
-あなたが好きなの 汚いあなたが
-愛して 愛して 愛して 全部あげる
-あなたに あなたに 全部背負ってもらうよ
-足りない あなたが 足りない 離さないよ ah-ah
-ごめんなさい
-愛して 愛して 愛して もっともっと
-愛して 愛して 狂おしいほどに
-苦しい 離さない 苦しい もっともっと ねえ
-幸せなの ah, ah
-幸せなの ah"
+var lyrics = "Dies iræ, dies illa
+Solvet sæclum in favilla
+Teste David cum Sibylla
+Quantus tremor est futurus
+Quando iudex est venturus
+Cuncta stricte discussurus
+Dies iræ, dies illa
+Solvet sæclum in favilla
+Teste David cum Sibylla
+Quantus tremor est futurus
+Quando iudex est venturus
+Cuncta stricte discussurus
+Quantus tremor est futurus
+Dies iræ, dies illa
+Quantus tremor est futurus
+Dies iræ, dies illa
+Quantus tremor est futurus
+Quantus tremor est futurus
+Quando iudex est venturus
+Cuncta stricte discussurus
+Cuncta stricte (cuncta stricte)
+Stricte discussurus
+Cuncta stricte (cuncta stricte)
+Stricte discussurus"
 
 func _ready():
 	SignalBus.command.connect(parse_message)

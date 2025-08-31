@@ -260,6 +260,7 @@ func edi(id):
 
 
 func pfk(player):
+	'''
 	if players_list.has(player):
 		var char: Characters = players_list[player].Character
 		
@@ -267,6 +268,7 @@ func pfk(player):
 		var y = char.y
 		var number = int(egg_list.keys()[-1]) + 1
 		enw(number, player, x, y)
+	'''
 
 # `pin #n X Y q0 q1 q2 q3 q4 q5 q6`
 #> Player inventory has changed.
